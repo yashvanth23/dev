@@ -1,0 +1,1 @@
++function(n,o){"use strict";function i(n,o,i,t,e,c,r,u){n.initFunction=function(){},n.initFunction()}o.module("fandom").registerCtrl("storeCtrl",i),i.$inject=["$scope","$rootScope","$commons","$logger","fandomService","exceptionService","$window","$filter"]}(window,angular);
