@@ -2,213 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b807e15f-77b5-4217-a55b-9942e76e11eb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/shared/vendor/angular-ui-grid/ui-grid.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/shared/vendor/angular-ui-grid/ui-grid.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/shared/vendor/angular-ui-grid/ui-grid.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/fonts/FontAwesome.otf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/fonts/fontawesome-webfont.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/fonts/fontawesome-webfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/fonts/fontawesome-webfont.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/fonts/fontawesome-webfont.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/fonts/glyphicons-halflings-regular.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/fonts/glyphicons-halflings-regular.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/fonts/glyphicons-halflings-regular.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/favicon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/ground_bg.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/ground_template.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/AFC_Bournemouth.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Arsenal.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Brighton&amp;_Hove_Albion.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Burnley.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Chelsea.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Crystal_Palace.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Everton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Huddersfield_Town.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Leicester_City.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Liverpool.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Manchester_City.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Manchester_United.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Newcastle_United.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Southampton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Stoke_City.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Swansea_City.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Tottenham_Hotspur.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Watford.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/West_Bromwich_Albion.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/West_Ham_United.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/keeper/Arsenal.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/keeper/Brighton_Hove_Albion.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/keeper/Burnley.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/keeper/Chelsea.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/keeper/Crystal_Palace.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/keeper/Everton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/keeper/Huddersfield_Town.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/keeper/Leicester.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/keeper/Liverpool.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/keeper/Manchester_City.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/keeper/Manchester_United.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/keeper/Newcastle.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/keeper/Southampton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/keeper/Stoke_City.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/keeper/Swansea_City.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/keeper/Tottenham_Hotspur.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/keeper/Watford.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/keeper/West_Bromwich.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/keeper/West_Ham_United.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/keeper/afc.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/medium.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/quora.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Procfile" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/.idea/webApp.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/gulp/build.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/gulp/conf.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/gulp/e2e-tests.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/gulp/inject.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/gulp/scripts.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/gulp/server.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/gulp/styles.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/gulp/unit-tests.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/gulp/watch.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/gulpfile.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/app.header.module.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/app.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/components/dashboard/dashboard.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/components/dashboard/dashboardController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/components/distributed/popupModalController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/components/history-event/history.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/components/history-event/historyController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/components/layout/layout.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/components/layout/layoutController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/components/live-event/live.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/components/live-event/liveController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/components/settings/contact/contact.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/components/settings/contact/contactController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/components/settings/points/points.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/components/settings/points/pointsController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/components/settings/profile/profile.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/components/settings/profile/profileController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/components/settings/rulesAndRegulation/rules.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/components/settings/rulesAndRegulation/rulesController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/components/settings/setting/setting.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/components/settings/setting/settingController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/components/settings/store/store.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/components/settings/store/storeController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/components/settings/termsAndCondition/termsAndCondition.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/components/settings/termsAndCondition/termsAndCondition.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/components/upcoming-event/upcoming.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/components/upcoming-event/upcomingController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/helpers.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/logger.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/shared/common/common.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/shared/common/directives.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/shared/common/errorhandler.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/shared/common/factory.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/shared/common/service.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/shared/js/angular-base64-upload.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/shared/js/angular-datepicker.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/shared/js/angular-materialize.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/shared/js/angular-moment.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/shared/js/angular-socialshare.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/shared/js/dom-to-image.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/shared/js/html2canvas.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/shared/js/materialize.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/shared/js/moment.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/shared/vendor/angular-cookies.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/shared/vendor/angular-sanitize/angular-sanitize.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/shared/vendor/angular-sanitize/angular-sanitize.min.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/shared/vendor/angular-ui-grid/ui-grid.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/shared/vendor/angular-ui-grid/ui-grid.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/shared/vendor/angular-ui-grid/ui-grid.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/shared/vendor/angular-ui-grid/ui-grid.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/shared/vendor/angular-ui-router/angular-ui-router.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/shared/vendor/angular-ui-sortable/sortable.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/shared/vendor/angular/angular.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/shared/vendor/angular/angular.min.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/shared/vendor/jquery/jquery.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/app/shared/vendor/jquery/jquery.min.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/css/angular-datepicker.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/css/materialize.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/css/style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/fonts/fontawesome-webfont.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/fonts/glyphicons-halflings-regular.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/archive-black-box.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/award-symbol.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/bookmark.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/calender-active.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/calender.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/cancel.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/clock-active.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/clock-circular-outline.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/close.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/contact-mobile.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/dots.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/download.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/email.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/facebook-letter-logo.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/facebook-logo.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/facebook.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/football-field.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/football-ground.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/football-player.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/google-plus.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/ground_background.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/ground_bg.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/ground_template.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/history-active.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/history.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/home.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/instagram-logo.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/instagram.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/AFC_Bournemouth.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Arsenal.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Chelsea.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Crystal_Palace.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Everton.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Huddersfield_Town.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Leicester_City.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Liverpool.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Manchester_City.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Manchester_United.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Newcastle_United.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Southampton.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Stoke_City.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Swansea_City.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Tottenham_Hotspur.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/Watford.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/West_Bromwich_Albion.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/jersey/West_Ham_United.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/left-arrow.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/linkedin.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/lock.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/logo.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/map.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/more.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/noPlayer.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/password.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/pencil.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/present.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/refresh-button.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/ribbon.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/right-arrow.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/smartphone-call.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/stadium.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/stopwatch.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/store.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/twitter-logo.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/twitter.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/assets/images/user.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/config/config.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/src/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/dist/bower_components/angular-animate.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/dist/bower_components/angular-animate.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/dist/bower_components/angular-cookies.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/dist/bower_components/angular-route.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/dist/bower_components/angular-touch.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/dist/bower_components/angular-ui-router.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/dist/bower_components/angular.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/dist/bower_components/angular.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/dist/bower_components/bootstrap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/dist/bower_components/jquery-ui.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/dist/bower_components/jquery-ui.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/dist/bower_components/jquery.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/dist/bower_components/jquery.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/dist/bower_components/ui-bootstrap-tpls.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="fantumn-web.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -229,16 +37,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/src/app/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="config.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/dist/config/config.json">
           <provider selected="true" editor-type-id="text-editor">
@@ -279,6 +77,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5855856">
+              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
@@ -309,10 +117,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="server.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7049924">
+            <state vertical-scroll-proportion="0.0">
               <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -345,6 +153,7 @@
         <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/server.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -526,7 +335,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1983" height="1128" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -534,7 +343,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3297769" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2967992" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -610,14 +419,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Procfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="19" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.25">
@@ -628,11 +429,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7049924">
+        <state vertical-scroll-proportion="0.0">
           <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Procfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="19" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5855856">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
