@@ -70,6 +70,7 @@ gulp.task('inject', ['scripts', 'styles'], function() {
         path.join(conf.paths.dist, '/scripts/shared/js/angular-socialshare.min.js'),
         path.join(conf.paths.dist, '/scripts/shared/js/angular-moment.js'),
         path.join(conf.paths.dist, '/scripts/shared/js/angular-datepicker.js'),
+        path.join(conf.paths.dist, '/scripts/shared/js/angular-md5.js'),
         path.join(conf.paths.dist, 'scripts/app.js'),
         path.join(conf.paths.dist, 'scripts/logger.js'),
         path.join(conf.paths.dist, 'scripts/helpers.js'),
