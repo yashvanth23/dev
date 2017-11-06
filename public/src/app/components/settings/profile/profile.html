@@ -6,6 +6,7 @@
                 <h4 ng-if="userData.name != null">{{userData.name}}</h4>
                 <h4 ng-if="userData.name == null">{{userData.username}}</h4>
                 <p><img src="assets/images/map.svg" alt="">India</p>
+                <a href="javascript:void(0);" ng-click="redirectSetting()" class="setting-editBtn">Edit</a>
             </div>
         </div>
         <div class="profile-play">
@@ -20,12 +21,12 @@
                         <p>{{profile.performance.points.topPoints}}</p>
                     </div>
                     <div class="col s4 m4 l4 profile-slide">
-                        <h5>Matches Won</h5>
-                        <p>53</p>
+                        <h5>Global Rank </h5>
+                        <p>{{profile.performance.globalRank}}</p>
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <!--<div class="row">
                 <div class="col s12 m12 l12">
                     <div class="col s6 m6 l6 profile-rank">
                         <h5>Global Rank :
@@ -38,7 +39,7 @@
                         </h5>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
 </div>

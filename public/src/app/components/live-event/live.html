@@ -25,7 +25,7 @@
                     <p>{{match.matchPoints}}</p>
                 </li>
             </ul>
-            <p ng-if="userScore.length == 0 " class="nodata">Sorry, you did not play this match</p>
+            <p ng-if="noUserScore" class="nodata">Sorry, you did not play this match</p>
             <p ng-if="noScore" class="nodata">Sorry, you did not play this match</p>
         </div>
         <div class="live-result">
@@ -46,7 +46,7 @@
                 </ul>
                 <div ng-if="liveScore.length==0" class="no-record">
                     <img src="assets/images/noPlayer.svg" alt="">
-                    <p>No User Play this Match</p>
+                    <p>0 users played this match</p>
                 </div>
             </div>
         </div>

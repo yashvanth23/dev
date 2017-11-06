@@ -30,6 +30,8 @@
             $scope.matchDetails = JSON.parse(window.sessionStorage.match);
             $scope.userData = JSON.parse(window.sessionStorage.userDetail);
             $rootScope.loader = true;
+            $scope.noScore = false;
+            $scope.noUserScore = false;
             $scope.getLiveScore();
         };
 
@@ -45,11 +47,13 @@
                                 $scope.userScore = $scope.liveScore[i];
                             } else {
                                 $scope.userScore = [];
+                                $scope.noUserScore = true;
                             }
                         }
                         $scope.noScore = false;
                     } else {
                         $scope.noScore = true;
+                        $scope.noUserScore = false;
                     }
 
                     if (angular.element('.float-refresh').hasClass('refresher')) {

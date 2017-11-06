@@ -4,11 +4,13 @@
             <div class="leaderboard">leaderboard</div>
             <div class="live-leftSection history-event">
                 <img ng-src="{{matchDetails.homeLogo}}" alt="">
-                <p>{{matchDetails.home}}<span class="match-result">{{matchDetails.homeScore}}</span></p>
+                <p>{{matchDetails.home}}</p>
+                <span class="match-result">{{matchDetails.homeScore}}</span>
             </div>
             <span class="live-match">VS</span>
             <div class="live-rightSection right-align history-event">
-                <p> <span class="match-result">{{matchDetails.awayScore}}</span>{{matchDetails.away}}</p>
+                <span class="match-result">{{matchDetails.awayScore}}</span>
+                <p> {{matchDetails.away}}</p>
                 <img ng-src="{{matchDetails.awayLogo}}" alt="">
             </div>
             <span class="history-time">Full Time</span>
@@ -25,7 +27,7 @@
                     <p>{{play.matchPoints}}</p>
                 </li>
             </ul>
-            <p ng-if="userScore.length == 0" class="nodata">Sorry, you did not play this match</p>
+            <p ng-if="noUserScore" class="nodata">Sorry, you did not play this match</p>
             <p ng-if="noScore" class="nodata">Sorry, you did not play this match</p>
         </div>
         <div class="live-result">
@@ -46,7 +48,7 @@
                 </ul>
                 <div ng-if="historyScore.length==0" class="no-record">
                     <img src="assets/images/noPlayer.svg" alt="">
-                    <p>No User Play this Match</p>
+                    <p>0 users played this match</p>
                 </div>
             </div>
         </div>

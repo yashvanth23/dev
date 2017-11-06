@@ -11,8 +11,8 @@
                 </div>
                 <div class="right">
                     <a href="javascript:void(0)" ng-click="gotoNavigate('home')" class="home"></a>
-                    <a href="javascript:void(0)" class="setting-menu dropdown-button" ng-click="menuOpen()" ng-class="{active:sidemenu}"></a>
-                    <ul class="drop-menu dropdown-content" ng-show="sidemenu">
+                    <a href="javascript:void(0)" class="setting-menu dropdown-button" ng-click="menuOpen()"></a>
+                    <ul class="drop-menu dropdown-content">
                         <li ng-hide="loginStatus"><a href="javascript:void(0)" ng-click="authEnable('login')" class="waves-effect">Login</a></li>
                         <li ng-hide="loginStatus"><a href="javascript:void(0)" ng-click="authEnable('register')" class="waves-effect">Register</a></li>
                         <li><a href="javascript:void(0)" ng-click="openSideMenu()" class="waves-effect">Matches</a></li>
@@ -155,8 +155,8 @@
                     </div>
                     <div class="right">
                         <a href="javascript:void(0)" ng-click="gotoNavigate('home')" class="home"></a>
-                        <a href="javascript:void(0)" class="setting-menu dropdown-button" ng-click="menuOpen()" ng-class="{active:sidemenu}"></a>
-                        <ul class="drop-menu dropdown-content" id="menu" ng-show="sidemenu">
+                        <a href="javascript:void(0)" class="setting-menu dropdown-button" ng-click="menuOpen()"></a>
+                        <ul class="drop-menu dropdown-content" id="menu">
                             <li ng-hide="loginStatus"><a href="javascript:void(0)" ng-click="authEnable('login')" class="waves-effect">Login</a></li>
                             <li ng-hide="loginStatus"><a href="javascript:void(0)" ng-click="authEnable('register')" class="waves-effect">Register</a></li>
                             <li ng-show="loginStatus"><a href="javascript:void(0)" ng-click="gotoNavigate('profile')" class="waves-effect profile">My Profile</a></li>
@@ -306,7 +306,7 @@
             <form method="post" name="loginForm" ng-submit="login(loginForm.$valid)" novalidate>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="username" name="username" type="text" ng-model="user.username" required>
+                        <input id="username" class="username" name="username" type="text" ng-model="user.username" required>
                         <label for="username">Username</label>
                         <span class="error" ng-show="(loginForm.username.$invalid && !loginForm.username.$pristine) || (loginForm.username.$error.required && loginSubmit)">Username is required</span>
                     </div>
@@ -320,13 +320,13 @@
                 </div>
                 <div class="row right-align">
                     <div class="input-field">
-                        <a href="javascript:void(0);" ng-click="forgotPassword()">Forgot Password?</a>
+                        <a href="javascript:void(0);" ng-click="forgotOpen()">Forgot Password?</a>
                     </div>
                 </div>
-                <p>
-                    <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" ng-model="agree" ng-change="showTermsOfCondition()" />
-                    <label for="filled-in-box">I agree the Terms of Use</label>
-                </p>
+                <!--<p>
+                    <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" ng-model="agree" />
+                    <label for="filled-in-box">I agree the </label><a href="#" ng-click="showTermsOfCondition()"> Terms of Use</a>
+                </p>-->
                 <div class="row">
                     <div class="input-field col s12">
                         <button type="submit" class="btn waves-effect waves-light login">LOGIN</button>
@@ -355,7 +355,7 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="user" type="text" name="user" ng-model="userDetail.username" required>
+                        <input id="user" type="text" name="user" class="username" ng-model="userDetail.username" required>
                         <label for="user">Username</label>
                         <span class="error" ng-show="(registerForm.user.$invalid && !registerForm.user.$pristine) || (registerForm.user.$error.required && registerSubmit)">Username is required</span>
                     </div>
@@ -379,8 +379,8 @@
                     </div>
                 </div>
                 <p class="agree">
-                    <input type="checkbox" class="filled-in" id="filled" checked="checked" ng-change="showTermsOfCondition()" ng-model="agreeRegister" />
-                    <label for="filled">I agree the Terms of Use</label>
+                    <input type="checkbox" class="filled-in" id="filled" checked="checked" ng-model="agreeRegister" />
+                    <label for="filled">I agree the </label><a href="#" ng-click="showTermsOfCondition()"> Terms of Use</a>
                 </p>
                 <div class="row">
                     <div class="input-field col s12">
@@ -401,7 +401,7 @@
 </div>
 
 <div class="auth-padrop" ng-show="backdrop"></div>
-
+<div class="terms-drop" ng-show="termsLoader"></div>
 <div class="loader-content center-align" ng-show="loader">
     <div class='loader'>
         <div class='loader--dot'></div>
@@ -462,9 +462,6 @@
         <button type="button" class="warning-btn waves-effect waves-light" ng-click="closeWarning()">Continue Play</button>
     </div>
 </div>
-
-<div class="custom-backdrop" ng-show="customLoader"></div>
-
 <div class="terms-modalpopup" id="termsCondition">
     <h4>Terms of Use</h4>
     <div class="terms-modalcontent cus-scroll">
@@ -668,6 +665,27 @@
             <h5>17. Modifications</h5>
             <p>Fantumn may revise these terms of service for its Services at any time without notice. By using this website you are agreeing to be bound by the then current version of these terms of service. </p>
         </div>
-        <button type="button" class="warning-btn waves-effect waves-light" ng-click="closeTermsOfCondition()">Close</button>
+    </div>
+    <button type="button" class="warning-btn waves-effect waves-light" ng-click="closeTermsOfCondition()">Close</button>
+</div>
+
+
+<div class="custom-backdrop" ng-show="customLoader"></div>
+
+<div class="forgot-modalpopup" id="forgotModal">
+    <div class="custom-modalcontent">
+        <h4>Forgot Password</h4>
+        <form method="post" name="forgotForm" ng-submit="forgotPassword(forgotForm.$valid)" novalidate>
+            <div class="input-field">
+                <input type="email" name="emailForgot" id="emailForgot" ng-model="forgotEmail" required>
+                <label for="forgorEmail">Email</label>
+                <span class="error" ng-show="(forgotForm.emailForgot.$invalid && !forgotForm.emailForgot.$pristine) || (forgotForm.emailForgot.$error.required && forgotSubmit)">Email is required</span>
+            </div>
+            <div class="input-field">
+                <button type="button" class="btn btn-cancel" ng-click="forgotClose()">Cancel</button>
+                <button type="submit" class="btn btn-submit">Submit</button>
+            </div>
+        </form>
     </div>
 </div>
+<div class="forgot-backdrop" ng-show="forgotDrop"></div>

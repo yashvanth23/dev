@@ -45,6 +45,14 @@
                 $scope.report.subject = "report";
                 $scope.title = "Report a problem";
             }
+            if (window.sessionStorage.userDetail != undefined) {
+                if (window.sessionStorage.userDetail != "") {
+                    $scope.userDetail = JSON.parse(window.sessionStorage.userDetail);
+                    $("#email").val($scope.userDetail.email);
+                    angular.element(".email label").addClass('active');
+                    $scope.report.email = $scope.userDetail.email;
+                }
+            }
             angular.element('.contact-popup').addClass('active');
             $scope.reportDrop = true;
         };

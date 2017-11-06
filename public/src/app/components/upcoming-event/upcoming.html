@@ -47,7 +47,7 @@
                 </div>
                 <div class="match-header match-headerAll matchfix-padding" ng-show="navigateActiveTab('all')">
                     <ul>
-                        <li>Team</li>
+                        <li ng-click="teamSort($event)" class="sort">Team <img src="assets/images/up-arrow.svg" alt="" class=""></li>
                         <li>Player Name</li>
                         <li>Previous Match Points</li>
                         <li>Player Position</li>
@@ -56,7 +56,7 @@
                 <div class="match-section allplay" ng-show="navigateActiveTab('all')">
 
                     <ul>
-                        <li ng-repeat="player in allPlayers" class="matchfix-padding" ng-class="{active: player.status}" ng-click="addPlayer(player,$index,'all')">
+                        <li ng-repeat="player in allPlayers | orderBy:orderAll" class="matchfix-padding" ng-class="{active: player.status}" ng-click="addPlayer(player,$index,'all')">
                             <div>
                                 <span ng-if="player.teamId == home.id">{{home.name}}</span>
                                 <span ng-if="player.teamId == away.id">{{away.name}}</span>
@@ -124,7 +124,7 @@
             </ul>
         </div>
     </div>
-    <p class="upcoming-logic">Logic: Select 2 players from one team and another player from other team.</p>
+    <p class="upcoming-logic">{{logic}}</p>
 
     <div class="footer">
         <a href="javascript:void(0);"><img src="assets/images/smartphone-call.svg" alt=""><span>We are also available on Google play store</span></a>
@@ -137,7 +137,8 @@
             <!--<button type="button" class="insta-share" ng-click="socialShare('insta')"></button>-->
             <button type="button" class="download-share" ng-click="socialShare('download')"></button>
         </div>
-        <img src="assets/images/football-ground.svg" alt="" class="floor">
+        <img src="assets/images/Ground Template.svg" alt="" class="floor">
+        <!--<img src="assets/images/ground_template.png" alt="">-->
         <div class="review-content">
             <div class="review-slider">
                 <div class="review-gk">
@@ -174,11 +175,12 @@
         </div>
     </div>
 </div>
+<div class="custom-backdrop" ng-show="review"></div>
 
 <div id="snapshot" style="display:none">
     <section>
         <div class="snap" id="snap">
-            <img src="assets/images/ground_template.png" alt="">
+            <img src="assets/images/Ground Template.svg" alt="">
             <div class="snapshot-content">
                 <div class="snapshot-slide">
                     <div class="snapshot-gf">
@@ -218,7 +220,7 @@
 </div>
 
 <div id="img-out" style="display:none"></div>
-<a download="pitch.png" style="display: none" id="downloadPitch">download</a>
+<a style="display: none" id="downloadPitch">download</a>
 <a href="#" style="display: none;" id="twitterShare" socialshare socialshare-provider="twitter" socialshare-hashtags="fantumn, football, League" socialshare-url="http://720kb.net">
 Share me
 </a>

@@ -189,8 +189,10 @@
         $scope.enableProfile = function() {
             if ($scope.profileEdit) {
                 $scope.profileEdit = false;
+                angular.element('.setting-profile').removeClass('edit');
             } else {
                 $scope.profileEdit = true;
+                angular.element('.setting-profile').addClass('edit');
             }
         };
         $scope.initFunction();

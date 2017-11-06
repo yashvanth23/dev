@@ -46,7 +46,11 @@
             });
         };
 
-
+        $scope.redirectSetting = function() {
+            window.sessionStorage.pageName = "setting";
+            window.sessionStorage.pagename = "setting";
+            $commons.navigate('layout.setting', '', false);
+        };
         $scope.initFunction();
 
     }

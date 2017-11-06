@@ -70,7 +70,7 @@
                 <label for="name">Name</label>
                 <span class="error" ng-show="(reportForm.name.$invalid && !reportForm.name.$pristine) || (reportForm.name.$error.required && suggestSubmit)">Name is required</span>
             </div>
-            <div class="input-field">
+            <div class="input-field email">
                 <input type="email" id="email" name="email" ng-model="report.email" required>
                 <label for="email">Email</label>
                 <span class="error" ng-show="(reportForm.email.$invalid && !reportForm.email.$pristine) || (reportForm.email.$error.required && suggestSubmit)">Email is required</span>

@@ -17,7 +17,8 @@ angular.module("fandom", [
     "angularMoment",
     "720kb.datepicker",
     "naif.base64",
-    "720kb.socialshare"
+    "720kb.socialshare",
+    "angular-md5"
 ]).config([
     "$stateProvider", "$urlRouterProvider", "$locationProvider", "$controllerProvider", "$provide",
     function($stateProvider, $urlRouterProvider, $locationProvider, $controllerProvider, $provide) {
