@@ -1,7 +1,7 @@
 {
     "appName": "fandom",
     "appVersion": "1.0",
-    "baseUrl": "https://fantumn-server.herokuapp.com/",
+    "baseUrl": "http://localhost:9000/",
     "upcoming": "upcomingFixturesAdmin",
     "liveMatch": "liveFixturesAdmin",
     "historyMatch": "historyFixturesAdmin",
@@ -16,5 +16,6 @@
     "changePassword": "changePassword",
     "updateProfile": "updateProfile",
     "rosterPlayer": "getRosterPlayers",
-    "report": "reportSuggest"
+    "report": "reportSuggest",
+    "forgotPassword": "reset"
 }

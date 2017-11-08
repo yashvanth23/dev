@@ -140,6 +140,7 @@ footer a span,
     background-color: #00a99d;
     padding: 15px 20px;
     position: fixed;
+    font-weight: 500;
     z-index: 999;
     width: 25%;
     top: 0;
@@ -200,6 +201,7 @@ ul.drop-menu li a.profile {
     display: inline-block;
     text-align: center;
     cursor: pointer;
+    font-weight: 600;
 }
 
 .sidenav-tab ul li.active {
@@ -253,7 +255,7 @@ ul.drop-menu li a.profile {
     background: transparent;
     border-radius: 25px;
     /* border: 2px solid #4CAF50; */
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .sidenav-content ul li.upcomingmatch.active {
@@ -819,6 +821,7 @@ ul.drop-menu li a.profile {
 
 .home-container h4 {
     color: #525f67;
+    font-weight: 500;
 }
 
 .home-container p.home-steps {
@@ -831,6 +834,7 @@ ul.drop-menu li a.profile {
     margin: 30px 0px 15px 0px;
     line-height: 25px;
     color: #868c8d;
+    font-weight: 500;
 }
 
 .home-container ul li {
@@ -839,7 +843,7 @@ ul.drop-menu li a.profile {
     text-align: center;
     margin-right: 30px;
     margin: 20px 30px 0px 0px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .home-container ul li img {
@@ -891,7 +895,7 @@ ul.drop-menu li a.profile {
     margin: 25px 0px 0px 10px;
     color: #333;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .left-container img {
@@ -909,7 +913,7 @@ ul.drop-menu li a.profile {
     margin: 25px 9px 0px 0px;
     color: #333;
     font-size: 15px;
-    font-weight: 500;
+    font-weight: 600;
     text-align: left;
 }
 
@@ -4091,6 +4095,7 @@ textarea.materialize-textarea[readonly="readonly"] {
     font-size: 15px;
     display: inline-block;
     margin-right: 10px;
+    font-weight: 500;
 }
 
 .float-auth a:last-child {

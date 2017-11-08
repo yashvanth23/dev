@@ -5,8 +5,20 @@
             <div class="header sidenav-header">
                 <div class="left valign-wrapper">
                     <div ng-show="loginStatus">
-                        <img ng-src="{{userInfo.avatar}}" alt="user">
-                        <span>{{userInfo.username | uppercase}} </span>
+                        <div ng-if="!userInfo.social_auth">
+                            <img ng-src="{{userInfo.avatar}}" alt="user">
+                            <span>{{userInfo.username | uppercase}} </span>
+                        </div>
+                        <div ng-if="userInfo.social_auth">
+                            <div ng-if="userInfo.facebook.social_id !=''">
+                                <img ng-src="{{userInfo.facebook.profile}}" alt="user">
+                                <span>{{userInfo.username | uppercase}} </span>
+                            </div>
+                            <div ng-if="userInfo.google.idToken !=''">
+                                <img ng-src="{{userInfo.google.imgUrl}}" alt="user">
+                                <span>{{userInfo.username | uppercase}} </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="right">
@@ -149,8 +161,20 @@
                 <div>
                     <div class="left valign-wrapper">
                         <div ng-show="loginStatus">
-                            <img ng-src="{{userInfo.avatar}}" alt="user">
-                            <span>{{userInfo.username}} </span>
+                            <div ng-if="!userInfo.social_auth">
+                                <img ng-src="{{userInfo.avatar}}" alt="user">
+                                <span>{{userInfo.username | uppercase}} </span>
+                            </div>
+                            <div ng-if="userInfo.social_auth">
+                                <div ng-if="userInfo.facebook.social_id !=''">
+                                    <img ng-src="{{userInfo.facebook.profile}}" alt="user">
+                                    <span>{{userInfo.username | uppercase}} </span>
+                                </div>
+                                <div ng-if="userInfo.google.idToken !=''">
+                                    <img ng-src="{{userInfo.google.imgUrl}}" alt="user">
+                                    <span>{{userInfo.username | uppercase}} </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="right">
@@ -393,7 +417,7 @@
             </p>
             <div class="social-login">
                 <button type="button" class="btn waves-effect waves-light register" ng-click="authEnable('login')"></button>
-                <!--<button type="button" class="btn waves-effect waves-light fb-login" ng-click="signupWithFacebook()"></button>-->
+                <button type="button" class="btn waves-effect waves-light fb-login" ng-click="signupWithFacebook()"></button>
                 <!--<button type="button" class="btn waves-effect waves-light google-login" ng-click="signupWithGoogle()"></button>-->
             </div>
         </div>
