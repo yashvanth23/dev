@@ -547,11 +547,9 @@
                     $scope.userDetail.avatar = avatar;
                     var model = {
                         "username": $scope.userDetail.username,
-                        "dob": $scope.userDetail.dob,
-                        "password": $scope.userDetail.password,
                         "email": $scope.userDetail.email,
-                        "avatar": $scope.userDetail.avatar,
-                        "digitalSignature": $scope.agreeRegister
+                        "dob": $scope.userDetail.dob,
+                        "password": $scope.userDetail.password
                     };
                     console.log(model);
                     fandomService.post(url, model).then(function(res) {
@@ -711,8 +709,10 @@
         // }
 
         $scope.signupWithFacebook = function() {
-            if ($scope.agree) {
+            if ($scope.agreeRegister) {
                 FB.login(function(response) {
+                    console.log(response);
+                    var auth_token = response.authResponse.accessToken;
                     if (response.authResponse) {
                         FB.api('/me', {
                                 locale: 'en_US',
@@ -722,10 +722,14 @@
                                 console.log(response);
                                 var user = {
                                     "username": response.first_name + response.last_name,
+                                    "name": response.first_name + response.last_name,
                                     "email": response.email,
                                     "gender": response.gender,
                                     "dob": response.birthday,
-                                    "avatar": response.picture.data.url
+                                    "profile": response.picture.data.url,
+                                    "facebook_id": response.id,
+                                    "auth_token": auth_token,
+                                    "facebook_login": true
                                 };
                                 console.log(user);
                                 $scope.socialRegister(user);
@@ -742,35 +746,77 @@
         };
 
         $scope.socialRegister = function(user) {
-            console.log(user);
-            $rootScope.loader = false;
-            var url = $rootScope.appConfig.baseUrl + $rootScope.appConfig.register;
-            var model = {
-                "username": user.username,
-                "email": user.email,
-                "dob": user.dob,
-                "password": "",
-                "avatar": user.avatar
-            };
-            fandomService.post(url, model).then(function(res) {
+            if (user.email != undefined) {
                 $rootScope.loader = true;
-                if (res && res.data.status == "success") {
-                    $scope.loginStatus = true;
-                    window.sessionStorage.userDetail = JSON.stringify(res.data.data);
-                    $cookies.put('userInfo', window.sessionStorage.userDetail);
-                    if ($scope.redirecturl) {
-                        $scope.gotoPage($scope.redirecturl.index, $scope.redirecturl.match, $scope.redirecturl.tabStatus.$scope.redirecturl.element);
-                    } else {
-                        $commons.navigate('layout.dashboard', {}, false);
-                    }
-                    $scope.getUpcomingMatch();
-                    $scope.closeAuth();
+                var url = $rootScope.appConfig.baseUrl + $rootScope.appConfig.register;
+                var model = "";
+                if (user.facebook_login) {
+                    model = {
+                        "username": user.name,
+                        "email": user.email,
+                        "dob": user.dob,
+                        "password": "",
+                        "social_auth": true,
+                        "digitalSignature": $scope.agreeRegister,
+                        "facebook": {
+                            "social_id": user.facebook_id,
+                            "auth_token": user.auth_token,
+                            "profile": user.profile
+                        },
+                        "google": {
+                            "accessToken": "",
+                            "idToken": "",
+                            "imgUrl": ""
+                        },
+                        "name": user.name,
+                        "gender": user.gender
+                    };
                 } else {
-                    $commons.showError('#errorModal', res.data.error, true);
+                    model = {
+                        "username": user.name,
+                        "email": user.email,
+                        "dob": user.dob,
+                        "password": "",
+                        "social_auth": true,
+                        "digitalSignature": $scope.agreeRegister,
+                        "facebook": {
+                            "social_id": "",
+                            "auth_token": "",
+                            "profile": ""
+                        },
+                        "google": {
+                            "accessToken": user.accessToken,
+                            "idToken": user.idToken,
+                            "imgUrl": user.imgUrl
+                        },
+                        "name": user.name,
+                        "gender": user.gender
+                    };
                 }
-            }, function(err) {
-                $commons.showError('#errorModal', err, true);
-            });
+                console.log(model);
+                fandomService.post(url, model).then(function(res) {
+                    $rootScope.loader = false;
+                    if (res && res.data.status == "success") {
+                        $scope.loginStatus = true;
+                        $scope.userInfo = res.data.data;
+                        window.sessionStorage.userDetail = JSON.stringify(res.data.data);
+                        $cookies.put('userInfo', window.sessionStorage.userDetail);
+                        if ($scope.redirecturl) {
+                            $scope.gotoPage($scope.redirecturl.index, $scope.redirecturl.match, $scope.redirecturl.tabStatus.$scope.redirecturl.element);
+                        } else {
+                            $commons.navigate('layout.dashboard', {}, false);
+                        }
+                        $scope.getUpcomingMatch();
+                        $scope.closeAuth();
+                    } else {
+                        $commons.showError('#errorModal', res.data.error, true);
+                    }
+                }, function(err) {
+                    $commons.showError('#errorModal', err, true);
+                });
+            } else {
+                $commons.showError('#errorModal', "Email address not available in Social Login", true);
+            }
         };
 
         $scope.logout = function() {

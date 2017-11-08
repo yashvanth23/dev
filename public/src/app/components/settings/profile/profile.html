@@ -1,7 +1,9 @@
 <div class="col s12 m12 l12">
     <div class="col s9 m9 l9 clear-float responsive-width">
         <div class="profile-content valign-wrapper">
-            <img class="profile" ng-src="{{userData.avatar}}" alt="">
+            <img class="profile" ng-src="{{userData.avatar}}" alt="" ng-if="!userData.social_auth">
+            <img class="profile" ng-src="{{userData.facebook.profile}}" alt="" ng-if="userData.social_auth && userData.facebook.facebook_id !=''">
+            <img class="profile" ng-src="{{userData.google.imgUrl}}" alt="" ng-if="userData.social_auth && userData.google.id_token !=''">
             <div class="col s9 m8 l8 profile-info">
                 <h4 ng-if="userData.name != null">{{userData.name}}</h4>
                 <h4 ng-if="userData.name == null">{{userData.username}}</h4>

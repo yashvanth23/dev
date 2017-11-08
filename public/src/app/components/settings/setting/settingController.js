@@ -47,8 +47,17 @@
                 "state": "",
                 "pincode": "",
                 "country": "",
-                "avatar": $scope.userData.avatar
+                "avatar": ""
             };
+            if ($scope.userData.social_auth) {
+                if ($scope.userData.facebook.facebook_id != "") {
+                    $scope.profileInfo.avatar = $scope.userData.facebook.profile;
+                } else {
+                    $scope.profileInfo.avatar = $scope.userData.google.imgUrl;
+                }
+            } else {
+                $scope.profileInfo.avatar = $scope.userData.avatar;
+            }
 
             // $scope.inlineStyle = {
             //     background: "url($scope.profileInfo.avatar+)"
