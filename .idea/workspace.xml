@@ -2,21 +2,235 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b807e15f-77b5-4217-a55b-9942e76e11eb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/dist/bower_components/angular-animate.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/dist/bower_components/angular-animate.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/dist/bower_components/angular-cookies.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/dist/bower_components/angular-route.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/dist/bower_components/angular-touch.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/dist/bower_components/angular-ui-router.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/dist/bower_components/angular.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/dist/bower_components/angular.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/dist/bower_components/bootstrap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/dist/bower_components/jquery-ui.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/dist/bower_components/jquery-ui.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/dist/bower_components/jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/dist/bower_components/jquery.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/dist/bower_components/ui-bootstrap-tpls.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/app/shared/vendor/angular-sanitize/angular-sanitize.min.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/app/shared/vendor/angular-ui-grid/ui-grid.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/app/shared/vendor/angular-ui-grid/ui-grid.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/app/shared/vendor/angular-ui-grid/ui-grid.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/app/shared/vendor/angular-ui-grid/ui-grid.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/app/shared/vendor/angular/angular.min.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/app/shared/vendor/jquery/jquery.min.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/css/angular-datepicker.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/css/materialize.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/css/style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/fonts/FontAwesome.otf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/fonts/fontawesome-webfont.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/fonts/fontawesome-webfont.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/fonts/fontawesome-webfont.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/fonts/fontawesome-webfont.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/fonts/fontawesome-webfont.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/fonts/glyphicons-halflings-regular.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/fonts/glyphicons-halflings-regular.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/fonts/glyphicons-halflings-regular.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/fonts/glyphicons-halflings-regular.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/archive-black-box.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/award-symbol.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/bookmark.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/calender-active.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/calender.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/cancel.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/clock-active.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/clock-circular-outline.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/close.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/contact-mobile.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/dots.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/download.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/email.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/facebook-letter-logo.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/facebook-logo.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/facebook.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/favicon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/football-field.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/football-ground.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/football-player.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/google-plus.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/ground_background.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/ground_bg.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/ground_bg.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/ground_template.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/ground_template.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/history-active.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/history.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/home.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/instagram-logo.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/instagram.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/AFC_Bournemouth.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/AFC_Bournemouth.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Arsenal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Arsenal.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Brighton&amp;_Hove_Albion.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Burnley.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Chelsea.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Chelsea.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Crystal_Palace.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Crystal_Palace.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Everton.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Everton.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Huddersfield_Town.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Huddersfield_Town.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Leicester_City.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Leicester_City.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Liverpool.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Liverpool.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Manchester_City.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Manchester_City.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Manchester_United.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Manchester_United.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Newcastle_United.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Newcastle_United.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Southampton.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Southampton.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Stoke_City.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Stoke_City.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Swansea_City.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Swansea_City.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Tottenham_Hotspur.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Tottenham_Hotspur.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Watford.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/Watford.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/West_Bromwich_Albion.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/West_Bromwich_Albion.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/West_Ham_United.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/West_Ham_United.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/keeper/Arsenal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/keeper/Brighton_Hove_Albion.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/keeper/Burnley.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/keeper/Chelsea.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/keeper/Crystal_Palace.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/keeper/Everton.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/keeper/Huddersfield_Town.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/keeper/Leicester.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/keeper/Liverpool.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/keeper/Manchester_City.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/keeper/Manchester_United.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/keeper/Newcastle.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/keeper/Southampton.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/keeper/Stoke_City.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/keeper/Swansea_City.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/keeper/Tottenham_Hotspur.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/keeper/Watford.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/keeper/West_Bromwich.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/keeper/West_Ham_United.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/jersey/keeper/afc.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/left-arrow.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/linkedin.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/lock.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/logo.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/map.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/medium.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/more.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/noPlayer.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/password.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/pencil.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/present.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/quora.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/refresh-button.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/ribbon.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/right-arrow.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/smartphone-call.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/stadium.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/stopwatch.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/store.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/twitter-logo.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/twitter.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/assets/images/user.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/bower_components/angular-animate.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/bower_components/angular-animate.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/bower_components/angular-cookies.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/bower_components/angular-route.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/bower_components/angular-touch.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/bower_components/angular-ui-router.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/bower_components/angular.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/bower_components/angular.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/bower_components/bootstrap.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/bower_components/jquery-ui.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/bower_components/jquery-ui.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/bower_components/jquery.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/bower_components/jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/bower_components/ui-bootstrap-tpls.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/config/config.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/app-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/app.header.module-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/app.header.module.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/app.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/components/dashboard/dashboardController-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/components/dashboard/dashboardController.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/components/distributed/popupModalController-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/components/distributed/popupModalController.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/components/history-event/historyController-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/components/history-event/historyController.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/components/layout/layoutController-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/components/layout/layoutController.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/components/live-event/liveController-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/components/live-event/liveController.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/components/settings/contact/contactController-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/components/settings/contact/contactController.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/components/settings/points/pointsController-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/components/settings/points/pointsController.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/components/settings/profile/profileController-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/components/settings/profile/profileController.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/components/settings/rulesAndRegulation/rulesController-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/components/settings/rulesAndRegulation/rulesController.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/components/settings/setting/settingController-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/components/settings/setting/settingController.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/components/settings/store/storeController-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/components/settings/store/storeController.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/components/settings/termsAndCondition/termsAndCondition-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/components/settings/termsAndCondition/termsAndCondition.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/components/upcoming-event/upcomingController-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/components/upcoming-event/upcomingController.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/helpers-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/helpers.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/logger-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/logger.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/common/common-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/common/common.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/common/directives-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/common/directives.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/common/errorhandler-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/common/errorhandler.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/common/factory-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/common/factory.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/common/service-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/common/service.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/js/angular-base64-upload-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/js/angular-base64-upload.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/js/angular-datepicker-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/js/angular-datepicker.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/js/angular-materialize.min-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/js/angular-materialize.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/js/angular-moment-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/js/angular-moment.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/js/angular-socialshare.min-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/js/angular-socialshare.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/js/dom-to-image.min-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/js/dom-to-image.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/js/html2canvas-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/js/html2canvas.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/js/materialize.min-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/js/materialize.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/js/moment-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/js/moment.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/vendor/angular-cookies.min-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/vendor/angular-cookies.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/vendor/angular-sanitize/angular-sanitize.min-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/vendor/angular-sanitize/angular-sanitize.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/vendor/angular-ui-grid/ui-grid.min-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/vendor/angular-ui-grid/ui-grid.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/vendor/angular-ui-router/angular-ui-router.min-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/vendor/angular-ui-router/angular-ui-router.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/vendor/angular-ui-sortable/sortable-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/vendor/angular-ui-sortable/sortable.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/vendor/angular/angular.min-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/vendor/angular/angular.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/vendor/jquery/jquery.min-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/shared/vendor/jquery/jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/dist/scripts/templateCacheHtml.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/fantumn-web.iml" afterPath="$PROJECT_DIR$/.idea/fantumn-web.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/config/config.json" afterPath="$PROJECT_DIR$/public/src/config/config.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
     </list>
     <ignored path="fantumn-web.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,19 +250,19 @@
     <favorites_list name="fantumn-web" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="config.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/dist/config/config.json">
+        <entry file="file://$PROJECT_DIR$/public/src/config/config.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.875">
-              <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="webApp.iml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/.idea/webApp.iml">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/src/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -57,71 +271,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/src/config/config.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.875">
-              <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Procfile" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Procfile">
+      <file leaf-file-name="profileController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/src/app/components/settings/profile/profileController.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="19" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5855856">
-              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.25">
-              <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/README.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.586207">
-              <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.5">
-              <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
+              <caret line="46" column="10" selection-start-line="46" selection-start-column="10" selection-end-line="46" selection-end-column="10" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -129,12 +283,89 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bower.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/bower.json">
+      <file leaf-file-name="settingController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/src/app/components/settings/setting/settingController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="52" column="14" selection-start-line="52" selection-start-column="14" selection-end-line="52" selection-end-column="14" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <marker date="1509969844451" expanded="true" signature="7592:7650" placeholder="{...}" />
+                <marker date="1509969844451" expanded="true" signature="7843:7858" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="upcoming.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/src/app/components/upcoming-event/upcoming.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="9" column="35" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="upcomingController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/src/app/components/upcoming-event/upcomingController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="31" column="23" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <marker date="1509969844455" expanded="true" signature="794:1808" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="historyController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/src/app/components/history-event/historyController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="39" column="30" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <marker date="1509969844419" expanded="true" signature="751:961" placeholder="{...}" />
+                <marker date="1509969844419" expanded="true" signature="2141:2165" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="liveController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/src/app/components/live-event/liveController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="40" column="42" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <marker date="1509969844439" expanded="true" signature="733:943" placeholder="{...}" />
+                <marker date="1509969844439" expanded="true" signature="2102:2126" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="server.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.91981846">
+              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -148,12 +379,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/public/server.js" />
-        <option value="$PROJECT_DIR$/public/dist/config/config.json" />
-        <option value="$PROJECT_DIR$/public/src/config/config.json" />
         <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/server.js" />
+        <option value="$PROJECT_DIR$/public/dist/config/config.json" />
+        <option value="$PROJECT_DIR$/public/src/config/config.json" />
+        <option value="$PROJECT_DIR$/public/README.md" />
       </list>
     </option>
   </component>
@@ -194,6 +426,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -240,7 +473,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="dist" />
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -258,19 +491,23 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value=".idea" />
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../inyards-web" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -302,6 +539,11 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
@@ -324,6 +566,9 @@
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="b807e15f-77b5-4217-a55b-9942e76e11eb" name="Default" comment="" />
@@ -335,25 +580,33 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1983" height="1128" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16530612" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3297769" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2967992" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16973811" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -363,11 +616,201 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/src/app/app.js">
+    <entry file="file://$PROJECT_DIR$/public/src/app/components/settings/setting/settingController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="52" column="14" selection-start-line="52" selection-start-column="14" selection-end-line="52" selection-end-column="14" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <marker date="1509969844451" expanded="true" signature="7592:7650" placeholder="{...}" />
+            <marker date="1509969844451" expanded="true" signature="7843:7858" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/app/components/upcoming-event/upcoming.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="35" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/app/components/upcoming-event/upcomingController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="23" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <marker date="1509969844455" expanded="true" signature="794:1808" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/app/components/history-event/historyController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="30" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <marker date="1509969844419" expanded="true" signature="751:961" placeholder="{...}" />
+            <marker date="1509969844419" expanded="true" signature="2141:2165" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="30" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/config/config.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Procfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="19" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="12" selection-start-line="45" selection-start-column="12" selection-end-line="45" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="29" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/config/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Procfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="19" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="12" selection-start-line="45" selection-start-column="12" selection-end-line="45" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="29" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -375,21 +818,41 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/config/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/bower.json">
+    <entry file="file://$PROJECT_DIR$/Procfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="19" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.586207">
+        <state vertical-scroll-proportion="0.0">
           <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
           <folding />
         </state>
@@ -397,33 +860,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.5">
+        <state vertical-scroll-proportion="0.0">
           <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/dist/config/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.875">
-          <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/src/config/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.875">
-          <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.25">
-          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -437,19 +875,165 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/bower.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/.idea/webApp.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/bower.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Procfile">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="19" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5855856">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="12" selection-start-line="45" selection-start-column="12" selection-end-line="45" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/app/components/settings/setting/settingController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="52" column="14" selection-start-line="52" selection-start-column="14" selection-end-line="52" selection-end-column="14" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <marker date="1509969844451" expanded="true" signature="7592:7650" placeholder="{...}" />
+            <marker date="1509969844451" expanded="true" signature="7843:7858" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/app/components/upcoming-event/upcoming.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="35" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/app/components/upcoming-event/upcomingController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="23" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <marker date="1509969844455" expanded="true" signature="794:1808" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/app/components/settings/profile/profileController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="46" column="10" selection-start-line="46" selection-start-column="10" selection-end-line="46" selection-end-column="10" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/app/components/history-event/historyController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="30" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <marker date="1509969844419" expanded="true" signature="751:961" placeholder="{...}" />
+            <marker date="1509969844419" expanded="true" signature="2141:2165" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/config/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/app/components/live-event/liveController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="42" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <marker date="1509969844439" expanded="true" signature="733:943" placeholder="{...}" />
+            <marker date="1509969844439" expanded="true" signature="2102:2126" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.91981846">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
