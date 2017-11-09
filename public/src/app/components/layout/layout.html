@@ -699,17 +699,45 @@
 <div class="forgot-modalpopup" id="forgotModal">
     <div class="custom-modalcontent">
         <h4>Forgot Password</h4>
-        <form method="post" name="forgotForm" ng-submit="forgotPassword(forgotForm.$valid)" novalidate>
-            <div class="input-field">
-                <input type="email" name="emailForgot" id="emailForgot" ng-model="forgotEmail" required>
-                <label for="forgorEmail">Email</label>
-                <span class="error" ng-show="(forgotForm.emailForgot.$invalid && !forgotForm.emailForgot.$pristine) || (forgotForm.emailForgot.$error.required && forgotSubmit)">Email is required</span>
-            </div>
-            <div class="input-field">
-                <button type="button" class="btn btn-cancel" ng-click="forgotClose()">Cancel</button>
-                <button type="submit" class="btn btn-submit">Submit</button>
-            </div>
-        </form>
+        <div ng-show="emailStatus">
+            <form method="post" name="forgotForm" ng-submit="forgotPassword(forgotForm.$valid)" novalidate>
+                <div class="input-field">
+                    <input type="email" name="emailForgot" id="emailForgot" ng-model="forgotEmail" required>
+                    <label for="forgorEmail">Email</label>
+                    <span class="error" ng-show="(forgotForm.emailForgot.$invalid && !forgotForm.emailForgot.$pristine) || (forgotForm.emailForgot.$error.required && forgotSubmit)">Email is required</span>
+                </div>
+                <div class="input-field">
+                    <button type="button" class="btn btn-cancel" ng-click="forgotClose()">Cancel</button>
+                    <button type="submit" class="btn btn-submit">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div ng-show="otpStatus">
+            <form method="post" name="otpFormControl" ng-submit="getToken(otpFormControl.$valid)" novalidate>
+                <div class="input-field">
+                    <input type="text" name="otp" id="otp" ng-model="otp" number-input required maxlength="6">
+                    <label for="otp">OTP</label>
+                    <span class="error" ng-show="(otpFormControl.otp.$invalid && !otpFormControl.otp.$pristine) || (otpFormControl.otp.$error.required && otpForm)">OTP is required</span>
+                </div>
+                <div class="input-field">
+                    <button type="button" class="btn btn-cancel" ng-click="forgotClose()">Cancel</button>
+                    <button type="submit" class="btn btn-submit">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div ng-show="passwordStatus">
+            <form method="post" name="passwordForm" ng-submit="submitForgotPassword(passwordForm.$valid)" novalidate>
+                <div class="input-field">
+                    <input type="password" name="passwordReset" id="passwordReset" ng-model="forgotPassCode" required>
+                    <label for="otp">Password</label>
+                    <span class="error" ng-show="(passwordForm.passwordReset.$invalid && !passwordForm.passwordReset.$pristine) || (passwordForm.passwordReset.$error.required && submitForgotForm)">Password is required</span>
+                </div>
+                <div class="input-field">
+                    <button type="button" class="btn btn-cancel" ng-click="forgotClose()">Cancel</button>
+                    <button type="submit" class="btn btn-submit">Submit</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 <div class="forgot-backdrop" ng-show="forgotDrop"></div>

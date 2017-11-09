@@ -17,5 +17,7 @@
     "updateProfile": "updateProfile",
     "rosterPlayer": "getRosterPlayers",
     "report": "reportSuggest",
-    "forgotPassword": "reset"
+    "forgotPassword": "reset",
+    "getResetToken": "reset",
+    "resetPassword": "resetPassword"
 }
