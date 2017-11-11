@@ -549,7 +549,19 @@
                         "username": $scope.userDetail.username,
                         "email": $scope.userDetail.email,
                         "dob": $scope.userDetail.dob,
-                        "password": $scope.userDetail.password
+                        "password": $scope.userDetail.password,
+                        "social_auth": false,
+                        "digitalSignature": $scope.agreeRegister,
+                        "facebook": {
+                            "social_id": null,
+                            "auth_token": null,
+                            "profile": null
+                        },
+                        "google": {
+                            "accessToken": null,
+                            "idToken": null,
+                            "imgUrl": null
+                        }
                     };
                     console.log(model);
                     fandomService.post(url, model).then(function(res) {
@@ -764,9 +776,9 @@
                             "profile": user.profile
                         },
                         "google": {
-                            "accessToken": "",
-                            "idToken": "",
-                            "imgUrl": ""
+                            "accessToken": null,
+                            "idToken": null,
+                            "imgUrl": null
                         },
                         "name": user.name,
                         "gender": user.gender
@@ -848,19 +860,90 @@
         $scope.forgotOpen = function() {
             angular.element('.forgot-modalpopup').addClass('active');
             $scope.forgotDrop = true;
+            $scope.emailStatus = true;
         };
 
         $scope.forgotPassword = function(valid) {
             $scope.forgotSubmit = true;
             if (valid) {
+                $rootScope.loader = true;
                 $scope.forgotSubmit = false;
-                $scope.forgotEmail = "";
-                $scope.forgotClose();
+                var model = {
+                    "email": $scope.forgotEmail
+                };
+                var url = $rootScope.appConfig.baseUrl + $rootScope.appConfig.forgotPassword;
+                fandomService.post(url, model).then(function(res) {
+                    $rootScope.loader = false;
+                    if (res && res.data.status == "success") {
+                        $scope.forgotEmail = "";
+                        $scope.otpStatus = true;
+                        $scope.emailStatus = false;
+                        $commons.showError('#successModal', "OTP Send your Email id please check", true);
+                    } else {
+                        $commons.showError('#errorModal', res.data.error, true);
+                    }
+                }, function(err) {
+                    $commons.showError('#errorModal', err, true);
+                });
+                // $scope.forgotClose();
+            }
+        };
+        $scope.getToken = function(valid) {
+            $scope.otpForm = true;
+            if (valid) {
+                $rootScope.loader = true;
+                $scope.otpForm = false;
+                var url = $rootScope.appConfig.baseUrl + $rootScope.appConfig.getResetToken + "/" + $scope.otp;
+                fandomService.get(url).then(function(res) {
+                    $rootScope.loader = false;
+                    if (res && res.data.status == "success") {
+                        $scope.userOtp = $scope.otp;
+                        $scope.otp = "";
+                        $scope.otpStatus = false;
+                        $scope.passwordStatus = true;
+                    } else {
+                        $commons.showError('#errorModal', res.data.error, true);
+                    }
+                }, function(err) {
+                    $commons.showError('#errorModal', err, true);
+                });
+            }
+        };
+
+        $scope.submitForgotPassword = function(valid) {
+            $scope.submitForgotForm = true;
+            if (valid) {
+                $rootScope.loader = true;
+                $scope.submitForgotForm = false;
+                var url = $rootScope.appConfig.baseUrl + $rootScope.appConfig.resetPassword;
+                var model = {
+                    "token": $scope.userOtp,
+                    "password": $scope.forgotPassCode
+                };
+                fandomService.post(url, model).then(function(res) {
+                    $rootScope.loader = false;
+                    if (res && res.data.status == "success") {
+                        $scope.otp = "";
+                        $scope.otpStatus = false;
+                        $scope.passwordStatus = true;
+                        $scope.forgotClose();
+                    } else {
+                        $commons.showError('#errorModal', res.data.error, true);
+                    }
+                }, function(err) {
+                    $commons.showError('#errorModal', err, true);
+                });
             }
         };
         $scope.forgotClose = function() {
             angular.element('.forgot-modalpopup').removeClass('active');
             $scope.forgotDrop = false;
+            $scope.emailStatus = true;
+            $scope.otpStatus = false;
+            $scope.passwordStatus = false;
+            $scope.forgotEmail = false;
+            $scope.submitForgotForm = false;
+            $scope.otpForm = false;
         };
         $scope.$watch("pagename", function() {
             if (window.sessionStorage.pageName == "upcoming") {

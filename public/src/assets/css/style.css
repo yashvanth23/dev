@@ -4196,7 +4196,7 @@ textarea.materialize-textarea[readonly="readonly"] {
     transition: all 0.5s;
     visibility: hidden;
     margin: 0 auto;
-    z-index: 99999;
+    z-index: 9999999;
 }
 
 .custom-modalpopup .custom-modalcontent {
