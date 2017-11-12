@@ -10,11 +10,11 @@
                             <span>{{userInfo.username | uppercase}} </span>
                         </div>
                         <div ng-if="userInfo.social_auth">
-                            <div ng-if="userInfo.facebook.social_id !=''">
+                            <div ng-if="userInfo.facebook.social_id !=null">
                                 <img ng-src="{{userInfo.facebook.profile}}" alt="user">
                                 <span>{{userInfo.username | uppercase}} </span>
                             </div>
-                            <div ng-if="userInfo.google.idToken !=''">
+                            <div ng-if="userInfo.google.idToken !=null">
                                 <img ng-src="{{userInfo.google.imgUrl}}" alt="user">
                                 <span>{{userInfo.username | uppercase}} </span>
                             </div>
@@ -166,11 +166,11 @@
                                 <span>{{userInfo.username | uppercase}} </span>
                             </div>
                             <div ng-if="userInfo.social_auth">
-                                <div ng-if="userInfo.facebook.social_id !=''">
+                                <div ng-if="userInfo.facebook.social_id !=null">
                                     <img ng-src="{{userInfo.facebook.profile}}" alt="user">
                                     <span>{{userInfo.username | uppercase}} </span>
                                 </div>
-                                <div ng-if="userInfo.google.idToken !=''">
+                                <div ng-if="userInfo.google.idToken !=null">
                                     <img ng-src="{{userInfo.google.imgUrl}}" alt="user">
                                     <span>{{userInfo.username | uppercase}} </span>
                                 </div>
@@ -321,105 +321,82 @@
 
 </div>
 
-<div id="auth" class="auth-container">
-    <div class="modal-content center-align">
-        <div class="close waves-effect waves-light" ng-click="closeAuth()"></div>
-        <img src="assets/images/logo.svg" alt="" class="login-logo">
-        <div class="login-container" ng-show="loginEnable">
-            <h5>Sign into your account</h5>
+<div id="auth" class="auth-content">
+    <div class="login-section" ng-show="loginEnable">
+        <div class="login-header">
+            <img src="assets/images/logo.svg" alt="">
+            <h4>Log in to see more</h4>
+        </div>
+        <div class="login-content">
             <form method="post" name="loginForm" ng-submit="login(loginForm.$valid)" novalidate>
                 <div class="row">
-                    <div class="input-field col s12">
+                    <div class="input-field">
                         <input id="username" class="username" name="username" type="text" ng-model="user.username" required>
                         <label for="username">Username</label>
                         <span class="error" ng-show="(loginForm.username.$invalid && !loginForm.username.$pristine) || (loginForm.username.$error.required && loginSubmit)">Username is required</span>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
+                    <div class="input-field">
                         <input id="password" name="password" type="password" ng-model="user.password" required>
                         <label for="password">Password</label>
                         <span class="error" ng-show="(loginForm.password.$invalid && !loginForm.password.$pristine) || (loginForm.password.$error.required && loginSubmit)">Password is required</span>
                     </div>
-                </div>
-                <div class="row right-align">
                     <div class="input-field">
-                        <a href="javascript:void(0);" ng-click="forgotOpen()">Forgot Password?</a>
-                    </div>
-                </div>
-                <!--<p>
-                    <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" ng-model="agree" />
-                    <label for="filled-in-box">I agree the </label><a href="#" ng-click="showTermsOfCondition()"> Terms of Use</a>
-                </p>-->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <button type="submit" class="btn waves-effect waves-light login">LOGIN</button>
+                        <button type="submit" class="btn waves-effect waves-light">Log in</button>
                     </div>
                 </div>
             </form>
-            <p>
-                OR
-            </p>
-            <button type="button" class="btn waves-effect waves-light register" ng-click="authEnable('regiter')">Register</button>
-            <!--<div class="social-login">
-                <button type="button" class="btn waves-effect waves-light fb-login" ng-click="signupWithFacebook()"></button>
-                <button type="button" class="btn waves-effect waves-light google-login" ng-click="signupWithGoogle()"></button>
-            </div>-->
+            <p>OR</p>
+            <button type="button" class="btn waves-effect waves-light fb-login" ng-click="signupWithFacebook('login')">Continue with facebook</button>
+            <button type="button" class="btn waves-effect waves-light google-login" ng-click="signupWithGoogle()">Continue with google</button>
+            <a href="javascript:void(0);" ng-click="forgotOpen()">Forgot your password?</a>
+            <hr>
+            <p class="register">Not on Fantumn yet? <a href="javascript:void(0);" ng-click="authEnable('regiter')">Sign Up</a></p>
         </div>
-
-        <div class="register-container login-container" ng-show="registerEnable">
-            <h5>Signup into your account</h5>
+    </div>
+    <div class="login-section register-section" ng-show="registerEnable">
+        <div class="login-header">
+            <img src="assets/images/logo.svg" alt="">
+            <h4>Sign up to see more</h4>
+        </div>
+        <div class="login-content">
             <form method="post" name="registerForm" ng-submit="register(registerForm.$valid)" novalidate>
                 <div class="row">
-                    <div class="input-field col s12">
+                    <div class="input-field">
                         <input id="email" type="email" name="email" ng-model="userDetail.email" required>
                         <label for="user">Email</label>
                         <span class="error" ng-show="(registerForm.email.$invalid && !registerForm.email.$pristine) || (registerForm.email.$error.required && registerSubmit)">Email is required</span>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
+                    <div class="input-field">
                         <input id="user" type="text" name="user" class="username" ng-model="userDetail.username" required>
                         <label for="user">Username</label>
                         <span class="error" ng-show="(registerForm.user.$invalid && !registerForm.user.$pristine) || (registerForm.user.$error.required && registerSubmit)">Username is required</span>
                     </div>
-                </div>
-                <div class="row">
                     <div class="input-field col s12">
-                        <!--<input id="date" type="text" name="date" ng-model="userDetail.dob" required class="datepicker" ng-change="hai()">-->
-                        <!--<input type="text" name="date" id="date" ng-model="userDetail.dob" required>-->
                         <datepicker date-format="dd-MM-yyyy">
                             <input type="text" name="date" id="date" ng-model="userDetail.dob" placeholder="Date of Birth" required>
                         </datepicker>
-                        <!--<label for="date">Date of Birth</label>-->
                         <span class="error" ng-show="(registerForm.date.$invalid && !registerForm.date.$pristine) || (registerForm.date.$error.required && registerSubmit)">DOB is required</span>
+                        <span class="error" ng-show="ageError">Age limit upto 13</span>
                     </div>
-                </div>
-                <div class="row">
                     <div class="input-field col s12">
                         <input id="pass" type="password" name="pass" class="validate" ng-model="userDetail.password" required>
                         <label for="pass">Password</label>
                         <span class="error" ng-show="(registerForm.pass.$invalid && !registerForm.pass.$pristine) || (registerForm.pass.$error.required && registerSubmit)">Password is required</span>
                     </div>
-                </div>
-                <p class="agree">
-                    <input type="checkbox" class="filled-in" id="filled" checked="checked" ng-model="agreeRegister" />
-                    <label for="filled">I agree the </label><a href="#" ng-click="showTermsOfCondition()"> Terms of Use</a>
-                </p>
-                <div class="row">
                     <div class="input-field col s12">
-                        <button type="submit" class="btn waves-effect waves-light login">Register</button>
+                        <button type="submit" class="btn waves-effect waves-light">Continue</button>
                     </div>
                 </div>
             </form>
-            <p>
-                OR
+            <p>OR</p>
+            <button type="button" class="btn waves-effect waves-light fb-login" ng-click="signupWithFacebook('register')">Continue with facebook</button>
+            <button type="button" class="btn waves-effect waves-light google-login" ng-click="signupWithGoogle()">Continue with google</button>
+            <p class="agree">
+                <input type="checkbox" class="filled-in" id="filled" checked="checked" ng-model="agreeRegister" />
+                <label for="filled">I agree the </label><a href="#" ng-click="showTermsOfCondition()"> Terms of Use</a>
             </p>
-            <div class="social-login">
-                <button type="button" class="btn waves-effect waves-light register" ng-click="authEnable('login')"></button>
-                <button type="button" class="btn waves-effect waves-light fb-login" ng-click="signupWithFacebook()"></button>
-                <!--<button type="button" class="btn waves-effect waves-light google-login" ng-click="signupWithGoogle()"></button>-->
-            </div>
+            <hr>
+            <p class="register">Already member? <a href="javascript:void(0);" ng-click="authEnable('login')">Log in</a></p>
         </div>
     </div>
 </div>
