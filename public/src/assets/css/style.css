@@ -983,6 +983,7 @@ span.upcoming-match {
 .upcoming-tab ul li a {
     color: #444;
     font-size: 17px;
+    font-weight: 500;
 }
 
 .upcoming-tab ul li a.active {
@@ -1415,6 +1416,7 @@ ul.match-custom-btn li:last-child {
 
 .live-play ul {
     margin: 0;
+    text-align: center;
 }
 
 .live-play li {
@@ -1453,6 +1455,7 @@ ul.match-custom-btn li:last-child {
     color: #00a99d;
     font-size: 18px;
     font-weight: 600;
+    text-align: center;
 }
 
 .liveMatch-section {
@@ -1462,6 +1465,7 @@ ul.match-custom-btn li:last-child {
 .liveMatch-section ul li {
     width: 100%;
     cursor: pointer;
+    text-align: center;
 }
 
 .liveMatch-section ul li div {
@@ -4604,6 +4608,11 @@ textarea.materialize-textarea[readonly="readonly"] {
     padding-left: 10px;
 }
 
+.toast .toast-action {
+    margin-left: auto !important;
+    padding-right: 11px;
+}
+
 #toast-container {
     bottom: 70px !important;
     top: auto !important;
@@ -4611,4 +4620,43 @@ textarea.materialize-textarea[readonly="readonly"] {
     width: 450px;
     margin: 0 auto;
     z-index: 999999999;
+}
+
+.mobile-screen {
+    position: fixed;
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.mobile-screen .mobile-screencontent {
+    text-align: center;
+    width: 400px;
+}
+
+.mobile-screencontent img {}
+
+.mobile-screencontent button.google-play {}
+
+.mobile-screencontent button.ios-play {}
+
+.mobile-screencontent h4 {}
+
+.settingHide {
+    position: relative;
+}
+
+.settingHide:before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(49, 49, 49, 0.12);
+    border-radius: 10px;
+    top: 0;
 }

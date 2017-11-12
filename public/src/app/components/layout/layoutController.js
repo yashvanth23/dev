@@ -78,6 +78,12 @@
                     $scope.footerHide = false;
                 }
 
+                $scope.redirecturl = {
+                    "index": "",
+                    "match": "",
+                    "tabStatus": "",
+                    "element": ""
+                };
                 $scope.getUpcomingMatch();
 
                 setInterval(function() {
@@ -225,11 +231,11 @@
                             $scope.calculateViewport($scope.liveMatch);
                             $scope.matchLoader = false;
                         } else {
-                            $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                            $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                             Materialize.toast($scope.toastContent, 3000);
                         }
                     }, function(err) {
-                        $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                        $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                         Materialize.toast($scope.toastContent, 3000);
                     });
                 } else {
@@ -255,11 +261,11 @@
                             $scope.calculateViewport($scope.liveMatch);
                             $scope.matchLoader = false;
                         } else {
-                            $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                            $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                             Materialize.toast($scope.toastContent, 3000);
                         }
                     }, function(err) {
-                        $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                        $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                         Materialize.toast($scope.toastContent, 3000);
                     });
                 }
@@ -304,11 +310,11 @@
                             $scope.calculateViewport($scope.historyMatch);
                             $scope.matchLoader = false;
                         } else {
-                            $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                            $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                             Materialize.toast($scope.toastContent, 3000);
                         }
                     }, function(err) {
-                        $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                        $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                         Materialize.toast($scope.toastContent, 3000);
                     });
                 } else {
@@ -336,11 +342,11 @@
                             $scope.calculateViewport($scope.historyMatch);
                             $scope.matchLoader = false;
                         } else {
-                            $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                            $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                             Materialize.toast($scope.toastContent, 3000);
                         }
                     }, function(err) {
-                        $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                        $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                         Materialize.toast($scope.toastContent, 3000);
                     });
                 }
@@ -442,6 +448,7 @@
                         "tabStatus": tabStatus,
                         "element": element
                     };
+                    console.log($scope.redirecturl);
                     $scope.authEnable("login");
                 }
 
@@ -528,7 +535,7 @@
                         $scope.closeAuth();
                         $scope.userInfo = res.data.data;
                         var str = JSON.stringify(window.sessionStorage.match);
-                        if ($scope.redirecturl) {
+                        if ($scope.redirecturl != "") {
                             $scope.gotoPage($scope.redirecturl.index, $scope.redirecturl.match, $scope.redirecturl.tabStatus, $scope.redirecturl.element);
                         } else {
                             $commons.navigate('layout.dashboard', {}, false);
@@ -537,7 +544,7 @@
                     } else {
                         $rootScope.loader = false;
                         $scope.loginauthError = res.data.error;
-                        $scope.toastContent = $('<span>' + $scope.loginauthError + '</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                        $scope.toastContent = $('<span>' + $scope.loginauthError + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                         Materialize.toast($scope.toastContent, 3000);
                     }
                 });
@@ -586,7 +593,7 @@
                             $cookies.put('userInfo', window.sessionStorage.userDetail);
                             $scope.userInfo = res.data.data;
                             $scope.closeAuth();
-                            if ($scope.redirecturl) {
+                            if ($scope.redirecturl != "") {
                                 $scope.gotoPage($scope.redirecturl.index, $scope.redirecturl.match, $scope.redirecturl.tabStatus, $scope.redirecturl.element);
                             } else {
                                 $commons.navigate('layout.dashboard', {}, false);
@@ -605,7 +612,7 @@
                             } else {
                                 $scope.error = res.data.error;
                             }
-                            $scope.toastContent = $('<span>' + $scope.error + '</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                            $scope.toastContent = $('<span>' + $scope.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                             Materialize.toast($scope.toastContent, 3000);
                         }
                     });
@@ -614,7 +621,7 @@
                     // }
 
                 } else {
-                    $scope.toastContent = $('<span>Please Agree the Terms of Use</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                    $scope.toastContent = $('<span>Please Agree the Terms of Use</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                     Materialize.toast($scope.toastContent, 3000);
                 }
             }
@@ -699,9 +706,27 @@
             });
         };
 
-        $scope.signupWithGoogle = function() {
-            if ($scope.agree) {
-                var signInParams = {
+        $scope.signupWithGoogle = function(type) {
+            // if ($scope.agree) {
+            var signInParams = "";
+            if (type == "register") {
+                if ($scope.agreeRegister) {
+                    signInParams = {
+                        'clientid': '436866997850-hm9udard1dquu5vjd6g2i8pgvtn7h0qq.apps.googleusercontent.com',
+                        'cookiepolicy': 'single_host_origin',
+                        'callback': 'loginCallback',
+                        'approvalprompt': 'force',
+                        "requestvisibleactions": "http://schemas.google.com/AddActivity",
+                        'scope': 'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.profile.emails.read'
+                    };
+                    gapi.auth.signIn(signInParams);
+                } else {
+                    $scope.toastContent = $('<span>Please Agree the Terms of Use</span>').add($('<button class="btn-flat toast-action">OK</button>'));
+                    Materialize.toast($scope.toastContent, 3000);
+                }
+            } else {
+                $scope.agreeRegister = false;
+                signInParams = {
                     'clientid': '436866997850-hm9udard1dquu5vjd6g2i8pgvtn7h0qq.apps.googleusercontent.com',
                     'cookiepolicy': 'single_host_origin',
                     'callback': 'loginCallback',
@@ -710,10 +735,11 @@
                     'scope': 'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.profile.emails.read'
                 };
                 gapi.auth.signIn(signInParams);
-            } else {
-                $scope.toastContent = $('<span>Please Agree the Terms of Use</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
-                Materialize.toast($scope.toastContent, 3000);
             }
+            // } else {
+            //     $scope.toastContent = $('<span>Please Agree the Terms of Use</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+            //     Materialize.toast($scope.toastContent, 3000);
+            // }
         };
 
 
@@ -726,20 +752,25 @@
                     });
                     request.execute(function(resp) {
                         console.log(resp);
+                        var user = {
+                            "username": resp.result.name.givenName,
+                            "name": resp.result.name.givenName,
+                            "email": resp.result.emails[0].value,
+                            "gender": "",
+                            "dob": new Date(),
+                            "profile": resp.result.image.url,
+                            "google_id": resp.result.id,
+                            "auth_token": result.access_token,
+                            "facebook_login": false
+                        };
+                        console.log(user);
+                        $scope.socialRegister(user);
                     });
                 });
 
 
             }
-        }
-
-
-
-
-        // function onLoadCallback() {
-        //     gapi.client.setApiKey('PUT_YOUR_KEY');
-        //     gapi.client.load('plus', 'v1', function() {});
-        // }
+        };
 
         $scope.signupWithFacebook = function(type) {
             if (type == "register") {
@@ -763,7 +794,8 @@
                                         "profile": response.picture.data.url,
                                         "facebook_id": response.id,
                                         "auth_token": auth_token,
-                                        "facebook_login": true
+                                        "facebook_login": true,
+                                        "google_login": false,
                                     };
                                     console.log(user);
                                     $scope.socialRegister(user);
@@ -775,7 +807,7 @@
                         scope: 'email'
                     });
                 } else {
-                    $scope.toastContent = $('<span>Please Agree the Terms of Use</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                    $scope.toastContent = $('<span>Please Agree the Terms of Use</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                     Materialize.toast($scope.toastContent, 3000);
                 }
             } else {
@@ -841,21 +873,21 @@
                     };
                 } else {
                     model = {
-                        "username": user.name,
+                        "username": user.username,
                         "email": user.email,
                         "dob": user.dob,
                         "password": "",
                         "social_auth": true,
                         "digitalSignature": $scope.agreeRegister,
                         "facebook": {
-                            "social_id": "",
-                            "auth_token": "",
-                            "profile": ""
+                            "social_id": null,
+                            "auth_token": null,
+                            "profile": null
                         },
                         "google": {
-                            "accessToken": user.accessToken,
-                            "idToken": user.idToken,
-                            "imgUrl": user.imgUrl
+                            "accessToken": user.auth_token,
+                            "idToken": user.google_id,
+                            "imgUrl": user.profile
                         },
                         "name": user.name,
                         "gender": user.gender
@@ -869,23 +901,23 @@
                         $scope.userInfo = res.data.data;
                         window.sessionStorage.userDetail = JSON.stringify(res.data.data);
                         $cookies.put('userInfo', window.sessionStorage.userDetail);
-                        if ($scope.redirecturl) {
-                            $scope.gotoPage($scope.redirecturl.index, $scope.redirecturl.match, $scope.redirecturl.tabStatus.$scope.redirecturl.element);
+                        if ($scope.redirecturl != "") {
+                            $scope.gotoPage($scope.redirecturl.index, $scope.redirecturl.match, $scope.redirecturl.tabStatus, $scope.redirecturl.element);
                         } else {
                             $commons.navigate('layout.dashboard', {}, false);
                         }
                         $scope.getUpcomingMatch();
                         $scope.closeAuth();
                     } else {
-                        $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                        $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                         Materialize.toast($scope.toastContent, 3000);
                     }
                 }, function(err) {
-                    $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                    $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                     Materialize.toast($scope.toastContent, 3000);
                 });
             } else {
-                $scope.toastContent = $('<span>Email address not available in Social Login</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                $scope.toastContent = $('<span>Email address not available in Social Login</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                 Materialize.toast($scope.toastContent, 3000);
             }
         };
@@ -937,19 +969,19 @@
                         $scope.forgotEmail = "";
                         $scope.otpStatus = true;
                         $scope.emailStatus = false;
-                        $scope.toastContent = $('<span>OTP Send your Email id please check</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                        $scope.toastContent = $('<span>OTP Send your Email id please check</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                         Materialize.toast($scope.toastContent, 3000);
                     } else {
                         if (res.data.error == "user not found") {
-                            $scope.toastContent = $('<span>Email not found</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                            $scope.toastContent = $('<span>Email not found</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                             Materialize.toast($scope.toastContent, 3000);
                         } else {
-                            $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                            $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                             Materialize.toast($scope.toastContent, 3000);
                         }
                     }
                 }, function(err) {
-                    $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                    $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                     Materialize.toast($scope.toastContent, 3000);
                 });
                 // $scope.forgotClose();
@@ -969,11 +1001,11 @@
                         $scope.otpStatus = false;
                         $scope.passwordStatus = true;
                     } else {
-                        $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                        $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                         Materialize.toast($scope.toastContent, 3000);
                     }
                 }, function(err) {
-                    $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                    $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                     Materialize.toast($scope.toastContent, 3000);
                 });
             }
@@ -997,11 +1029,11 @@
                         $scope.passwordStatus = true;
                         $scope.forgotClose();
                     } else {
-                        $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                        $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                         Materialize.toast($scope.toastContent, 3000);
                     }
                 }, function(err) {
-                    $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                    $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                     Materialize.toast($scope.toastContent, 3000);
                 });
             }
@@ -1019,11 +1051,18 @@
             $scope.otpForm = false;
         };
 
-        function closeToast() {
-            var toastElement = $('.toast').first()[0];
-            var toastInstance = toastElement.M_Toast;
-            toastInstance.remove();
-        }
+
+        // $scope.closeToast = function() {
+        //     alert("sdsd");
+        //     var toastElement = $('.toast').first()[0];
+        //     var toastInstance = toastElement.M_Toast;
+        //     toastInstance.remove();
+        // }
+
+        $(document).on('click', '#toast-container .toast button', function() {
+            var element = $(this).parent();
+            $(element).fadeOut();
+        });
 
         $scope.$watch("pagename", function() {
             if (window.sessionStorage.pageName == "upcoming") {

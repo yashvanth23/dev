@@ -78,15 +78,15 @@
                 fandomService.post(url, $scope.report).then(function(res) {
                     $rootScope.loader = false;
                     if (res && res.data.status == "success") {
-                        $scope.toastContent = $('<span>Successfully Send A Email !</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                        $scope.toastContent = $('<span>Successfully Send A Email !</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                         Materialize.toast($scope.toastContent, 3000);
                         $scope.closeReport();
                     } else {
-                        $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                        $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                         Materialize.toast($scope.toastContent, 3000);
                     }
                 }, function(err) {
-                    $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                    $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                     Materialize.toast($scope.toastContent, 3000);
                 });
             }

@@ -266,7 +266,7 @@
                         $scope.historyMatch = res.data.error;
                     }
                 }, function(err) {
-                    $scope.toastContent = $('<span>Something went wrong</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                    $scope.toastContent = $('<span>Something went wrong</span>').add($('<button class="btn-flat toast-action">OK</button>'));
                     Materialize.toast($scope.toastContent, 3000);
                 });
             } catch (err) {
@@ -333,7 +333,7 @@
 
                     }
                     $scope.matchStatus = true;
-                    $scope.goalKeep = 1, $scope.defPlayer = 4, $scope.midPlayer = 3, $scope.fwdPlayer = 3;
+                    $scope.goalKeep = 2, $scope.defPlayer = 5, $scope.midPlayer = 4, $scope.fwdPlayer = 4;
                     for (var playerList = 0; playerList < $scope.reviewList.length; playerList++) {
                         if ($scope.reviewList[playerList].positionPlay === "GK") {
                             for (var j = 0; j < $scope.goalKeeJersey.length; j++) {
@@ -438,7 +438,7 @@
                             $scope.findStatus(player.id);
                             $scope.goalKeep++;
                         } else {
-                            $scope.toastContent = $('<span>Selected one Goal keeper already</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                            $scope.toastContent = $('<span>Selected one Goal keeper already</span><button class="btn-flat toast-action">OK</button>');
                             Materialize.toast($scope.toastContent, 3000);
                         }
                     } else if (player.position === "2") {
@@ -453,7 +453,7 @@
                                 }
                                 if (defTeam.length == 3) {
                                     $scope.defPlayer--;
-                                    $scope.toastContent = $('<span>Cannot select 4 defenders same team</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                                    $scope.toastContent = $('<span>Cannot select 4 defenders same team</span>').add($('<button class="btn-flat toast-action">OK</button>'));
                                     Materialize.toast($scope.toastContent, 3000);
                                 } else {
                                     $scope.playerList.push(player);
@@ -468,7 +468,7 @@
                             }
                             $scope.defPlayer++;
                         } else {
-                            $scope.toastContent = $('<span>Selected 4 defenders already</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                            $scope.toastContent = $('<span>Selected 4 defenders already</span>').add($('<button class="btn-flat toast-action">OK</button>'));
                             Materialize.toast($scope.toastContent, 3000);
                         }
                     } else if (player.position === "3") {
@@ -483,7 +483,7 @@
                                 }
                                 if (midTeam.length == 2) {
                                     $scope.midPlayer--;
-                                    $scope.toastContent = $('<span>Cannot select 3 midFielders same team</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                                    $scope.toastContent = $('<span>Cannot select 3 midFielders same team</span>').add($('<button class="btn-flat toast-action">OK</button>'));
                                     Materialize.toast($scope.toastContent, 3000);
                                 } else {
                                     $scope.playerList.push(player);
@@ -497,7 +497,7 @@
                             }
                             $scope.midPlayer++;
                         } else {
-                            $scope.toastContent = $('<span>Selected 3 midfielders already</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                            $scope.toastContent = $('<span>Selected 3 midfielders already</span>').add($('<button class="btn-flat toast-action">OK</button>'));
                             Materialize.toast($scope.toastContent, 3000);
                         }
                     } else {
@@ -512,7 +512,7 @@
                                 }
                                 if (fkTeam.length == 2) {
                                     $scope.fwdPlayer--;
-                                    $scope.toastContent = $('<span>Cannot select 3 forward players same team</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                                    $scope.toastContent = $('<span>Cannot select 3 forward players same team</span>').add($('<button class="btn-flat toast-action">OK</button>'));
                                     Materialize.toast($scope.toastContent, 3000);
                                 } else {
                                     $scope.playerList.push(player);
@@ -527,13 +527,13 @@
                             }
                             $scope.fwdPlayer++;
                         } else {
-                            $scope.toastContent = $('<span>Selected 3 forward already</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                            $scope.toastContent = $('<span>Selected 3 forward already</span>').add($('<button class="btn-flat toast-action">OK</button>'));
                             Materialize.toast($scope.toastContent, 3000);
                         }
 
                     }
                 } else {
-                    $scope.toastContent = $('<span>Selected 11 players already</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                    $scope.toastContent = $('<span>Selected 11 players already</span>').add($('<button class="btn-flat toast-action">OK</button>'));
                     Materialize.toast($scope.toastContent, 3000);
                 }
             } else {
@@ -586,7 +586,7 @@
                             }
                             $scope.matchStatus = true;
                         } else {
-                            $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                            $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action">OK</button>'));
                             Materialize.toast($scope.toastContent, 3000);
                         }
 
@@ -597,7 +597,7 @@
                     $commons.showError('#errorModal', err, true);
                 });
             } else {
-                $scope.toastContent = $('<span> Please Select 11 Players in Team</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                $scope.toastContent = $('<span> Please Select 11 Players in Team</span>').add($('<button class="btn-flat toast-action">OK</button>'));
                 Materialize.toast($scope.toastContent, 3000);
             }
         };
@@ -638,7 +638,7 @@
                 $scope.gkReview = $filter('filter')($scope.reviewList, "GK");
             } else {
                 $scope.review = false;
-                $scope.toastContent = $('<span>Please select players</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                $scope.toastContent = $('<span>Please select players</span>').add($('<button class="btn-flat toast-action">OK</button>'));
                 Materialize.toast($scope.toastContent, 3000);
             }
 

@@ -12,8 +12,8 @@
                 </div>
             </div>
             <div class="col s12 m6 l6 ">
-                <div class="setting-bar">
-                    <a href="javascript:void(0);" ng-click="changePasswordOpen()" ng-disabled="userData.social_auth">Change Password <img src="assets/images/password.svg" alt=""></a>
+                <div class="setting-bar" ng-class="{settingHide:userData.social_auth}">
+                    <a href="javascript:void(0);" ng-click="changePasswordOpen()">Change Password <img src="assets/images/password.svg" alt=""></a>
                 </div>
             </div>
             <div class="col s12">

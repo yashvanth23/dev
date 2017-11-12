@@ -84,11 +84,11 @@
                     $scope.profileInfo.country = $scope.profile.address.country;
                     $scope.profileInfo.notification = $scope.profile.pushNotification;
                 } else {
-                    $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                    $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                     Materialize.toast($scope.toastContent, 3000);
                 }
             }, function(err) {
-                $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                 Materialize.toast($scope.toastContent, 3000);
             });
         };
@@ -129,11 +129,11 @@
                         $commons.showError('#successModal', "Profile Updated Successfully", true);
                         $scope.getProfileInformation();
                     } else {
-                        $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                        $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                         Materialize.toast($scope.toastContent, 3000);
                     }
                 }, function(err) {
-                    $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                    $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                     Materialize.toast($scope.toastContent, 3000);
                 });
             }
@@ -191,11 +191,11 @@
                         console.log(res.data.data);
                         $commons.showError('#successModal', "Password Changed Successfully", true);
                     } else {
-                        $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                        $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                         Materialize.toast($scope.toastContent, 3000);
                     }
                 }, function(err) {
-                    $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action" onclick="closeToast()">OK</button>'));
+                    $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                     Materialize.toast($scope.toastContent, 3000);
                 });
             }
