@@ -23,21 +23,14 @@ autoIncrement.initialize(connection);*/
 
 //app.options('*',cors());
 app.use(cors({origin: '*'}));
-app.use(express.static('public/dist/'));
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false, limit: '50mb' }));
 app.use(bodyParser.json({limit: '50mb'}));
 
 /*require("./server/routes.js")(app);
 require("./server/jobs.js")(app);*/
+app.use('/', express.static('public/dist/'));
 
-var __dirname =  './public/dist';
-
-app.all('/', function(req, res){
-    res.sendFile('index.html', {
-        root: __dirname
-    });
-});
 
 server.listen(port);
 console.log('App is listening on port: ' + port);
