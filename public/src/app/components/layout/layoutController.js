@@ -22,10 +22,10 @@
     angular
         .module("fandom")
         .registerCtrl('layoutController', layoutController);
-    layoutController.$inject = ["$scope", "$rootScope", "$commons", "$logger", "$cookies", "fandomService", "exceptionService", "$q", "$interval", "md5"];
+    layoutController.$inject = ["$scope", "$rootScope", "$commons", "$logger", "$cookies", "fandomService", "exceptionService", "$q", "$interval", "md5", "$filter"];
 
 
-    function layoutController($scope, $rootScope, $commons, $logger, $cookies, fandomService, exceptionService, $q, $interval, md5) {
+    function layoutController($scope, $rootScope, $commons, $logger, $cookies, fandomService, exceptionService, $q, $interval, md5, $filter) {
 
         // var signInParams = "";
         /**
@@ -78,12 +78,19 @@
                     $scope.footerHide = false;
                 }
 
+                $scope.redirecturl = {
+                    "index": "",
+                    "match": "",
+                    "tabStatus": "",
+                    "element": ""
+                };
                 $scope.getUpcomingMatch();
 
                 setInterval(function() {
                     $scope.getUpcomingMatch();
                 }, 60000);
 
+                $scope.ageError = false;
                 // $interval(function() {
                 //     alert("2232323");
                 //     $scope.getLiveMatch();
@@ -224,10 +231,12 @@
                             $scope.calculateViewport($scope.liveMatch);
                             $scope.matchLoader = false;
                         } else {
-                            $commons.showError('#errorModal', res.data.error, true);
+                            $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                            Materialize.toast($scope.toastContent, 3000);
                         }
                     }, function(err) {
-                        $commons.showError('#errorModal', err, true);
+                        $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                        Materialize.toast($scope.toastContent, 3000);
                     });
                 } else {
                     fandomService.get(url).then(function(res) {
@@ -252,10 +261,12 @@
                             $scope.calculateViewport($scope.liveMatch);
                             $scope.matchLoader = false;
                         } else {
-                            $commons.showError('#errorModal', res.data.error, true);
+                            $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                            Materialize.toast($scope.toastContent, 3000);
                         }
                     }, function(err) {
-                        $commons.showError('#errorModal', err, true);
+                        $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                        Materialize.toast($scope.toastContent, 3000);
                     });
                 }
             } catch (err) {
@@ -299,10 +310,12 @@
                             $scope.calculateViewport($scope.historyMatch);
                             $scope.matchLoader = false;
                         } else {
-                            $commons.showError('#errorModal', res.data.error, true);
+                            $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                            Materialize.toast($scope.toastContent, 3000);
                         }
                     }, function(err) {
-                        $commons.showError('#errorModal', err, true);
+                        $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                        Materialize.toast($scope.toastContent, 3000);
                     });
                 } else {
                     fandomService.get(url).then(function(res) {
@@ -329,10 +342,12 @@
                             $scope.calculateViewport($scope.historyMatch);
                             $scope.matchLoader = false;
                         } else {
-                            $commons.showError('#errorModal', res.data.error, true);
+                            $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                            Materialize.toast($scope.toastContent, 3000);
                         }
                     }, function(err) {
-                        $commons.showError('#errorModal', err, true);
+                        $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                        Materialize.toast($scope.toastContent, 3000);
                     });
                 }
 
@@ -433,6 +448,7 @@
                         "tabStatus": tabStatus,
                         "element": element
                     };
+                    console.log($scope.redirecturl);
                     $scope.authEnable("login");
                 }
 
@@ -519,7 +535,7 @@
                         $scope.closeAuth();
                         $scope.userInfo = res.data.data;
                         var str = JSON.stringify(window.sessionStorage.match);
-                        if ($scope.redirecturl) {
+                        if ($scope.redirecturl != "") {
                             $scope.gotoPage($scope.redirecturl.index, $scope.redirecturl.match, $scope.redirecturl.tabStatus, $scope.redirecturl.element);
                         } else {
                             $commons.navigate('layout.dashboard', {}, false);
@@ -528,7 +544,8 @@
                     } else {
                         $rootScope.loader = false;
                         $scope.loginauthError = res.data.error;
-                        $commons.showError('#errorModal', $scope.loginauthError, true);
+                        $scope.toastContent = $('<span>' + $scope.loginauthError + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                        Materialize.toast($scope.toastContent, 3000);
                     }
                 });
             }
@@ -538,6 +555,10 @@
             $scope.registerSubmit = true;
             if (formValid) {
                 if ($scope.agreeRegister) {
+                    var currentDate = new Date($scope.userDetail.dob);
+                    var ageLimit = $filter("date")(currentDate, "yyyy");
+                    // if (ageLimit "2004") {
+                    $scope.ageError = false;
                     $rootScope.loader = true;
                     var url = $rootScope.appConfig.baseUrl + $rootScope.appConfig.register;
                     var hash = $scope.userDetail.email.trim();
@@ -548,7 +569,7 @@
                     var model = {
                         "username": $scope.userDetail.username,
                         "email": $scope.userDetail.email,
-                        "dob": $scope.userDetail.dob,
+                        "dob": Date.now($scope.userDetail.dob),
                         "password": $scope.userDetail.password,
                         "social_auth": false,
                         "digitalSignature": $scope.agreeRegister,
@@ -572,7 +593,7 @@
                             $cookies.put('userInfo', window.sessionStorage.userDetail);
                             $scope.userInfo = res.data.data;
                             $scope.closeAuth();
-                            if ($scope.redirecturl) {
+                            if ($scope.redirecturl != "") {
                                 $scope.gotoPage($scope.redirecturl.index, $scope.redirecturl.match, $scope.redirecturl.tabStatus, $scope.redirecturl.element);
                             } else {
                                 $commons.navigate('layout.dashboard', {}, false);
@@ -591,11 +612,17 @@
                             } else {
                                 $scope.error = res.data.error;
                             }
-                            $commons.showError('#errorModal', $scope.error, true);
+                            $scope.toastContent = $('<span>' + $scope.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                            Materialize.toast($scope.toastContent, 3000);
                         }
                     });
+                    // } else {
+                    //     $scope.ageError = true;
+                    // }
+
                 } else {
-                    $commons.showError('#warningModal', "Please Agree the Terms of Use", true);
+                    $scope.toastContent = $('<span>Please Agree the Terms of Use</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                    Materialize.toast($scope.toastContent, 3000);
                 }
             }
         };
@@ -603,7 +630,7 @@
         $scope.authEnable = function(pageName) {
             $scope.sidemenu = false;
             $scope.loginEnable = true;
-            angular.element('.auth-container').css({
+            angular.element('.auth-content').css({
                 'opacity': '1',
                 "display": 'block'
             });
@@ -618,7 +645,7 @@
         };
 
         $scope.closeAuth = function() {
-            angular.element('.auth-container').css({
+            angular.element('.auth-content').css({
                 'opacity': '0',
                 "display": 'none'
             });
@@ -679,9 +706,27 @@
             });
         };
 
-        $scope.signupWithGoogle = function() {
-            if ($scope.agree) {
-                var signInParams = {
+        $scope.signupWithGoogle = function(type) {
+            // if ($scope.agree) {
+            var signInParams = "";
+            if (type == "register") {
+                if ($scope.agreeRegister) {
+                    signInParams = {
+                        'clientid': '436866997850-hm9udard1dquu5vjd6g2i8pgvtn7h0qq.apps.googleusercontent.com',
+                        'cookiepolicy': 'single_host_origin',
+                        'callback': 'loginCallback',
+                        'approvalprompt': 'force',
+                        "requestvisibleactions": "http://schemas.google.com/AddActivity",
+                        'scope': 'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.profile.emails.read'
+                    };
+                    gapi.auth.signIn(signInParams);
+                } else {
+                    $scope.toastContent = $('<span>Please Agree the Terms of Use</span>').add($('<button class="btn-flat toast-action">OK</button>'));
+                    Materialize.toast($scope.toastContent, 3000);
+                }
+            } else {
+                $scope.agreeRegister = false;
+                signInParams = {
                     'clientid': '436866997850-hm9udard1dquu5vjd6g2i8pgvtn7h0qq.apps.googleusercontent.com',
                     'cookiepolicy': 'single_host_origin',
                     'callback': 'loginCallback',
@@ -690,9 +735,11 @@
                     'scope': 'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.profile.emails.read'
                 };
                 gapi.auth.signIn(signInParams);
-            } else {
-                $commons.showError('#warningModal', "Please Agree the Terms of Use", true);
             }
+            // } else {
+            //     $scope.toastContent = $('<span>Please Agree the Terms of Use</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+            //     Materialize.toast($scope.toastContent, 3000);
+            // }
         };
 
 
@@ -705,23 +752,66 @@
                     });
                     request.execute(function(resp) {
                         console.log(resp);
+                        var user = {
+                            "username": resp.result.name.givenName,
+                            "name": resp.result.name.givenName,
+                            "email": resp.result.emails[0].value,
+                            "gender": "",
+                            "dob": new Date(),
+                            "profile": resp.result.image.url,
+                            "google_id": resp.result.id,
+                            "auth_token": result.access_token,
+                            "facebook_login": false
+                        };
+                        console.log(user);
+                        $scope.socialRegister(user);
                     });
                 });
 
 
             }
-        }
+        };
 
-
-
-
-        // function onLoadCallback() {
-        //     gapi.client.setApiKey('PUT_YOUR_KEY');
-        //     gapi.client.load('plus', 'v1', function() {});
-        // }
-
-        $scope.signupWithFacebook = function() {
-            if ($scope.agreeRegister) {
+        $scope.signupWithFacebook = function(type) {
+            if (type == "register") {
+                if ($scope.agreeRegister) {
+                    FB.login(function(response) {
+                        console.log(response);
+                        var auth_token = response.authResponse.accessToken;
+                        if (response.authResponse) {
+                            FB.api('/me', {
+                                    locale: 'en_US',
+                                    fields: 'id,first_name,last_name,email,link,gender,locale,picture,birthday'
+                                },
+                                function(response) {
+                                    console.log(response);
+                                    var user = {
+                                        "username": response.first_name + response.last_name,
+                                        "name": response.first_name + response.last_name,
+                                        "email": response.email,
+                                        "gender": response.gender,
+                                        "dob": response.birthday,
+                                        "profile": response.picture.data.url,
+                                        "facebook_id": response.id,
+                                        "auth_token": auth_token,
+                                        "facebook_login": true,
+                                        "google_login": false,
+                                    };
+                                    console.log(user);
+                                    $scope.socialRegister(user);
+                                });
+                        } else {
+                            console.log('User cancelled login or did not fully authorize.');
+                        }
+                    }, {
+                        scope: 'email'
+                    });
+                } else {
+                    $scope.toastContent = $('<span>Please Agree the Terms of Use</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                    Materialize.toast($scope.toastContent, 3000);
+                }
+            } else {
+                $scope.agreeRegister = false;
                 FB.login(function(response) {
                     console.log(response);
                     var auth_token = response.authResponse.accessToken;
@@ -752,8 +842,6 @@
                 }, {
                     scope: 'email'
                 });
-            } else {
-                $commons.showError('#warningModal', "Please Agree the Terms of Use", true);
             }
         };
 
@@ -785,21 +873,21 @@
                     };
                 } else {
                     model = {
-                        "username": user.name,
+                        "username": user.username,
                         "email": user.email,
                         "dob": user.dob,
                         "password": "",
                         "social_auth": true,
                         "digitalSignature": $scope.agreeRegister,
                         "facebook": {
-                            "social_id": "",
-                            "auth_token": "",
-                            "profile": ""
+                            "social_id": null,
+                            "auth_token": null,
+                            "profile": null
                         },
                         "google": {
-                            "accessToken": user.accessToken,
-                            "idToken": user.idToken,
-                            "imgUrl": user.imgUrl
+                            "accessToken": user.auth_token,
+                            "idToken": user.google_id,
+                            "imgUrl": user.profile
                         },
                         "name": user.name,
                         "gender": user.gender
@@ -813,21 +901,24 @@
                         $scope.userInfo = res.data.data;
                         window.sessionStorage.userDetail = JSON.stringify(res.data.data);
                         $cookies.put('userInfo', window.sessionStorage.userDetail);
-                        if ($scope.redirecturl) {
-                            $scope.gotoPage($scope.redirecturl.index, $scope.redirecturl.match, $scope.redirecturl.tabStatus.$scope.redirecturl.element);
+                        if ($scope.redirecturl != "") {
+                            $scope.gotoPage($scope.redirecturl.index, $scope.redirecturl.match, $scope.redirecturl.tabStatus, $scope.redirecturl.element);
                         } else {
                             $commons.navigate('layout.dashboard', {}, false);
                         }
                         $scope.getUpcomingMatch();
                         $scope.closeAuth();
                     } else {
-                        $commons.showError('#errorModal', res.data.error, true);
+                        $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                        Materialize.toast($scope.toastContent, 3000);
                     }
                 }, function(err) {
-                    $commons.showError('#errorModal', err, true);
+                    $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                    Materialize.toast($scope.toastContent, 3000);
                 });
             } else {
-                $commons.showError('#errorModal', "Email address not available in Social Login", true);
+                $scope.toastContent = $('<span>Email address not available in Social Login</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                Materialize.toast($scope.toastContent, 3000);
             }
         };
 
@@ -878,12 +969,20 @@
                         $scope.forgotEmail = "";
                         $scope.otpStatus = true;
                         $scope.emailStatus = false;
-                        $commons.showError('#successModal', "OTP Send your Email id please check", true);
+                        $scope.toastContent = $('<span>OTP Send your Email id please check</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                        Materialize.toast($scope.toastContent, 3000);
                     } else {
-                        $commons.showError('#errorModal', res.data.error, true);
+                        if (res.data.error == "user not found") {
+                            $scope.toastContent = $('<span>Email not found</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                            Materialize.toast($scope.toastContent, 3000);
+                        } else {
+                            $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                            Materialize.toast($scope.toastContent, 3000);
+                        }
                     }
                 }, function(err) {
-                    $commons.showError('#errorModal', err, true);
+                    $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                    Materialize.toast($scope.toastContent, 3000);
                 });
                 // $scope.forgotClose();
             }
@@ -902,10 +1001,12 @@
                         $scope.otpStatus = false;
                         $scope.passwordStatus = true;
                     } else {
-                        $commons.showError('#errorModal', res.data.error, true);
+                        $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                        Materialize.toast($scope.toastContent, 3000);
                     }
                 }, function(err) {
-                    $commons.showError('#errorModal', err, true);
+                    $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                    Materialize.toast($scope.toastContent, 3000);
                 });
             }
         };
@@ -928,10 +1029,12 @@
                         $scope.passwordStatus = true;
                         $scope.forgotClose();
                     } else {
-                        $commons.showError('#errorModal', res.data.error, true);
+                        $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                        Materialize.toast($scope.toastContent, 3000);
                     }
                 }, function(err) {
-                    $commons.showError('#errorModal', err, true);
+                    $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                    Materialize.toast($scope.toastContent, 3000);
                 });
             }
         };
@@ -941,10 +1044,26 @@
             $scope.emailStatus = true;
             $scope.otpStatus = false;
             $scope.passwordStatus = false;
-            $scope.forgotEmail = false;
+            $scope.forgotEmail = "";
+            $scope.otp = "";
+            $scope.forgotPassCode = "";
             $scope.submitForgotForm = false;
             $scope.otpForm = false;
         };
+
+
+        // $scope.closeToast = function() {
+        //     alert("sdsd");
+        //     var toastElement = $('.toast').first()[0];
+        //     var toastInstance = toastElement.M_Toast;
+        //     toastInstance.remove();
+        // }
+
+        $(document).on('click', '#toast-container .toast button', function() {
+            var element = $(this).parent();
+            $(element).fadeOut();
+        });
+
         $scope.$watch("pagename", function() {
             if (window.sessionStorage.pageName == "upcoming") {
                 $scope.footerHide = true;

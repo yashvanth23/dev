@@ -45,10 +45,13 @@
                         for (var i = 0; i < $scope.liveScore.length; i++) {
                             if ($scope.liveScore[i].user.username == $scope.userData.username) {
                                 $scope.userScore = $scope.liveScore[i];
-                            } else {
-                                $scope.userScore = [];
-                                $scope.noUserScore = true;
                             }
+                        }
+                        if ($scope.userScore.length > 0) {
+                            $scope.noUserScore = false;
+                        } else {
+                            $scope.userScore = [];
+                            $scope.noUserScore = timeline - overview - window - rulers;
                         }
                         $scope.noScore = false;
                     } else {
@@ -60,10 +63,12 @@
                         angular.element('.float-refresh').removeClass('refresher');
                     }
                 } else {
-                    $commons.showError('#errorModal', res.data.error, true);
+                    $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                    Materialize.toast($scope.toastContent, 3000);
                 }
             }, function(err) {
-                $commons.showError('#errorModal', err, true);
+                $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                Materialize.toast($scope.toastContent, 3000);
             });
         };
 

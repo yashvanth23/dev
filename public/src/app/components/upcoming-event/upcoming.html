@@ -16,7 +16,7 @@
                 </div>
                 <div class="upcoming-event">
                     <img src="assets/images/stopwatch.svg" alt="">
-                    <span countdown='countdown' date="{{countdown}}"> </span>
+                    <span countdown='' date="{{matchDetails.starts}}"> </span>
                 </div>
 
             </div>
@@ -40,15 +40,15 @@
             <div class="upcoming-section">
                 <div class="match-header matchfix-padding" ng-hide="navigateActiveTab( 'all') ">
                     <ul>
-                        <li>Team</li>
-                        <li>Player Name</li>
+                        <li ng-click="teamSort($event)" class="sort">Team <img src="assets/images/up-arrow.svg" alt="" class=""></li>
+                        <li ng-click="playerSort($event)" class="playerSort">Player Name<img src="assets/images/up-arrow.svg" alt="" class=""></li>
                         <li>Previous Match Points</li>
                     </ul>
                 </div>
                 <div class="match-header match-headerAll matchfix-padding" ng-show="navigateActiveTab('all')">
                     <ul>
                         <li ng-click="teamSort($event)" class="sort">Team <img src="assets/images/up-arrow.svg" alt="" class=""></li>
-                        <li>Player Name</li>
+                        <li ng-click="playerSort($event)" class="playerSort">Player Name<img src="assets/images/up-arrow.svg" alt="" class=""></li>
                         <li>Previous Match Points</li>
                         <li>Player Position</li>
                     </ul>
@@ -69,7 +69,7 @@
                 </div>
                 <div class="match-section defplay cusscroll" ng-show="navigateActiveTab('def')" ng-class="{cusscroll :defendPlayers.length<9 }">
                     <ul>
-                        <li ng-repeat="player in allPlayers | filter : 'DEF' " class="matchfix-padding" ng-class="{active: player.status}" ng-click="addPlayer(player,$index,'def')">
+                        <li ng-repeat="player in allPlayers | filter : 'DEF' | orderBy:orderAll " class="matchfix-padding" ng-class="{active: player.status}" ng-click="addPlayer(player,$index,'def')">
                             <div>
                                 <span ng-if="player.teamId == home.id">{{home.name}}</span>
                                 <span ng-if="player.teamId == away.id">{{away.name}}</span>
@@ -81,7 +81,7 @@
                 </div>
                 <div class="match-section midplay cusscroll" ng-show="navigateActiveTab('mid')" ng-class="{cusscroll :midPlayers.length<9 }">
                     <ul>
-                        <li ng-repeat="player in allPlayers | filter : 'MID' " class="matchfix-padding" ng-class="{active: player.status}" ng-click="addPlayer(player,$index,'mid')">
+                        <li ng-repeat="player in allPlayers | filter : 'MID' | orderBy:orderAll " class="matchfix-padding" ng-class="{active: player.status}" ng-click="addPlayer(player,$index,'mid')">
                             <div>
                                 <span ng-if="player.teamId == home.id">{{home.name}}</span>
                                 <span ng-if="player.teamId == away.id">{{away.name}}</span>
@@ -93,7 +93,7 @@
                 </div>
                 <div class="match-section fkplay cusscroll" ng-show="navigateActiveTab('fk')" ng-class="{cusscroll :9>forwardPlayers.length }">
                     <ul>
-                        <li ng-repeat="player in allPlayers | filter : 'FW' " class="matchfix-padding" ng-class="{active: player.status}" ng-click="addPlayer(player,$index,'fk')">
+                        <li ng-repeat="player in allPlayers | filter : 'FW' | orderBy:orderAll " class="matchfix-padding" ng-class="{active: player.status}" ng-click="addPlayer(player,$index,'fk')">
                             <div>
                                 <span ng-if="player.teamId == home.id">{{home.name}}</span>
                                 <span ng-if="player.teamId == away.id">{{away.name}}</span>
@@ -105,7 +105,7 @@
                 </div>
                 <div class="match-section gkplay cusscroll" ng-show="navigateActiveTab('gk')" ng-class="{cusscroll :9>goalKeeperPlayers.length }">
                     <ul>
-                        <li ng-repeat="player in allPlayers | filter : 'GK' " class="matchfix-padding" ng-class="{active: player.status}" ng-click="addPlayer(player,$index,'gk')">
+                        <li ng-repeat="player in allPlayers | filter : 'GK' | orderBy:orderAll " class="matchfix-padding" ng-class="{active: player.status}" ng-click="addPlayer(player,$index,'gk')">
                             <div>
                                 <span ng-if="player.teamId == home.id">{{home.name}}</span>
                                 <span ng-if="player.teamId == away.id">{{away.name}}</span>
@@ -124,7 +124,8 @@
             </ul>
         </div>
     </div>
-    <p class="upcoming-logic">{{logic}}</p>
+    <p class="upcoming-logic"><span>Defender :</span> Select minimum 1 or maximum 3.<br> <span>Midfielder :</span> Select minimum 1 or maximum 2.<br> <span>Forward : </span>Select minimum 1 or maximum 2.<br> <span>GoalKeeper :</span> Select anyone goalkeeper.
+    </p>
 
     <div class="footer">
         <a href="javascript:void(0);"><img src="assets/images/smartphone-call.svg" alt=""><span>We are also available on Google play store</span></a>

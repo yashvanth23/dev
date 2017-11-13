@@ -1,7 +1,7 @@
 {
     "appName": "fandom",
     "appVersion": "1.0",
-    "baseUrl": "http://localhost:9000/",    //https://fantumn-server.herokuapp.com/
+    "baseUrl": "https://fantumn-server.herokuapp.com/",
     "upcoming": "upcomingFixturesAdmin",
     "liveMatch": "liveFixturesAdmin",
     "historyMatch": "historyFixturesAdmin",

@@ -78,13 +78,16 @@
                 fandomService.post(url, $scope.report).then(function(res) {
                     $rootScope.loader = false;
                     if (res && res.data.status == "success") {
-                        $commons.showSuccess('#successModal', "Successfully Send A Email !", true);
+                        $scope.toastContent = $('<span>Successfully Send A Email !</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                        Materialize.toast($scope.toastContent, 3000);
                         $scope.closeReport();
                     } else {
-                        $commons.showError('#errorModal', res.data.error, true);
+                        $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                        Materialize.toast($scope.toastContent, 3000);
                     }
                 }, function(err) {
-                    $commons.showError('#errorModal', err, true);
+                    $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                    Materialize.toast($scope.toastContent, 3000);
                 });
             }
         };

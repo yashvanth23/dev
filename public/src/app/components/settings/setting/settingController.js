@@ -84,10 +84,12 @@
                     $scope.profileInfo.country = $scope.profile.address.country;
                     $scope.profileInfo.notification = $scope.profile.pushNotification;
                 } else {
-                    $commons.showError('#errorModal', res.data.error, true);
+                    $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                    Materialize.toast($scope.toastContent, 3000);
                 }
             }, function(err) {
-                $commons.showError('#errorModal', err, true);
+                $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                Materialize.toast($scope.toastContent, 3000);
             });
         };
 
@@ -127,10 +129,12 @@
                         $commons.showError('#successModal', "Profile Updated Successfully", true);
                         $scope.getProfileInformation();
                     } else {
-                        $commons.showError('#errorModal', res.data.error, true);
+                        $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                        Materialize.toast($scope.toastContent, 3000);
                     }
                 }, function(err) {
-                    $commons.showError('#errorModal', err, true);
+                    $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                    Materialize.toast($scope.toastContent, 3000);
                 });
             }
         };
@@ -187,10 +191,12 @@
                         console.log(res.data.data);
                         $commons.showError('#successModal', "Password Changed Successfully", true);
                     } else {
-                        $commons.showError('#errorModal', res.data.error, true);
+                        $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                        Materialize.toast($scope.toastContent, 3000);
                     }
                 }, function(err) {
-                    $commons.showError('#errorModal', err, true);
+                    $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                    Materialize.toast($scope.toastContent, 3000);
                 });
             }
         };

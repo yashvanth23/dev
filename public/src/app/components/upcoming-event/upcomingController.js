@@ -213,6 +213,7 @@
                 "position": "GK"
             }];
             $scope.review = false;
+            $scope.toastContent = "";
             if ($scope.matchDetails.picked) {
                 $scope.getLeaderBoard();
             } else {
@@ -265,7 +266,8 @@
                         $scope.historyMatch = res.data.error;
                     }
                 }, function(err) {
-                    $commons.showError('#errorModal', "Something Went Wrong", true);
+                    $scope.toastContent = $('<span>Something went wrong</span>').add($('<button class="btn-flat toast-action">OK</button>'));
+                    Materialize.toast($scope.toastContent, 3000);
                 });
             } catch (err) {
                 exceptionService.promiseRejectsAfterAWhile(err);
@@ -331,7 +333,7 @@
 
                     }
                     $scope.matchStatus = true;
-                    $scope.goalKeep = 1, $scope.defPlayer = 4, $scope.midPlayer = 3, $scope.fwdPlayer = 3;
+                    $scope.goalKeep = 2, $scope.defPlayer = 5, $scope.midPlayer = 4, $scope.fwdPlayer = 4;
                     for (var playerList = 0; playerList < $scope.reviewList.length; playerList++) {
                         if ($scope.reviewList[playerList].positionPlay === "GK") {
                             for (var j = 0; j < $scope.goalKeeJersey.length; j++) {
@@ -386,17 +388,6 @@
         $scope.navigateTab = function(tabName) {
             try {
                 $scope.playerTab = tabName;
-                if (tabName == "all") {
-                    $scope.logic = "Logic : Show everything Line by line.";
-                } else if (tabName == "def") {
-                    $scope.logic = "Logic : Select minimum 1 or maximum 3.";
-                } else if (tabName == "mid") {
-                    $scope.logic = "Logic : Select minimum 1 or maximum 2.";
-                } else if (tabName == "fk") {
-                    $scope.logic = "Logic : Select minimum 1 or maximum 2.";
-                } else {
-                    $scope.logic = "Logic : Select anyone goalkeeper.";
-                }
             } catch (err) {
                 exceptionService.promiseRejectsAfterAWhile(err);
             }
@@ -410,37 +401,27 @@
             if (slideName === "prev") {
                 if ($scope.playerTab === "all") {
                     $scope.navigateTab('gk');
-                    $scope.logic = "Logic : Select anyone goalkeeper.";
                 } else if ($scope.playerTab === "def") {
                     $scope.navigateTab('all');
-                    $scope.logic = "Logic : Show everything Line by line.";
                 } else if ($scope.playerTab === "mid") {
                     $scope.navigateTab('def');
-                    $scope.logic = "Logic : Select minimum 1 or maximum 3.";
                 } else if ($scope.playerTab === "fk") {
                     $scope.navigateTab('mid');
-                    $scope.logic = "Logic : Select minimum 1 or maximum 2.";
                 } else if ($scope.playerTab === "gk") {
                     $scope.navigateTab('fk');
-                    $scope.logic = "Logic : Select minimum 1 or maximum 2.";
                 }
 
             } else {
                 if ($scope.playerTab === "all") {
                     $scope.navigateTab('def');
-                    $scope.logic = "Logic : Select minimum 1 or maximum 3.";
                 } else if ($scope.playerTab === "def") {
                     $scope.navigateTab('mid');
-                    $scope.logic = "Logic : Select minimum 1 or maximum 2.";
                 } else if ($scope.playerTab === "mid") {
                     $scope.navigateTab('fk');
-                    $scope.logic = "Logic : Select minimum 1 or maximum 2.";
                 } else if ($scope.playerTab === "fk") {
                     $scope.navigateTab('gk');
-                    $scope.logic = "Logic : Select anyone goalkeeper.";
                 } else if ($scope.playerTab === "gk") {
                     $scope.navigateTab('all');
-                    $scope.logic = "Logic : Show everything Line by line.";
                 }
             }
         };
@@ -457,7 +438,8 @@
                             $scope.findStatus(player.id);
                             $scope.goalKeep++;
                         } else {
-                            $commons.showWarning("#warningModal", "Selected one Goal keeper already", true);
+                            $scope.toastContent = $('<span>Selected one Goal keeper already</span><button class="btn-flat toast-action">OK</button>');
+                            Materialize.toast($scope.toastContent, 3000);
                         }
                     } else if (player.position === "2") {
                         if ($scope.defPlayer <= 4) {
@@ -471,7 +453,8 @@
                                 }
                                 if (defTeam.length == 3) {
                                     $scope.defPlayer--;
-                                    $commons.showWarning("#warningModal", "Cannot select 4 defenders same team", true);
+                                    $scope.toastContent = $('<span>Cannot select 4 defenders same team</span>').add($('<button class="btn-flat toast-action">OK</button>'));
+                                    Materialize.toast($scope.toastContent, 3000);
                                 } else {
                                     $scope.playerList.push(player);
                                     $scope.reviewPush(player);
@@ -485,7 +468,8 @@
                             }
                             $scope.defPlayer++;
                         } else {
-                            $commons.showWarning("#warningModal", "Selected 4 defenders already", true);
+                            $scope.toastContent = $('<span>Selected 4 defenders already</span>').add($('<button class="btn-flat toast-action">OK</button>'));
+                            Materialize.toast($scope.toastContent, 3000);
                         }
                     } else if (player.position === "3") {
                         if ($scope.midPlayer <= 3) {
@@ -499,7 +483,8 @@
                                 }
                                 if (midTeam.length == 2) {
                                     $scope.midPlayer--;
-                                    $commons.showWarning("#warningModal", "Cannot select 3 midFielders same team", true);
+                                    $scope.toastContent = $('<span>Cannot select 3 midFielders same team</span>').add($('<button class="btn-flat toast-action">OK</button>'));
+                                    Materialize.toast($scope.toastContent, 3000);
                                 } else {
                                     $scope.playerList.push(player);
                                     $scope.reviewPush(player);
@@ -512,7 +497,8 @@
                             }
                             $scope.midPlayer++;
                         } else {
-                            $commons.showWarning("#warningModal", "Selected 3 midfielders already", true);
+                            $scope.toastContent = $('<span>Selected 3 midfielders already</span>').add($('<button class="btn-flat toast-action">OK</button>'));
+                            Materialize.toast($scope.toastContent, 3000);
                         }
                     } else {
                         if ($scope.fwdPlayer <= 3) {
@@ -526,7 +512,8 @@
                                 }
                                 if (fkTeam.length == 2) {
                                     $scope.fwdPlayer--;
-                                    $commons.showWarning("#warningModal", "Cannot select 3 forward players same team", true);
+                                    $scope.toastContent = $('<span>Cannot select 3 forward players same team</span>').add($('<button class="btn-flat toast-action">OK</button>'));
+                                    Materialize.toast($scope.toastContent, 3000);
                                 } else {
                                     $scope.playerList.push(player);
                                     $scope.reviewPush(player);
@@ -540,12 +527,14 @@
                             }
                             $scope.fwdPlayer++;
                         } else {
-                            $commons.showWarning("#warningModal", "Selected 3 midfielders already", true);
+                            $scope.toastContent = $('<span>Selected 3 forward already</span>').add($('<button class="btn-flat toast-action">OK</button>'));
+                            Materialize.toast($scope.toastContent, 3000);
                         }
 
                     }
                 } else {
-                    $commons.showWarning("#warningModal", "Selected 11 players already", true);
+                    $scope.toastContent = $('<span>Selected 11 players already</span>').add($('<button class="btn-flat toast-action">OK</button>'));
+                    Materialize.toast($scope.toastContent, 3000);
                 }
             } else {
                 for (var j = 0; j < $scope.allPlayers.length; j++) {
@@ -597,7 +586,8 @@
                             }
                             $scope.matchStatus = true;
                         } else {
-                            $commons.showError('#errorModal', res.data.error, true);
+                            $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action">OK</button>'));
+                            Materialize.toast($scope.toastContent, 3000);
                         }
 
                     } else {
@@ -607,7 +597,8 @@
                     $commons.showError('#errorModal', err, true);
                 });
             } else {
-                $commons.showWarning("#warningModal", "Please Select 11 Players in Team", true);
+                $scope.toastContent = $('<span> Please Select 11 Players in Team</span>').add($('<button class="btn-flat toast-action">OK</button>'));
+                Materialize.toast($scope.toastContent, 3000);
             }
         };
 
@@ -647,7 +638,8 @@
                 $scope.gkReview = $filter('filter')($scope.reviewList, "GK");
             } else {
                 $scope.review = false;
-                $commons.showWarning("#warningModal", "Please select players", true);
+                $scope.toastContent = $('<span>Please select players</span>').add($('<button class="btn-flat toast-action">OK</button>'));
+                Materialize.toast($scope.toastContent, 3000);
             }
 
         };
@@ -725,7 +717,6 @@
         };
 
         $scope.teamSort = function(event) {
-            angular.element(".sort").find("img").css({ "opacity": "1" });
             if (angular.element(".sort").hasClass('active')) {
                 angular.element(".sort").removeClass('active');
                 angular.element(".sort").find("img").css({ "transform": "rotate(180deg)" });
@@ -736,6 +727,19 @@
                 $scope.orderAll = "teamId";
             }
         };
+
+        $scope.playerSort = function(event) {
+            if (angular.element(".playerSort").hasClass('active')) {
+                angular.element(".playerSort").removeClass('active');
+                angular.element(".playerSort").find("img").css({ "transform": "rotate(180deg)" });
+                $scope.orderAll = "-name";
+            } else {
+                angular.element(".playerSort").addClass('active');
+                angular.element(".playerSort").find("img").css({ "transform": "rotate(0deg)" });
+                $scope.orderAll = "name";
+            }
+        };
+
         $scope.$watch("matchChange", function() {
             if (window.sessionStorage.match !== $scope.matchDetails) {
                 $scope.matchDetails = JSON.parse(window.sessionStorage.match);

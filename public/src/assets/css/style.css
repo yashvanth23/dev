@@ -983,6 +983,7 @@ span.upcoming-match {
 .upcoming-tab ul li a {
     color: #444;
     font-size: 17px;
+    font-weight: 500;
 }
 
 .upcoming-tab ul li a.active {
@@ -1012,6 +1013,7 @@ span.upcoming-match {
     width: 33.333333%;
     font-weight: 500;
     color: #00a99d;
+    cursor: pointer;
 }
 
 .matchfix-padding {
@@ -1021,6 +1023,7 @@ span.upcoming-match {
 .match-section li {
     width: 100%;
     display: block;
+    font-weight: 500;
     float: none;
     clear: both;
     cursor: pointer;
@@ -1030,7 +1033,7 @@ span.upcoming-match {
 .match-section li div {
     width: 33.3333%;
     float: left;
-    font-size: 16px;
+    font-size: 15px;
     color: #333;
 }
 
@@ -1054,10 +1057,15 @@ span.upcoming-match {
 
 p.upcoming-logic {
     text-align: center;
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 500;
     color: #555;
     margin: 10px 0;
+    line-height: 28px;
+}
+
+p.upcoming-logic span {
+    font-weight: 600;
 }
 
 ul.match-custom-btn {
@@ -1408,6 +1416,7 @@ ul.match-custom-btn li:last-child {
 
 .live-play ul {
     margin: 0;
+    text-align: center;
 }
 
 .live-play li {
@@ -1446,6 +1455,7 @@ ul.match-custom-btn li:last-child {
     color: #00a99d;
     font-size: 18px;
     font-weight: 600;
+    text-align: center;
 }
 
 .liveMatch-section {
@@ -1455,6 +1465,7 @@ ul.match-custom-btn li:last-child {
 .liveMatch-section ul li {
     width: 100%;
     cursor: pointer;
+    text-align: center;
 }
 
 .liveMatch-section ul li div {
@@ -2130,7 +2141,6 @@ h4.contact-title {
     bottom: 0;
     top: 0;
     z-index: 9999;
-    /* background-image: url('../images/banner.jpg'); */
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -4309,21 +4319,32 @@ textarea.materialize-textarea[readonly="readonly"] {
     transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -webkit-transition: all 0.3s ease;
-}
-
-.match-header.match-headerAll ul li:first-child {
+    font-weight: 500;
     cursor: pointer;
 }
 
-.match-header.match-headerAll ul li img {
-    width: 18px;
-    height: 18px;
+.match-header.match-headerAll ul li:first-child {}
+
+.match-header.matchfix-padding ul li img {
+    width: 13px;
+    height: 13px;
     transform: rotate(180deg);
     transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -webkit-transition: all 0.3s ease;
-    margin-left: 30px;
-    opacity: 0;
+    margin-left: 8px;
+    opacity: 1;
+}
+
+.match-header.match-headerAll ul li img {
+    width: 13px;
+    height: 13px;
+    transform: rotate(180deg);
+    transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    margin-left: 8px;
+    opacity: 1;
 }
 
 .match-header.match-headerAll ul li:nth-child(3) {
@@ -4477,4 +4498,165 @@ textarea.materialize-textarea[readonly="readonly"] {
     right: 30px;
     color: #333;
     font-weight: 500;
+}
+
+.auth-content {
+    position: absolute;
+    top: 50%;
+    z-index: 99999;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 420px;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    opacity: 0;
+    display: none;
+}
+
+.auth-content .login-section {
+    min-height: 540px;
+    background: #fff;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+}
+
+.auth-content .login-content form .input-field.col.s12 {
+    padding: 0px;
+}
+
+.auth-content .login-header img {
+    height: 50px;
+    width: 50px;
+}
+
+.auth-content .login-header h4 {
+    font-weight: 500;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.auth-content .login-content {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.auth-content .login-content form {}
+
+.auth-content .login-content form button {
+    border-radius: 5px;
+    width: 100%;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.auth-content .login-content button.fb-login {
+    width: 100%;
+    margin-bottom: 10px;
+    font-weight: 500;
+    text-transform: capitalize;
+    background-color: #3b5998;
+    background-image: url('../images/facebook-logo.svg');
+    background-position: 20px;
+    background-size: 25px;
+    background-repeat: no-repeat;
+}
+
+.auth-content .login-content button.google-login {
+    width: 100%;
+    background-color: #dd5044;
+    margin-bottom: 10px;
+    font-weight: 500;
+    text-transform: capitalize;
+    background-image: url('../images/google-plus.svg');
+    background-position: 20px;
+    background-size: 25px;
+    background-repeat: no-repeat;
+}
+
+.auth-content .login-content form .input-field {
+    margin-top: 0;
+}
+
+.auth-content .login-content form .input-field input {
+    margin-bottom: 10px;
+}
+
+.auth-content .login-content p {
+    font-size: 13px;
+    font-weight: 600;
+    color: #707070;
+    margin: 8px 0px;
+}
+
+.auth-content .login-content a {
+    font-weight: 500;
+    color: #8a8a8a;
+    font-size: 14px;
+}
+
+.auth-content .login-content hr {
+    width: 20%;
+    margin: 10px auto;
+    border-color: #ffffff;
+}
+
+.auth-content .login-content p.register a {
+    padding-left: 10px;
+}
+
+.toast .toast-action {
+    margin-left: auto !important;
+    padding-right: 11px;
+}
+
+#toast-container {
+    bottom: 70px !important;
+    top: auto !important;
+    right: 22%;
+    width: 450px;
+    margin: 0 auto;
+    z-index: 999999999;
+}
+
+.mobile-screen {
+    position: fixed;
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.mobile-screen .mobile-screencontent {
+    text-align: center;
+    width: 400px;
+}
+
+.mobile-screencontent img {}
+
+.mobile-screencontent button.google-play {}
+
+.mobile-screencontent button.ios-play {}
+
+.mobile-screencontent h4 {}
+
+.settingHide {
+    position: relative;
+}
+
+.settingHide:before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(49, 49, 49, 0.12);
+    border-radius: 10px;
+    top: 0;
 }
