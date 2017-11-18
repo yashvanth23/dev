@@ -1,8 +1,7 @@
++ function(window, angular, undefined) {
 
-+ function (window, angular, undefined) {
 
-
-    angular.module("fandom-grid-header", ["fandom-app", "fandom"])
+    angular.module("fantumn-grid-header", ["fantumn-app", "fantumn"])
         .factory('$headers', kendoGridHeaderFactory);
 
     function kendoGridHeaderFactory($logger, $rootScope, appConfig) {

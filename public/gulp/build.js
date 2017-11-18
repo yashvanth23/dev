@@ -19,7 +19,7 @@ gulp.task('partials', function() {
             quotes: true
         }))
         .pipe($.angularTemplatecache('templateCacheHtml.js', {
-            module: 'fandom',
+            module: 'fantumn',
             root: 'app'
         }))
         .pipe(gulp.dest(conf.paths.dist + '/scripts/'));
@@ -114,13 +114,13 @@ gulp.task('war', ['build'], function() {
         ])
         .pipe($.war({
             welcome: 'index.html',
-            displayName: 'fandom',
+            displayName: 'fantumn',
             version: '1.0',
             webappExtras: [
                 '<module>',
                 '<web>' +
-                '<web-uri>fandom.war</web-uri>' +
-                '<context-root>/fandom</context-root>' +
+                '<web-uri>fantumn.war</web-uri>' +
+                '<context-root>/fantumn</context-root>' +
                 '</web>' +
                 '</module>'
             ]

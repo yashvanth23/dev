@@ -19,12 +19,12 @@
 + function(window, angular) {
     'use strict';
     angular
-        .module("fandom")
+        .module("fantumn")
         .registerCtrl('storeCtrl', storeCtrl);
-    storeCtrl.$inject = ["$scope", "$rootScope", "$commons", "$logger", "fandomService", "exceptionService", "$window", "$filter"];
+    storeCtrl.$inject = ["$scope", "$rootScope", "$commons", "$logger", "fantumnService", "exceptionService", "$window", "$filter"];
 
 
-    function storeCtrl($scope, $rootScope, $commons, $logger, fandomService, exceptionService, $window, $filter) {
+    function storeCtrl($scope, $rootScope, $commons, $logger, fantumnService, exceptionService, $window, $filter) {
 
         $scope.initFunction = function() {
 

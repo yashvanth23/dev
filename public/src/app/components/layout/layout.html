@@ -27,8 +27,8 @@
                     <ul class="drop-menu dropdown-content">
                         <li ng-hide="loginStatus"><a href="javascript:void(0)" ng-click="authEnable('login')" class="waves-effect">Login</a></li>
                         <li ng-hide="loginStatus"><a href="javascript:void(0)" ng-click="authEnable('register')" class="waves-effect">Register</a></li>
-                        <li><a href="javascript:void(0)" ng-click="openSideMenu()" class="waves-effect">Matches</a></li>
                         <li ng-show="loginStatus"><a href="javascript:void(0)" ng-click="gotoNavigate('profile')" class="waves-effect profile">My Profile</a></li>
+                        <li><a href="javascript:void(0)" ng-click="openSideMenu()" class="waves-effect">Matches</a></li>
                         <li ng-show="loginStatus"><a href="javascript:void(0)" ng-click="gotoNavigate('store')" class="waves-effect">Gift Store</a></li>
                         <li><a href="javascript:void(0)" ng-click="gotoNavigate('point')" class="waves-effect">Point System</a></li>
                         <li><a href="javascript:void(0)" ng-click="gotoNavigate('rules')" class="waves-effect">Terms & Rules</a></li>
@@ -215,7 +215,7 @@
                 </div>
                 <div class="side-upcoming" ng-show="isActiveTab('upcoming')">
                     <ul ng-if="upcomingMatch.length>0">
-                        <li ng-repeat="match in upcomingMatch | orderBy:'starts'" class="upcomingmatch waves-effect waves-teal" ng-class="{ 'matchpicked' : match.picked }" ng-click="gotoPage($index,match,'upcoming',$event)" id="upcoming{{$index}}">
+                        <li ng-repeat="match in upcomingMatch | orderBy:'starts'" class="upcomingmatch waves-effect" ng-class="{ 'matchpicked' : match.picked }" ng-click="gotoPage($index,match,'upcoming',$event)" id="upcoming{{$index}}">
                             <div>
                                 <div class="left-container">
                                     <img ng-src="{{match.homeLogo}}" alt="">
@@ -227,7 +227,8 @@
                                     <p>{{match.away}}</p>
                                 </div>
                             </div>
-                            <p class="play">Play</p>
+                            <p class="play" ng-hide="match.picked">Play</p>
+                            <p class="play" ng-show="match.picked">Update</p>
                             <div class="timer">
                                 <img src="assets/images/stopwatch.svg" alt="">
                                 <!--<span>{{match.starts | date :'hh:mm:ss'}}</span>-->
@@ -313,12 +314,11 @@
         </div>
         <div class="col s9 m9 l9 ui-content responsive-uicontent">
             <ui-view></ui-view>
-            <footer ng-hide="footerHide">
+            <!--<footer ng-hide="footerHide">
                 <a href="javascript:void(0);"><img src="assets/images/smartphone-call.svg" alt=""><span>We are also available on Google play store</span></a>
-            </footer>
+            </footer>-->
         </div>
     </div>
-
 </div>
 
 <div id="auth" class="auth-content">
@@ -378,7 +378,7 @@
                         <span class="error" ng-show="(registerForm.date.$invalid && !registerForm.date.$pristine) || (registerForm.date.$error.required && registerSubmit)">DOB is required</span>
                         <span class="error" ng-show="ageError">Age limit upto 13</span>
                     </div>
-                    <div class="input-field col s12">
+                    <div class="input-field col s12 password-field">
                         <input id="pass" type="password" name="pass" class="validate" ng-model="userDetail.password" required>
                         <label for="pass">Password</label>
                         <span class="error" ng-show="(registerForm.pass.$invalid && !registerForm.pass.$pristine) || (registerForm.pass.$error.required && registerSubmit)">Password is required</span>
@@ -401,7 +401,7 @@
     </div>
 </div>
 
-<div class="auth-padrop" ng-show="backdrop"></div>
+<div class="auth-padrop" ng-show="backdrop" ng-click="closeAuth()"></div>
 <div class="terms-drop" ng-show="termsLoader"></div>
 <div class="loader-content center-align" ng-show="loader">
     <div class='loader'>
@@ -450,7 +450,7 @@
 
 </div>
 
-<div class="custom-modalpopup" id="warningModal">
+<!--<div class="custom-modalpopup" id="warningModal">
     <div class="custom-modalcontent">
         <div class="f-modal-alert">
             <div class="f-modal-icon f-modal-warning scaleWarning">
@@ -462,7 +462,7 @@
         <p>{{message}}</p>
         <button type="button" class="warning-btn waves-effect waves-light" ng-click="closeWarning()">Continue Play</button>
     </div>
-</div>
+</div>-->
 <div class="terms-modalpopup" id="termsCondition">
     <h4>Terms of Use</h4>
     <div class="terms-modalcontent cus-scroll">
@@ -684,8 +684,11 @@
                     <span class="error" ng-show="(forgotForm.emailForgot.$invalid && !forgotForm.emailForgot.$pristine) || (forgotForm.emailForgot.$error.required && forgotSubmit)">Email is required</span>
                 </div>
                 <div class="input-field">
-                    <button type="button" class="btn btn-cancel" ng-click="forgotClose()">Cancel</button>
-                    <button type="submit" class="btn btn-submit">Submit</button>
+                    <button type="button" class="btn btn-cancel waves-effect waves-light" ng-click="forgotClose()">Cancel</button>
+                    <button type="submit" class="btn btn-submit waves-effect waves-light">Submit</button>
+                    <div class="forgotRegister">
+                        <a href="javascript:void(0);" class="btn waves-effect waves-light" ng-click="authEnable('regiter')">Sign Up</a>
+                    </div>
                 </div>
             </form>
         </div>
@@ -722,8 +725,25 @@
 <div class="mobile-screen" ng-show="mobile">
     <div class="mobile-screencontent">
         <img src="assets/images/logo.svg" alt="">
-        <h5>Fantumn App Available in</h5>
-        <button type="button" class="google-play"></button>
-        <button type="button" class="ios-play"></button>
+        <h5>Coming soon to google.<br> Sorry for the inconvenice Use desktop or laptop to play</h5>
+        <!--<button type="button" class="google-play"></button>
+        <button type="button" class="ios-play"></button>-->
+    </div>
+</div>
+
+<div class="custom-modalpopup" id="warningModal">
+    <div class="custom-modalcontent">
+        <div class="f-modal-alert">
+            <div class="f-modal-icon f-modal-warning scaleWarning">
+                <span class="f-modal-body pulseWarningIns"></span>
+                <span class="f-modal-dot pulseWarningIns"></span>
+            </div>
+        </div>
+        <h4>Exit</h4>
+        <p>Are you sure you want to leave this screen?</p>
+        <div>
+            <button type="button" class="btn waves-effect waves-light no-btn" ng-click="closeWarning()">No</button>
+            <button type="button" class="btn waves-effect waves-light yes-btn" ng-click="redirectCustom()">Yes</button>
+        </div>
     </div>
 </div>

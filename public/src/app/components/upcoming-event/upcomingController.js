@@ -16,202 +16,242 @@
  * 
  */
 
-+ function(window, angular) {
-    'use strict';
-    angular
-        .module("fandom")
-        .registerCtrl('upcomingCtrl', upcomingCtrl);
-    upcomingCtrl.$inject = ["$scope", "$rootScope", "$commons", "$logger", "fandomService", "exceptionService", "$window", "$filter", "$q", "Socialshare"];
++(function(window, angular) {
+    "use strict";
+    angular.module("fantumn").registerCtrl("upcomingCtrl", upcomingCtrl);
+    upcomingCtrl.$inject = ["$scope", "$rootScope", "$commons", "$logger", "fantumnService", "exceptionService", "$window", "$filter", "$q"];
 
-    function upcomingCtrl($scope, $rootScope, $commons, $logger, fandomService, exceptionService, $window, $filter, $q, Socialshare) {
-
+    function upcomingCtrl($scope, $rootScope, $commons, $logger, fantumnService, exceptionService, $window, $filter, $q) {
         $scope.initFunction = function() {
             $scope.matchDetails = JSON.parse(window.sessionStorage.match);
             $scope.userDetailInfo = JSON.parse(window.sessionStorage.userDetail);
             $scope.countdown = $scope.matchDetails.starts;
             $scope.home = {
-                "id": $scope.matchDetails.teams.team1.teamId,
-                "name": $scope.matchDetails.teams.team1.name
+                id: $scope.matchDetails.teams.team1.teamId,
+                name: $scope.matchDetails.teams.team1.name
             };
             $scope.away = {
-                "id": $scope.matchDetails.teams.team2.teamId,
-                "name": $scope.matchDetails.teams.team2.name
+                id: $scope.matchDetails.teams.team2.teamId,
+                name: $scope.matchDetails.teams.team2.name
             };
-            $scope.playerTab = 'all';
+            $scope.playerTab = "all";
             $scope.playType = {
-                "def": true,
-                "mid": true,
-                "fk": true,
-                "gk": true
+                def: true,
+                mid: true,
+                fk: true,
+                gk: true
             };
-            $scope.goalKeep = 1, $scope.defPlayer = 1, $scope.midPlayer = 1, $scope.fwdPlayer = 1;
+            $scope.goalKeep = 1,
+                $scope.defPlayer = 1,
+                $scope.midPlayer = 1,
+                $scope.fwdPlayer = 1;
             $scope.userInfo = JSON.parse(window.sessionStorage.userDetail);
             $scope.playerList = [];
             $scope.reviewList = [];
             $scope.logic = "Logic : Show everything Line by line.";
             $scope.teamJerSey = [{
-                "teamId": "52",
-                "jersey": "assets/images/jersey/AFC_Bournemouth.png",
-                "position": "all"
-            }, {
-                "teamId": "19",
-                "jersey": "assets/images/jersey/Arsenal.png",
-                "position": "all"
-            }, {
-                "teamId": "78",
-                "jersey": "assets/images/jersey/Brighton&_Hove_Albion.png",
-                "position": "all"
-            }, {
-                "teamId": "27",
-                "jersey": "assets/images/jersey/Burnley.png",
-                "position": "all"
-            }, {
-                "teamId": "18",
-                "jersey": "assets/images/jersey/Chelsea.png",
-                "position": "all"
-            }, {
-                "teamId": "51",
-                "jersey": "assets/images/jersey/Crystal_Palace.png",
-                "position": "all"
-            }, {
-                "teamId": "13",
-                "jersey": "assets/images/jersey/Everton.png",
-                "position": "all"
-            }, {
-                "teamId": "251",
-                "jersey": "assets/images/jersey/Huddersfield_Town.png",
-                "position": "all"
-            }, {
-                "teamId": "42",
-                "jersey": "assets/images/jersey/Leicester_City.png",
-                "position": "all"
-            }, {
-                "teamId": "8",
-                "jersey": "assets/images/jersey/Liverpool.png",
-                "position": "all"
-            }, {
-                "teamId": "9",
-                "jersey": "assets/images/jersey/Manchester_City.png",
-                "position": "all"
-            }, {
-                "teamId": "14",
-                "jersey": "assets/images/jersey/Manchester_United.png",
-                "position": "all"
-            }, {
-                "teamId": "20",
-                "jersey": "assets/images/jersey/Newcastle_United.png",
-                "position": "all"
-            }, {
-                "teamId": "65",
-                "jersey": "assets/images/jersey/Southampton.png",
-                "position": "all"
-            }, {
-                "teamId": "26",
-                "jersey": "assets/images/jersey/Stoke_City.png",
-                "position": "all"
-            }, {
-                "teamId": "30",
-                "jersey": "assets/images/jersey/Swansea_City.png",
-                "position": "all"
-            }, {
-                "teamId": "6",
-                "jersey": "assets/images/jersey/Tottenham_Hotspur.png",
-                "position": "all"
-            }, {
-                "teamId": "25",
-                "jersey": "assets/images/jersey/Watford.png",
-                "position": "all"
-            }, {
-                "teamId": "10",
-                "jersey": "assets/images/jersey/West_Bromwich_Albion.png",
-                "position": "all"
-            }, {
-                "teamId": "1",
-                "jersey": "assets/images/jersey/West_Ham_United.png",
-                "position": "all"
-            }];
+                    teamId: "52",
+                    jersey: "assets/images/jersey/AFC_Bournemouth.png",
+                    position: "all"
+                },
+                {
+                    teamId: "19",
+                    jersey: "assets/images/jersey/Arsenal.png",
+                    position: "all"
+                },
+                {
+                    teamId: "78",
+                    jersey: "assets/images/jersey/Brighton&_Hove_Albion.png",
+                    position: "all"
+                },
+                {
+                    teamId: "27",
+                    jersey: "assets/images/jersey/Burnley.png",
+                    position: "all"
+                },
+                {
+                    teamId: "18",
+                    jersey: "assets/images/jersey/Chelsea.png",
+                    position: "all"
+                },
+                {
+                    teamId: "51",
+                    jersey: "assets/images/jersey/Crystal_Palace.png",
+                    position: "all"
+                },
+                {
+                    teamId: "13",
+                    jersey: "assets/images/jersey/Everton.png",
+                    position: "all"
+                },
+                {
+                    teamId: "251",
+                    jersey: "assets/images/jersey/Huddersfield_Town.png",
+                    position: "all"
+                },
+                {
+                    teamId: "42",
+                    jersey: "assets/images/jersey/Leicester_City.png",
+                    position: "all"
+                },
+                {
+                    teamId: "8",
+                    jersey: "assets/images/jersey/Liverpool.png",
+                    position: "all"
+                },
+                {
+                    teamId: "9",
+                    jersey: "assets/images/jersey/Manchester_City.png",
+                    position: "all"
+                },
+                {
+                    teamId: "14",
+                    jersey: "assets/images/jersey/Manchester_United.png",
+                    position: "all"
+                },
+                {
+                    teamId: "20",
+                    jersey: "assets/images/jersey/Newcastle_United.png",
+                    position: "all"
+                },
+                {
+                    teamId: "65",
+                    jersey: "assets/images/jersey/Southampton.png",
+                    position: "all"
+                },
+                {
+                    teamId: "26",
+                    jersey: "assets/images/jersey/Stoke_City.png",
+                    position: "all"
+                },
+                {
+                    teamId: "30",
+                    jersey: "assets/images/jersey/Swansea_City.png",
+                    position: "all"
+                },
+                {
+                    teamId: "6",
+                    jersey: "assets/images/jersey/Tottenham_Hotspur.png",
+                    position: "all"
+                },
+                {
+                    teamId: "25",
+                    jersey: "assets/images/jersey/Watford.png",
+                    position: "all"
+                },
+                {
+                    teamId: "10",
+                    jersey: "assets/images/jersey/West_Bromwich_Albion.png",
+                    position: "all"
+                },
+                {
+                    teamId: "1",
+                    jersey: "assets/images/jersey/West_Ham_United.png",
+                    position: "all"
+                }
+            ];
 
             $scope.goalKeeJersey = [{
-                "teamId": "52",
-                "jersey": "assets/images/jersey/keeper/afc.png",
-                "position": "GK"
-            }, {
-                "teamId": "19",
-                "jersey": "assets/images/jersey/keeper/Arsenal.png",
-                "position": "GK"
-            }, {
-                "teamId": "78",
-                "jersey": "assets/images/jersey/keeper/Brighton_Hove_Albion.png",
-                "position": "GK"
-            }, {
-                "teamId": "27",
-                "jersey": "assets/images/jersey/keeper/Burnley.png",
-                "position": "GK"
-            }, {
-                "teamId": "18",
-                "jersey": "assets/images/jersey/keeper/Chelsea.png",
-                "position": "GK"
-            }, {
-                "teamId": "51",
-                "jersey": "assets/images/jersey/keeper/Crystal_Palace.png",
-                "position": "GK"
-            }, {
-                "teamId": "13",
-                "jersey": "assets/images/jersey/keeper/Everton.png",
-                "position": "GK"
-            }, {
-                "teamId": "251",
-                "jersey": "assets/images/jersey/keeper/Huddersfield_Town.png",
-                "position": "GK"
-            }, {
-                "teamId": "42",
-                "jersey": "assets/images/jersey/keeper/Leicester.png",
-                "position": "GK"
-            }, {
-                "teamId": "8",
-                "jersey": "assets/images/jersey/keeper/Liverpool.png",
-                "position": "GK"
-            }, {
-                "teamId": "9",
-                "jersey": "assets/images/jersey/keeper/Manchester_City.png",
-                "position": "GK"
-            }, {
-                "teamId": "14",
-                "jersey": "assets/images/jersey/keeper/Manchester_United.png",
-                "position": "GK"
-            }, {
-                "teamId": "20",
-                "jersey": "assets/images/jersey/keeper/Newcastle.png",
-                "position": "GK"
-            }, {
-                "teamId": "65",
-                "jersey": "assets/images/jersey/keeper/Southampton.png",
-                "position": "GK"
-            }, {
-                "teamId": "26",
-                "jersey": "assets/images/jersey/keeper/Stoke_City.png",
-                "position": "GK"
-            }, {
-                "teamId": "30",
-                "jersey": "assets/images/jersey/keeper/Swansea_City.png",
-                "position": "GK"
-            }, {
-                "teamId": "6",
-                "jersey": "assets/images/jersey/keeper/Tottenham_Hotspur.png",
-                "position": "GK"
-            }, {
-                "teamId": "25",
-                "jersey": "assets/images/jersey/keeper/Watford.png",
-                "position": "GK"
-            }, {
-                "teamId": "10",
-                "jersey": "assets/images/jersey/keeper/West_Bromwich.png",
-                "position": "GK"
-            }, {
-                "teamId": "1",
-                "jersey": "assets/images/jersey/keeper/West_Ham_United.png",
-                "position": "GK"
-            }];
+                    teamId: "52",
+                    jersey: "assets/images/jersey/keeper/afc.png",
+                    position: "GK"
+                },
+                {
+                    teamId: "19",
+                    jersey: "assets/images/jersey/keeper/Arsenal.png",
+                    position: "GK"
+                },
+                {
+                    teamId: "78",
+                    jersey: "assets/images/jersey/keeper/Brighton_Hove_Albion.png",
+                    position: "GK"
+                },
+                {
+                    teamId: "27",
+                    jersey: "assets/images/jersey/keeper/Burnley.png",
+                    position: "GK"
+                },
+                {
+                    teamId: "18",
+                    jersey: "assets/images/jersey/keeper/Chelsea.png",
+                    position: "GK"
+                },
+                {
+                    teamId: "51",
+                    jersey: "assets/images/jersey/keeper/Crystal_Palace.png",
+                    position: "GK"
+                },
+                {
+                    teamId: "13",
+                    jersey: "assets/images/jersey/keeper/Everton.png",
+                    position: "GK"
+                },
+                {
+                    teamId: "251",
+                    jersey: "assets/images/jersey/keeper/Huddersfield_Town.png",
+                    position: "GK"
+                },
+                {
+                    teamId: "42",
+                    jersey: "assets/images/jersey/keeper/Leicester.png",
+                    position: "GK"
+                },
+                {
+                    teamId: "8",
+                    jersey: "assets/images/jersey/keeper/Liverpool.png",
+                    position: "GK"
+                },
+                {
+                    teamId: "9",
+                    jersey: "assets/images/jersey/keeper/Manchester_City.png",
+                    position: "GK"
+                },
+                {
+                    teamId: "14",
+                    jersey: "assets/images/jersey/keeper/Manchester_United.png",
+                    position: "GK"
+                },
+                {
+                    teamId: "20",
+                    jersey: "assets/images/jersey/keeper/Newcastle.png",
+                    position: "GK"
+                },
+                {
+                    teamId: "65",
+                    jersey: "assets/images/jersey/keeper/Southampton.png",
+                    position: "GK"
+                },
+                {
+                    teamId: "26",
+                    jersey: "assets/images/jersey/keeper/Stoke_City.png",
+                    position: "GK"
+                },
+                {
+                    teamId: "30",
+                    jersey: "assets/images/jersey/keeper/Swansea_City.png",
+                    position: "GK"
+                },
+                {
+                    teamId: "6",
+                    jersey: "assets/images/jersey/keeper/Tottenham_Hotspur.png",
+                    position: "GK"
+                },
+                {
+                    teamId: "25",
+                    jersey: "assets/images/jersey/keeper/Watford.png",
+                    position: "GK"
+                },
+                {
+                    teamId: "10",
+                    jersey: "assets/images/jersey/keeper/West_Bromwich.png",
+                    position: "GK"
+                },
+                {
+                    teamId: "1",
+                    jersey: "assets/images/jersey/keeper/West_Ham_United.png",
+                    position: "GK"
+                }
+            ];
             $scope.review = false;
             $scope.toastContent = "";
             if ($scope.matchDetails.picked) {
@@ -219,56 +259,46 @@
             } else {
                 $scope.getPlayers();
             }
-
-
         };
 
         $scope.getPlayers = function() {
             try {
-                var url = $rootScope.appConfig.baseUrl + $rootScope.appConfig.getPlayers + "/" + $scope.matchDetails.matchId;
-                fandomService.get(url).then(function(res) {
-                    if (res && res.data.status == "success") {
-                        $scope.allPlayers = res.data.data.all;
-                        for (var i = 0; i < $scope.allPlayers.length; i++) {
-                            for (var j = 0; j < $scope.matchDetails.match.lineup.length; j++) {
+                var url = $rootScope.appConfig.baseUrl + $rootScope.appConfig.getPlayersInfo + "/" + $scope.matchDetails.matchId;
+                fantumnService.get(url).then(function(res) {
+                        if (res && res.data.status == "success") {
+                            $scope.allPlayers = res.data.data;
+                            for (var i = 0; i < $scope.allPlayers.length; i++) {
                                 $scope.allPlayers[i]["status"] = false;
-                                if ($scope.allPlayers[i].id == $scope.matchDetails.match.lineup[j].playerId) {
-                                    $scope.allPlayers[i]["points"] = {
-                                        "totalPoints": $scope.matchDetails.match.lineup[j].points,
-                                        "minutesPlayed": $scope.matchDetails.match.lineup[j].minutesPlayed
-                                    };
-
-                                    if ($scope.allPlayers[i].position == 1) {
-                                        $scope.allPlayers[i]["positionPlay"] = "GK";
-                                    } else if ($scope.allPlayers[i].position == 2) {
-                                        $scope.allPlayers[i]["positionPlay"] = "DEF";
-                                    } else if ($scope.allPlayers[i].position == 3) {
-                                        $scope.allPlayers[i]["positionPlay"] = "MID";
-                                    } else {
-                                        $scope.allPlayers[i]["positionPlay"] = "FW";
-                                    }
+                                if ($scope.allPlayers[i].playerPositionId == 1) {
+                                    $scope.allPlayers[i]["positionPlay"] = "GK";
+                                    $scope.allPlayers[i]["position"] = "1";
+                                } else if ($scope.allPlayers[i].playerPositionId == 2) {
+                                    $scope.allPlayers[i]["positionPlay"] = "DEF";
+                                    $scope.allPlayers[i]["position"] = "2";
+                                } else if ($scope.allPlayers[i].playerPositionId == 3) {
+                                    $scope.allPlayers[i]["positionPlay"] = "MID";
+                                    $scope.allPlayers[i]["position"] = "3";
+                                } else {
+                                    $scope.allPlayers[i]["positionPlay"] = "FW";
+                                    $scope.allPlayers[i]["position"] = "4";
                                 }
-
                             }
-                        }
-                        $rootScope.loader = false;
-                        $scope.matchStatus = false;
-                        if ($scope.allPlayers.length >= 9) {
-                            angular.element('.allplay').addClass('cus-scroll');
+                            $rootScope.loader = false;
+                            $scope.matchStatus = false;
+                            if ($scope.allPlayers.length >= 9) {
+                                angular.element(".allplay").addClass("cus-scroll");
+                            } else {
+                                angular.element(".allplay").removeClass("cus-scroll");
+                            }
                         } else {
-                            angular.element('.allplay').removeClass('cus-scroll');
+                            $scope.historyMatch = res.data.error;
                         }
-                        $scope.forwardPlayers = res.data.data.fwd;
-                        $scope.defendPlayers = res.data.data.def;
-                        $scope.goalKeeperPlayers = res.data.data.gk;
-                        $scope.midPlayers = res.data.data.mid;
-                    } else {
-                        $scope.historyMatch = res.data.error;
+                    },
+                    function(err) {
+                        $scope.toastContent = $("<span>Something went wrong</span>").add($('<button class="btn-flat toast-action">OK</button>'));
+                        Materialize.toast($scope.toastContent, 3000);
                     }
-                }, function(err) {
-                    $scope.toastContent = $('<span>Something went wrong</span>').add($('<button class="btn-flat toast-action">OK</button>'));
-                    Materialize.toast($scope.toastContent, 3000);
-                });
+                );
             } catch (err) {
                 exceptionService.promiseRejectsAfterAWhile(err);
             }
@@ -277,113 +307,111 @@
         $scope.getLeaderBoard = function() {
             $rootScope.loader = true;
             var leaderboardUrl = $rootScope.appConfig.baseUrl + $rootScope.appConfig.rosterPlayer + "/" + $scope.userDetailInfo._id + "/" + $scope.matchDetails.matchId,
-                getPlayerUrl = $rootScope.appConfig.baseUrl + $rootScope.appConfig.getPlayers + "/" + $scope.matchDetails.matchId;
+                getPlayerUrl = $rootScope.appConfig.baseUrl + $rootScope.appConfig.getPlayersInfo + "/" + $scope.matchDetails.matchId;
             var leaderboardPromise = "",
                 getPlayerPromise = "";
             $q.all([
-                leaderboardPromise = fandomService.get(leaderboardUrl),
-                getPlayerPromise = fandomService.get(getPlayerUrl)
-            ]).then(function() {
-                leaderboardPromise.then(function(res) {
-                    if (res && res.data.status == "success") {
-                        $scope.allLineup = res.data.data.match.lineup;
-                        $scope.matchInfo = res.data.data.players;
-                        $scope.playerList = [];
-                        $scope.reviewList = [];
-                        for (var k = 0; k < $scope.matchInfo.length; k++) {
-                            for (var lineup = 0; lineup < $scope.allLineup.length; lineup++) {
-                                if ($scope.allLineup[lineup].playerId == $scope.matchInfo[k].playerId) {
-                                    $scope.playerList.push({
-                                        "colorCode": "",
-                                        "iconId": "",
-                                        "playerId": $scope.matchInfo[k].playerId,
-                                        "id": $scope.matchInfo[k].playerId,
-                                        "name": $scope.matchInfo[k].name,
-                                        "positionId": $scope.matchInfo[k].positionId,
-                                        "position": $scope.matchInfo[k].position,
-                                        "teamId": $scope.allLineup[lineup].teamId,
-                                        "status": true
-                                    });
-                                    $scope.reviewList.push({
-                                        "colorCode": "",
-                                        "iconId": "",
-                                        "playerId": $scope.matchInfo[k].playerId,
-                                        "name": $scope.matchInfo[k].name,
-                                        "positionId": $scope.matchInfo[k].positionId,
-                                        "position": $scope.matchInfo[k].position,
-                                        "teamId": $scope.allLineup[lineup].teamId,
-                                        "status": true
-                                    });
-                                    if ($scope.playerList[k].positionId == 1) {
-                                        $scope.reviewList[k]["positionPlay"] = "GK";
-                                        $scope.playerList[k]["positionPlay"] = "GK";
-                                    } else if ($scope.playerList[k].positionId == 2) {
-                                        $scope.reviewList[k]["positionPlay"] = "DEF";
-                                        $scope.playerList[k]["positionPlay"] = "DEF";
-                                    } else if ($scope.playerList[k].positionId == 3) {
-                                        $scope.reviewList[k]["positionPlay"] = "MID";
-                                        $scope.playerList[k]["positionPlay"] = "MID";
-                                    } else {
-                                        $scope.reviewList[k]["positionPlay"] = "FW";
-                                        $scope.playerList[k]["positionPlay"] = "FW";
+                    leaderboardPromise = fantumnService.get(leaderboardUrl),
+                    getPlayerPromise = fantumnService.get(getPlayerUrl)
+                ])
+                .then(function() {
+                    leaderboardPromise.then(function(res) {
+                        if (res && res.data.status == "success") {
+                            $scope.allLineup = res.data.data.match.lineup;
+                            $scope.matchInfo = res.data.data.players;
+                            $scope.playerList = [];
+                            $scope.reviewList = [];
+                            for (var k = 0; k < $scope.matchInfo.length; k++) {
+                                for (var lineup = 0; lineup < $scope.allLineup.length; lineup++) {
+                                    if ($scope.allLineup[lineup].playerId == $scope.matchInfo[k].playerId) {
+                                        $scope.playerList.push({
+                                            colorCode: "",
+                                            iconId: "",
+                                            playerId: $scope.matchInfo[k].playerId,
+                                            id: $scope.matchInfo[k].playerId,
+                                            name: $scope.matchInfo[k].name,
+                                            positionId: $scope.matchInfo[k].positionId,
+                                            position: $scope.matchInfo[k].position,
+                                            teamId: $scope.allLineup[lineup].teamId,
+                                            status: true
+                                        });
+                                        $scope.reviewList.push({
+                                            colorCode: "",
+                                            iconId: "",
+                                            playerId: $scope.matchInfo[k].playerId,
+                                            name: $scope.matchInfo[k].name,
+                                            positionId: $scope.matchInfo[k].positionId,
+                                            position: $scope.matchInfo[k].position,
+                                            teamId: $scope.allLineup[lineup].teamId,
+                                            status: true
+                                        });
+                                        if ($scope.playerList[k].positionId == 1) {
+                                            $scope.reviewList[k]["positionPlay"] = "GK";
+                                            $scope.playerList[k]["positionPlay"] = "GK";
+                                        } else if ($scope.playerList[k].positionId == 2) {
+                                            $scope.reviewList[k]["positionPlay"] = "DEF";
+                                            $scope.playerList[k]["positionPlay"] = "DEF";
+                                        } else if ($scope.playerList[k].positionId == 3) {
+                                            $scope.reviewList[k]["positionPlay"] = "MID";
+                                            $scope.playerList[k]["positionPlay"] = "MID";
+                                        } else {
+                                            $scope.reviewList[k]["positionPlay"] = "FW";
+                                            $scope.playerList[k]["positionPlay"] = "FW";
+                                        }
                                     }
                                 }
                             }
                         }
-
-                    }
-                    $scope.matchStatus = true;
-                    $scope.goalKeep = 2, $scope.defPlayer = 5, $scope.midPlayer = 4, $scope.fwdPlayer = 4;
-                    for (var playerList = 0; playerList < $scope.reviewList.length; playerList++) {
-                        if ($scope.reviewList[playerList].positionPlay === "GK") {
-                            for (var j = 0; j < $scope.goalKeeJersey.length; j++) {
-                                if ($scope.reviewList[playerList].teamId == $scope.goalKeeJersey[j].teamId) {
-                                    $scope.reviewList[playerList]["image"] = $scope.goalKeeJersey[j].jersey;
+                        $scope.matchStatus = true;
+                        $scope.goalKeep = 2,
+                            $scope.defPlayer = 5,
+                            $scope.midPlayer = 4,
+                            $scope.fwdPlayer = 4;
+                        for (var playerList = 0; playerList < $scope.reviewList.length; playerList++) {
+                            if ($scope.reviewList[playerList].positionPlay === "GK") {
+                                for (var j = 0; j < $scope.goalKeeJersey.length; j++) {
+                                    if ($scope.reviewList[playerList].teamId == $scope.goalKeeJersey[j].teamId) {
+                                        $scope.reviewList[playerList]["image"] = $scope.goalKeeJersey[j].jersey;
+                                    }
                                 }
-                            }
-                        } else {
-                            for (var i = 0; i < $scope.teamJerSey.length; i++) {
-                                if ($scope.reviewList[playerList].teamId == $scope.teamJerSey[i].teamId) {
-                                    $scope.reviewList[playerList]["image"] = $scope.teamJerSey[i].jersey;
+                            } else {
+                                for (var i = 0; i < $scope.teamJerSey.length; i++) {
+                                    if ($scope.reviewList[playerList].teamId == $scope.teamJerSey[i].teamId) {
+                                        $scope.reviewList[playerList]["image"] =
+                                            $scope.teamJerSey[i].jersey;
+                                    }
                                 }
                             }
                         }
-                    }
-
+                    });
+                    getPlayerPromise.then(function(res) {
+                        if (res && res.data.status == "success") {
+                            $scope.allPlayers = res.data.data;
+                            $rootScope.loader = false;
+                            for (var i = 0; i < $scope.allPlayers.length; i++) {
+                                if ($scope.allPlayers[i].playerPositionId == 1) {
+                                    $scope.allPlayers[i]["positionPlay"] = "GK";
+                                    $scope.allPlayers[i]["position"] = "1";
+                                } else if ($scope.allPlayers[i].playerPositionId == 2) {
+                                    $scope.allPlayers[i]["positionPlay"] = "DEF";
+                                    $scope.allPlayers[i]["position"] = "2";
+                                } else if ($scope.allPlayers[i].playerPositionId == 3) {
+                                    $scope.allPlayers[i]["positionPlay"] = "MID";
+                                    $scope.allPlayers[i]["position"] = "3";
+                                } else {
+                                    $scope.allPlayers[i]["positionPlay"] = "FW";
+                                    $scope.allPlayers[i]["position"] = "4";
+                                }
+                            }
+                            if ($scope.allPlayers.length >= 9) {
+                                angular.element(".allplay").addClass("cus-scroll");
+                            } else {
+                                angular.element(".allplay").removeClass("cus-scroll");
+                            }
+                            filterArray($scope.allPlayers, $scope.playerList);
+                        }
+                    });
                 });
-                getPlayerPromise.then(function(res) {
-                    if (res && res.data.status == "success") {
-                        $scope.allPlayers = res.data.data.all;
-                        $rootScope.loader = false;
-                        for (var i = 0; i < $scope.allPlayers.length; i++) {
-                            for (var j = 0; j < $scope.matchDetails.match.lineup.length; j++) {
-                                if ($scope.allPlayers[i].id == $scope.matchDetails.match.lineup[j].playerId) {
-                                    $scope.allPlayers[i]["points"] = {
-                                        "totalPoints": $scope.matchDetails.match.lineup[j].points,
-                                        "minutesPlayed": $scope.matchDetails.match.lineup[j].minutesPlayed
-                                    };
-                                    if ($scope.allPlayers.length >= 9) {
-                                        angular.element('.allplay').addClass('cus-scroll');
-                                    } else {
-                                        angular.element('.allplay').removeClass('cus-scroll');
-                                    }
-                                    if ($scope.allPlayers[i].position == 1) {
-                                        $scope.allPlayers[i]["positionPlay"] = "GK";
-                                    } else if ($scope.allPlayers[i].position == 2) {
-                                        $scope.allPlayers[i]["positionPlay"] = "DEF";
-                                    } else if ($scope.allPlayers[i].position == 3) {
-                                        $scope.allPlayers[i]["positionPlay"] = "MID";
-                                    } else {
-                                        $scope.allPlayers[i]["positionPlay"] = "FW";
-                                    }
-                                }
-                            }
-                        }
-                        filterArray($scope.allPlayers, $scope.playerList);
-                    }
-                });
-
-            });
         };
         $scope.navigateTab = function(tabName) {
             try {
@@ -400,28 +428,27 @@
         $scope.slider = function(slideName) {
             if (slideName === "prev") {
                 if ($scope.playerTab === "all") {
-                    $scope.navigateTab('gk');
+                    $scope.navigateTab("gk");
                 } else if ($scope.playerTab === "def") {
-                    $scope.navigateTab('all');
+                    $scope.navigateTab("all");
                 } else if ($scope.playerTab === "mid") {
-                    $scope.navigateTab('def');
+                    $scope.navigateTab("def");
                 } else if ($scope.playerTab === "fk") {
-                    $scope.navigateTab('mid');
+                    $scope.navigateTab("mid");
                 } else if ($scope.playerTab === "gk") {
-                    $scope.navigateTab('fk');
+                    $scope.navigateTab("fk");
                 }
-
             } else {
                 if ($scope.playerTab === "all") {
-                    $scope.navigateTab('def');
+                    $scope.navigateTab("def");
                 } else if ($scope.playerTab === "def") {
-                    $scope.navigateTab('mid');
+                    $scope.navigateTab("mid");
                 } else if ($scope.playerTab === "mid") {
-                    $scope.navigateTab('fk');
+                    $scope.navigateTab("fk");
                 } else if ($scope.playerTab === "fk") {
-                    $scope.navigateTab('gk');
+                    $scope.navigateTab("gk");
                 } else if ($scope.playerTab === "gk") {
-                    $scope.navigateTab('all');
+                    $scope.navigateTab("all");
                 }
             }
         };
@@ -435,7 +462,7 @@
                         if ($scope.goalKeep == 1) {
                             $scope.playerList.push(player);
                             $scope.reviewPush(player);
-                            $scope.findStatus(player.id);
+                            $scope.findStatus(player.playerId);
                             $scope.goalKeep++;
                         } else {
                             $scope.toastContent = $('<span>Selected one Goal keeper already</span><button class="btn-flat toast-action">OK</button>');
@@ -446,29 +473,30 @@
                             if ($scope.defPlayer == 4) {
                                 for (var i = 0; i < $scope.playerList.length; i++) {
                                     if ($scope.playerList[i].position == "2") {
-                                        if (player.teamId == $scope.playerList[i].teamId) {
-                                            defTeam.push($scope.playerList[i].teamId);
+                                        if (player.playerDetails.teamId == $scope.playerList[i].playerDetails.teamId) {
+                                            defTeam.push($scope.playerList[i].playerDetails.teamId);
                                         }
                                     }
                                 }
                                 if (defTeam.length == 3) {
                                     $scope.defPlayer--;
-                                    $scope.toastContent = $('<span>Cannot select 4 defenders same team</span>').add($('<button class="btn-flat toast-action">OK</button>'));
+                                    $scope.toastContent = $("<span>Cannot select 4 defenders same team</span>").add($('<button class="btn-flat toast-action">OK</button>'));
                                     Materialize.toast($scope.toastContent, 3000);
                                 } else {
                                     $scope.playerList.push(player);
                                     $scope.reviewPush(player);
-                                    $scope.findStatus(player.id);
+                                    $scope.findStatus(player.playerId);
+                                    $rootScope.playerListData = $scope.playerList;
                                 }
                             } else {
-
                                 $scope.playerList.push(player);
                                 $scope.reviewPush(player);
-                                $scope.findStatus(player.id);
+                                $scope.findStatus(player.playerId);
+                                $rootScope.playerListData = $scope.playerList;
                             }
                             $scope.defPlayer++;
                         } else {
-                            $scope.toastContent = $('<span>Selected 4 defenders already</span>').add($('<button class="btn-flat toast-action">OK</button>'));
+                            $scope.toastContent = $("<span>Selected 4 defenders already</span>").add($('<button class="btn-flat toast-action">OK</button>'));
                             Materialize.toast($scope.toastContent, 3000);
                         }
                     } else if (player.position === "3") {
@@ -476,28 +504,30 @@
                             if ($scope.midPlayer == 3) {
                                 for (var mid = 0; mid < $scope.playerList.length; mid++) {
                                     if ($scope.playerList[mid].position == "3") {
-                                        if (player.teamId == $scope.playerList[mid].teamId) {
-                                            midTeam.push($scope.playerList[mid].teamId);
+                                        if (player.playerDetails.teamId == $scope.playerList[mid].playerDetails.teamId) {
+                                            midTeam.push($scope.playerList[mid].playerDetails.teamId);
                                         }
                                     }
                                 }
                                 if (midTeam.length == 2) {
                                     $scope.midPlayer--;
-                                    $scope.toastContent = $('<span>Cannot select 3 midFielders same team</span>').add($('<button class="btn-flat toast-action">OK</button>'));
+                                    $scope.toastContent = $("<span>Cannot select 3 midFielders same team</span>").add($('<button class="btn-flat toast-action">OK</button>'));
                                     Materialize.toast($scope.toastContent, 3000);
                                 } else {
                                     $scope.playerList.push(player);
                                     $scope.reviewPush(player);
-                                    $scope.findStatus(player.id);
+                                    $scope.findStatus(player.playerId);
+                                    $rootScope.playerListData = $scope.playerList;
                                 }
                             } else {
                                 $scope.playerList.push(player);
                                 $scope.reviewPush(player);
-                                $scope.findStatus(player.id);
+                                $scope.findStatus(player.playerId);
+                                $rootScope.playerListData = $scope.playerList;
                             }
                             $scope.midPlayer++;
                         } else {
-                            $scope.toastContent = $('<span>Selected 3 midfielders already</span>').add($('<button class="btn-flat toast-action">OK</button>'));
+                            $scope.toastContent = $("<span>Selected 3 midfielders already</span>").add($('<button class="btn-flat toast-action">OK</button>'));
                             Materialize.toast($scope.toastContent, 3000);
                         }
                     } else {
@@ -505,40 +535,40 @@
                             if ($scope.fwdPlayer == 3) {
                                 for (var fw = 0; fw < $scope.playerList.length; fw++) {
                                     if ($scope.playerList[fw].position == "4") {
-                                        if (player.teamId == $scope.playerList[fw].teamId) {
-                                            fkTeam.push($scope.playerList[fw].teamId);
+                                        if (player.playerDetails.teamId == $scope.playerList[fw].playerDetails.teamId) {
+                                            fkTeam.push($scope.playerList[fw].playerDetails.teamId);
                                         }
                                     }
                                 }
                                 if (fkTeam.length == 2) {
                                     $scope.fwdPlayer--;
-                                    $scope.toastContent = $('<span>Cannot select 3 forward players same team</span>').add($('<button class="btn-flat toast-action">OK</button>'));
+                                    $scope.toastContent = $("<span>Cannot select 3 forward players same team</span>").add($('<button class="btn-flat toast-action">OK</button>'));
                                     Materialize.toast($scope.toastContent, 3000);
                                 } else {
                                     $scope.playerList.push(player);
                                     $scope.reviewPush(player);
-                                    $scope.findStatus(player.id);
+                                    $scope.findStatus(player.playerId);
+                                    $rootScope.playerListData = $scope.playerList;
                                 }
                             } else {
-
                                 $scope.playerList.push(player);
                                 $scope.reviewPush(player);
-                                $scope.findStatus(player.id);
+                                $scope.findStatus(player.playerId);
+                                $rootScope.playerListData = $scope.playerList;
                             }
                             $scope.fwdPlayer++;
                         } else {
-                            $scope.toastContent = $('<span>Selected 3 forward already</span>').add($('<button class="btn-flat toast-action">OK</button>'));
+                            $scope.toastContent = $("<span>Selected 3 forward already</span>").add($('<button class="btn-flat toast-action">OK</button>'));
                             Materialize.toast($scope.toastContent, 3000);
                         }
-
                     }
                 } else {
-                    $scope.toastContent = $('<span>Selected 11 players already</span>').add($('<button class="btn-flat toast-action">OK</button>'));
+                    $scope.toastContent = $("<span>Selected 11 players already</span>").add($('<button class="btn-flat toast-action">OK</button>'));
                     Materialize.toast($scope.toastContent, 3000);
                 }
             } else {
                 for (var j = 0; j < $scope.allPlayers.length; j++) {
-                    if (player.id == $scope.allPlayers[j].id) {
+                    if (player.playerId == $scope.allPlayers[j].playerId) {
                         $scope.allPlayers[j].status = false;
                     }
                 }
@@ -552,7 +582,7 @@
                     $scope.fwdPlayer--;
                 }
                 for (var playerLength = 0; playerLength < $scope.playerList.length; playerLength++) {
-                    if ($scope.playerList[playerLength].id == player.id) {
+                    if ($scope.playerList[playerLength].playerId == player.playerId) {
                         $scope.playerList.splice(playerLength, 1);
                         $scope.reviewList.splice(playerLength, 1);
                     }
@@ -566,45 +596,45 @@
                 var url = $rootScope.appConfig.baseUrl + $rootScope.appConfig.createMatch;
                 var players = [];
                 for (var i = 0; i < $scope.playerList.length; i++) {
-                    players.push($scope.playerList[i].id);
+                    players.push($scope.playerList[i].playerId);
                 }
                 var model = {
-                    "username": $scope.userInfo.username,
-                    "matchId": $scope.matchDetails.matchId,
-                    "players": players
+                    username: $scope.userInfo.username,
+                    matchId: $scope.matchDetails.matchId,
+                    players: players
                 };
-                fandomService.post(url, model).then(function(res) {
-                    if (res && res.data.status == "success") {
-                        $rootScope.loader = false;
-                        if (res.data.error == "") {
-                            $scope.getUpcomingMatch();
-                            if (!$scope.matchStatus) {
-                                $commons.showSuccess('#successModal', "Successfully Create New team !", true);
+                fantumnService.post(url, model).then(function(res) {
+                        if (res && res.data.status == "success") {
+                            $rootScope.loader = false;
+                            if (res.data.error == "") {
+                                $rootScope.playerListData = [];
+                                $scope.getUpcomingMatch();
+                                if (!$scope.matchStatus) {
+                                    $commons.showSuccess("#successModal", "Successfully Create New team !", true);
+                                    $scope.matchStatus = true;
+                                } else {
+                                    $commons.showSuccess("#successModal", "Successfully Update team !", true);
+                                }
                                 $scope.matchStatus = true;
                             } else {
-                                $commons.showSuccess('#successModal', "Successfully Update team !", true);
+                                $scope.toastContent = $("<span>" + res.data.error + "</span>").add($('<button class="btn-flat toast-action">OK</button>'));
+                                Materialize.toast($scope.toastContent, 3000);
                             }
-                            $scope.matchStatus = true;
-                        } else {
-                            $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action">OK</button>'));
-                            Materialize.toast($scope.toastContent, 3000);
-                        }
-
-                    } else {
-
+                        } else {}
+                    },
+                    function(err) {
+                        $commons.showError("#errorModal", err, true);
                     }
-                }, function(err) {
-                    $commons.showError('#errorModal', err, true);
-                });
+                );
             } else {
-                $scope.toastContent = $('<span> Please Select 11 Players in Team</span>').add($('<button class="btn-flat toast-action">OK</button>'));
+                $scope.toastContent = $("<span> Please Select 11 Players in Team</span>").add($('<button class="btn-flat toast-action">OK</button>'));
                 Materialize.toast($scope.toastContent, 3000);
             }
         };
 
         $scope.findStatus = function(player) {
             for (var statusArray = 0; statusArray < $scope.allPlayers.length; statusArray++) {
-                if (player == $scope.allPlayers[statusArray].id) {
+                if (player == $scope.allPlayers[statusArray].playerId) {
                     $scope.allPlayers[statusArray].status = true;
                 }
             }
@@ -613,16 +643,18 @@
         $scope.reviewPush = function(player) {
             if (player.positionPlay === "GK") {
                 for (var j = 0; j < $scope.goalKeeJersey.length; j++) {
-                    if (player.teamId == $scope.goalKeeJersey[j].teamId) {
+                    if (player.playerDetails.teamId == $scope.goalKeeJersey[j].teamId) {
                         $scope.reviewList.push(player);
                         $scope.reviewList[$scope.reviewList.length - 1]["image"] = $scope.goalKeeJersey[j].jersey;
+                        $scope.reviewList[$scope.reviewList.length - 1]["name"] = $scope.reviewList[$scope.reviewList.length - 1].playerName;
                     }
                 }
             } else {
                 for (var i = 0; i < $scope.teamJerSey.length; i++) {
-                    if (player.teamId == $scope.teamJerSey[i].teamId) {
+                    if (player.playerDetails.teamId == $scope.teamJerSey[i].teamId) {
                         $scope.reviewList.push(player);
                         $scope.reviewList[$scope.reviewList.length - 1]["image"] = $scope.teamJerSey[i].jersey;
+                        $scope.reviewList[$scope.reviewList.length - 1]["name"] = $scope.reviewList[$scope.reviewList.length - 1].playerName;
                     }
                 }
             }
@@ -632,28 +664,25 @@
         $scope.reviewTeam = function() {
             if ($scope.playerList.length > 0) {
                 $scope.review = true;
-                $scope.defReview = $filter('filter')($scope.reviewList, "DEF");
-                $scope.midReview = $filter('filter')($scope.reviewList, "MID");
-                $scope.fwReview = $filter('filter')($scope.reviewList, "FW");
-                $scope.gkReview = $filter('filter')($scope.reviewList, "GK");
+                $scope.defReview = $filter("filter")($scope.reviewList, "DEF");
+                $scope.midReview = $filter("filter")($scope.reviewList, "MID");
+                $scope.fwReview = $filter("filter")($scope.reviewList, "FW");
+                $scope.gkReview = $filter("filter")($scope.reviewList, "GK");
             } else {
                 $scope.review = false;
-                $scope.toastContent = $('<span>Please select players</span>').add($('<button class="btn-flat toast-action">OK</button>'));
+                $scope.toastContent = $("<span>Please select players</span>").add($('<button class="btn-flat toast-action">OK</button>'));
                 Materialize.toast($scope.toastContent, 3000);
             }
-
         };
 
         $scope.reviewClose = function() {
             $scope.review = false;
         };
 
-
-
         function filterArray(array, filter) {
             for (var i = 0; i < array.length; i++) {
                 for (var j = 0; j < filter.length; j++) {
-                    if (array[i].id === filter[j].playerId && array[i].id === filter[j].playerId) {
+                    if (array[i].playerId === filter[j].playerId && array[i].playerId === filter[j].playerId) {
                         $scope.allPlayers[i]["status"] = true;
                     }
                 }
@@ -663,9 +692,8 @@
 
         $scope.socialShare = function(social) {
             var element = angular.element("#snapshot");
-            element.css({ "display": "block" });
+            element.css({ display: "block" });
             var getCanvas;
-
             html2canvas(element, {
                 onrendered: function(canvas) {
                     $("#img-out").append(canvas);
@@ -678,24 +706,31 @@
                         // $("#fbShare").attr("socialshare-media", metaField);
                         // $("#fbShare").attr('socialshare-url', "http://www.fantumn.com");
                         FB.ui({
-                            method: 'feed',
-                            name: 'Name you want to show',
-                            link: 'http://link-you-want-to-show',
-                            picture: '<meta og:image content="' + imgageData + '"/>',
-                            caption: 'Caption you want to show',
-                            description: "My Fantumn XI line up for the match. Match details" + $scope.matchDetails.home + " VS " + $scope.matchDetails.away,
-                            message: 'Message you want to show'
-                        }, function(res) {
-                            console.log(res);
-                        }, function(error) {
-                            console.log(error);
-                        });
+                                method: "feed",
+                                name: "Name you want to show",
+                                link: "http://link-you-want-to-show",
+                                picture: '<meta og:image content="' + imgageData + '"/>',
+                                caption: "Caption you want to show",
+                                description: "My Fantumn XI line up for the match. Match details" +
+                                    $scope.matchDetails.home +
+                                    " VS " +
+                                    $scope.matchDetails.away,
+                                message: "Message you want to show"
+                            },
+                            function(res) {
+                                console.log(res);
+                            },
+                            function(error) {
+                                console.log(error);
+                            }
+                        );
                         // document.getElementById('fbShare').click();
                     } else if (social === "twitter") {
-                        $("#twitterShare").attr("socialshare-text", "My Fantumn XI line up for the match. Match details" + $scope.matchDetails.home + " VS " + $scope.matchDetails.away);
-                        $("#twitterShare").attr("socialshare-url", imgageData);
-                        document.getElementById("twitterShare").click();
+                        // $("#twitterShare").attr("socialshare-text", "My Fantumn XI line up for the match. Match details" + $scope.matchDetails.home + " VS " + $scope.matchDetails.away);
+                        // $("#twitterShare").attr("socialshare-url", imgageData);
+                        // document.getElementById("twitterShare").click();
                     } else if (social == "download") {
+                        $rootScope.loader = true;
                         $scope.downloaUri = imgageData;
                         $("#downloadPitch").attr("href", imgageData);
                         $("#downloadPitch").attr("download", $scope.matchDetails.home + " VS " + $scope.matchDetails.away);
@@ -710,33 +745,43 @@
                         //     }
                         // });
                     }
-                    element.css({ "display": "none" });
+                    element.css({
+                        display: "none"
+                    });
+                    $rootScope.loader = false;
                 }
             });
-
         };
 
         $scope.teamSort = function(event) {
-            if (angular.element(".sort").hasClass('active')) {
-                angular.element(".sort").removeClass('active');
-                angular.element(".sort").find("img").css({ "transform": "rotate(180deg)" });
-                $scope.orderAll = "-teamId";
+            if (angular.element(".sort").hasClass("active")) {
+                angular.element(".sort").removeClass("active");
+                angular.element(".sort").find("img").css({
+                    transform: "rotate(180deg)"
+                });
+                $scope.orderAll = "-playerDetails.teamId";
             } else {
-                angular.element(".sort").addClass('active');
-                angular.element(".sort").find("img").css({ "transform": "rotate(0deg)" });
-                $scope.orderAll = "teamId";
+                angular.element(".sort").addClass("active");
+                angular.element(".sort").find("img").css({
+                    transform: "rotate(0deg)"
+                });
+                $scope.orderAll = "playerDetails.teamId";
             }
         };
 
         $scope.playerSort = function(event) {
-            if (angular.element(".playerSort").hasClass('active')) {
-                angular.element(".playerSort").removeClass('active');
-                angular.element(".playerSort").find("img").css({ "transform": "rotate(180deg)" });
-                $scope.orderAll = "-name";
+            if (angular.element(".playerSort").hasClass("active")) {
+                angular.element(".playerSort").removeClass("active");
+                angular.element(".playerSort").find("img").css({
+                    transform: "rotate(180deg)"
+                });
+                $scope.orderAll = "-playerName";
             } else {
-                angular.element(".playerSort").addClass('active');
-                angular.element(".playerSort").find("img").css({ "transform": "rotate(0deg)" });
-                $scope.orderAll = "name";
+                angular.element(".playerSort").addClass("active");
+                angular.element(".playerSort").find("img").css({
+                    transform: "rotate(0deg)"
+                });
+                $scope.orderAll = "playerName";
             }
         };
 
@@ -745,16 +790,20 @@
                 $scope.matchDetails = JSON.parse(window.sessionStorage.match);
                 $scope.countdown = $scope.matchDetails.starts;
                 $scope.home = {
-                    "id": $scope.matchDetails.teams.team1.teamId,
-                    "name": $scope.matchDetails.teams.team1.name
+                    id: $scope.matchDetails.teams.team1.teamId,
+                    name: $scope.matchDetails.teams.team1.name
                 };
                 $scope.away = {
-                    "id": $scope.matchDetails.teams.team2.teamId,
-                    "name": $scope.matchDetails.teams.team2.name
+                    id: $scope.matchDetails.teams.team2.teamId,
+                    name: $scope.matchDetails.teams.team2.name
                 };
-                $scope.playerTab = 'all';
-                $scope.goalKeep = 1, $scope.defPlayer = 1, $scope.midPlayer = 1, $scope.fwdPlayer = 1;
-                $scope.playerList = [], $scope.reviewList = [];
+                $scope.playerTab = "all";
+                $scope.goalKeep = 1,
+                    $scope.defPlayer = 1,
+                    $scope.midPlayer = 1,
+                    $scope.fwdPlayer = 1;
+                $scope.playerList = [],
+                    $scope.reviewList = [];
                 $scope.review = false;
                 if ($scope.matchDetails.picked) {
                     $scope.getLeaderBoard();
@@ -765,8 +814,5 @@
         });
 
         $scope.initFunction();
-
-
-
     }
-}(window, angular);
+})(window, angular);

@@ -9,14 +9,13 @@
  *  1.0         14-10-2017    Patharraj     File Created
  */
 
-angular.module("fandom", [
+angular.module("fantumn", [
     "ui.router",
     "ngCookies",
     "logger",
     "helpers",
     "angularMoment",
     "720kb.datepicker",
-    "naif.base64",
     "720kb.socialshare",
     "angular-md5"
 ]).config([
@@ -29,7 +28,7 @@ angular.module("fandom", [
 
 
         $urlRouterProvider.otherwise("/layout/dashboard");
-        angular.module("fandom").registerCtrl = $controllerProvider.register;
+        angular.module("fantumn").registerCtrl = $controllerProvider.register;
         /*    $httpProvider.defaults.cache = !0;
             $httpProvider.defaults.withCredentials = true;
 
@@ -240,7 +239,7 @@ function config($rootScope, $state, $window, $http) {
 
     // $rootScope.appConfig = appConfig;
 }
-angular.module("fandom").filter('startFrom', function() {
+angular.module("fantumn").filter('startFrom', function() {
     return function(input, start) {
         start = +start; //parse to int
         if (input)

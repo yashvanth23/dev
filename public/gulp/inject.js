@@ -66,7 +66,6 @@ gulp.task('inject', ['scripts', 'styles'], function() {
         path.join(conf.paths.dist, '/scripts/shared/js/materialize.min.js'),
         path.join(conf.paths.dist, '/scripts/shared/js/angular-materialize.min.js'),
         path.join(conf.paths.dist, '/scripts/shared/js/moment.js'),
-        path.join(conf.paths.dist, '/scripts/shared/js/angular-base64-upload.js'),
         path.join(conf.paths.dist, '/scripts/shared/js/angular-socialshare.min.js'),
         path.join(conf.paths.dist, '/scripts/shared/js/angular-moment.js'),
         path.join(conf.paths.dist, '/scripts/shared/js/angular-datepicker.js'),
@@ -77,7 +76,8 @@ gulp.task('inject', ['scripts', 'styles'], function() {
         path.join(conf.paths.dist, 'scripts/shared/common/*.js'),
         path.join(conf.paths.dist, 'scripts/shared/vendor/angular-cookies.min.js'),
         path.join(conf.paths.dist, 'scripts/shared/js/html2canvas.js'),
-        path.join(conf.paths.dist, 'scripts/shared/js/dom-to-image.min.js')
+        path.join(conf.paths.dist, 'scripts/shared/js/ng-file-upload-shim.js'),
+        path.join(conf.paths.dist, 'scripts/shared/js/ng-file-upload.js')
     ], {
         read: false
     });

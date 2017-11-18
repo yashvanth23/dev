@@ -19,12 +19,12 @@
 + function(window, angular) {
     'use strict';
     angular
-        .module("fandom")
+        .module("fantumn")
         .registerCtrl('rulesCtrl', rulesCtrl);
-    rulesCtrl.$inject = ["$scope", "$rootScope", "$commons", "$logger", "fandomService", "exceptionService", "$window", "$filter"];
+    rulesCtrl.$inject = ["$scope", "$rootScope", "$commons", "$logger", "fantumnService", "exceptionService", "$window", "$filter"];
 
 
-    function rulesCtrl($scope, $rootScope, $commons, $logger, fandomService, exceptionService, $window, $filter) {
+    function rulesCtrl($scope, $rootScope, $commons, $logger, fantumnService, exceptionService, $window, $filter) {
 
         $scope.initFunction = function() {
             $scope.privacyTab = "rules";

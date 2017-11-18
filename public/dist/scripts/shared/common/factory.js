@@ -59,7 +59,7 @@ function TokenInterceptor($q, $window, $rootScope, $location, $injector) {
     };
 }
 
-function accessToken(fandomService, $rootScope, $injector, modalFactory, $q, $window) {
+function accessToken(fantumnService, $rootScope, $injector, modalFactory, $q, $window) {
     var service = {};
     var exceptionService = $injector.get('exceptionService');
     service.getToken = function() {
@@ -79,7 +79,7 @@ function accessToken(fandomService, $rootScope, $injector, modalFactory, $q, $wi
             $window.sessionStorage.tokenAPI = 'accessToken';
         }
 
-        fandomService.post(url, model).then(function(res) {
+        fantumnService.post(url, model).then(function(res) {
             //logger.info("URL: " + url + ", Response Data Length: " + res.data.length);
             if (res.success) {
                 $window.sessionStorage.authToken = res.accessToken;
@@ -176,7 +176,7 @@ function exceptionService($q, $http, $timeout) {
 }
 
 // using to show all messages in modal popup
-function fandomAlert($uibModal) {
+function fantumnAlert($uibModal) {
     var service = {};
     service.open = function(templateUrl, alert_header, alert_message, isdelete, entity, viewId, isremove, size) {
         var modalInstance = $uibModal.open({
@@ -204,9 +204,9 @@ function fandomAlert($uibModal) {
 }
 
 
-angular.module('fandom')
+angular.module('fantumn')
     .factory('TokenInterceptor', TokenInterceptor)
     .factory('modalFactory', modalFactory)
     .factory('exceptionService', exceptionService)
     .factory('accessToken', accessToken)
-    .factory('fandomAlert', fandomAlert)
+    .factory('fantumnAlert', fantumnAlert)

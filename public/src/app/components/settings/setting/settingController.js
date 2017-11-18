@@ -19,13 +19,11 @@
 + function(window, angular) {
     'use strict';
     angular
-        .module("fandom")
+        .module("fantumn")
         .registerCtrl('settingCtrl', settingCtrl);
-    settingCtrl.$inject = ["$scope", "$rootScope", "$commons", "$logger", "fandomService", "exceptionService"];
+    settingCtrl.$inject = ["$scope", "$rootScope", "$commons", "$logger", "fantumnService", "exceptionService", "$http"];
 
-
-    function settingCtrl($scope, $rootScope, $commons, $logger, fandomService, exceptionService) {
-
+    function settingCtrl($scope, $rootScope, $commons, $logger, fantumnService, exceptionService, $http) {
         $scope.initFunction = function() {
             $scope.userData = JSON.parse(window.sessionStorage.userDetail);
             $scope.settingDrop = false;
@@ -49,8 +47,9 @@
                 "country": "",
                 "avatar": ""
             };
+            $scope.file = "";
             if ($scope.userData.social_auth) {
-                if ($scope.userData.facebook.facebook_id != "") {
+                if ($scope.userData.facebook.social_id != null) {
                     $scope.profileInfo.avatar = $scope.userData.facebook.profile;
                 } else {
                     $scope.profileInfo.avatar = $scope.userData.google.imgUrl;
@@ -59,9 +58,7 @@
                 $scope.profileInfo.avatar = $scope.userData.avatar;
             }
 
-            // $scope.inlineStyle = {
-            //     background: "url($scope.profileInfo.avatar+)"
-            // };
+            $scope.profileUpload = false;
             $scope.customError = false;
             $scope.getProfileInformation();
         };
@@ -69,7 +66,7 @@
 
         $scope.getProfileInformation = function() {
             var url = $rootScope.appConfig.baseUrl + $rootScope.appConfig.profile + "/" + $scope.userData._id;
-            fandomService.get(url).then(function(res) {
+            fantumnService.get(url).then(function(res) {
                 $rootScope.loader = false;
                 if (res && res.data.status == "success") {
                     $scope.profile = res.data.data;
@@ -96,11 +93,14 @@
         $scope.updateProfile = function(valid) {
             $scope.submitForm = true;
             var controlSubmit = false;
-            if ($scope.profileInfo.gender != "") {
-                $scope.genderError = false;
+            if ($scope.profileInfo.gender == "") {
+                $scope.genderError = true;
+                controlSubmit = false;
+            } else if ($scope.profileInfo.gender == undefined) {
+                $scope.genderError = true;
                 controlSubmit = false;
             } else {
-                $scope.genderError = true;
+                $scope.genderError = false;
                 controlSubmit = true;
             }
 
@@ -121,19 +121,20 @@
                     },
                     "pushNotification": $scope.profileInfo.notification
                 };
-                fandomService.post(url, model).then(function(res) {
+                fantumnService.post(url, model).then(function(res) {
                     $rootScope.loader = false;
                     if (res && res.data.status == "success") {
                         $scope.profile = res.data.data;
                         $scope.submitForm = false;
                         $commons.showError('#successModal', "Profile Updated Successfully", true);
                         $scope.getProfileInformation();
+                        $scope.enableProfile();
                     } else {
-                        $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                        $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action">OK</button>'));
                         Materialize.toast($scope.toastContent, 3000);
                     }
                 }, function(err) {
-                    $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                    $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action">OK</button>'));
                     Materialize.toast($scope.toastContent, 3000);
                 });
             }
@@ -148,9 +149,65 @@
             $scope.settingDrop = false;
         };
 
-        $scope.addProfile = function() {
-            document.getElementById('avatar').click();
+        $scope.uploadAvatar = function(upload) {
+            if ($scope.file != "") {
+                var url = $rootScope.appConfig.baseUrl + $rootScope.appConfig.uploadProfileImage;
+                var file = [];
+                file.push($scope.file);
+                var model = {
+                    "file": $scope.file.name,
+                    "username": $scope.userData.username,
+                    "type": "image",
+                    "viewport": "desktop"
+                };
+                console.log(model);
+                fantumnService.post(url, model).then(function(res) {
+                    $rootScope.loader = false;
+                    if (res && res.data.status == "success") {
+                        $commons.showSuccess('#successModal', "Profile Picture Uploaded Successfully", true);
+                        $scope.profileUpload = false;
+                    } else {
+                        $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                        Materialize.toast($scope.toastContent, 3000);
+                    }
+                }, function(err) {
+                    $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                    Materialize.toast($scope.toastContent, 3000);
+                });
+            } else {
+                $scope.toastContent = $('<span> Please Upload Profile Picture</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                Materialize.toast($scope.toastContent, 3000);
+            }
         };
+        $scope.addProfile = function() {
+            if ($scope.profileEdit) {
+                document.getElementById('avatar').click();
+            }
+        };
+
+        $("#avatar").change(function() {
+            readURL(this);
+        });
+
+        function readURL(input) {
+            alert("wewew");
+            console.log(input);
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $scope.file = input.files[0];
+                    angular.element("#proPic").css({ "background-image": "url(" + e.target.result + ")" });
+                    $scope.picture = e.target.result;
+                    $scope.profileInfo.avatar = e.target.result;
+                    $scope.profileUpload = true;
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        };
+
+
+
 
         $scope.onLoad = function(e, reader, file, fileList, fileOjects, fileObj) {
             try {
@@ -159,9 +216,12 @@
 
                 } else {
                     if (fileObj && fileObj.filetype && fileObj.filetype.split("/")[0] == "image") {
-                        $scope.picture = fileObj;
+                        alert($scope.profilePic);
+                        $scope.file = $scope.profilePic;
+                        $scope.picture = fileObj.base64;
                         $scope.profileBase = fileObj.base64;
-                        $scope.profileInfo.avatar = fileObj.base64;
+                        $scope.profileInfo.avatar = $scope.profileBase;
+                        $scope.profileUpload = true;
                         // $scope.inlineStyle = {
                         //     background: url($scope.profileBase)
                         // };
@@ -184,12 +244,12 @@
                     "oldPassword": $scope.changePass.oldPass,
                     "newPassword": $scope.changePass.newPass
                 };
-                fandomService.post(url, model).then(function(res) {
+                fantumnService.post(url, model).then(function(res) {
                     $rootScope.loader = false;
                     if (res && res.data.status == "success") {
                         $scope.passwordChange = false;
                         console.log(res.data.data);
-                        $commons.showError('#successModal', "Password Changed Successfully", true);
+                        $commons.showSuccess('#successModal', "Password Changed Successfully", true);
                     } else {
                         $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                         Materialize.toast($scope.toastContent, 3000);
@@ -210,6 +270,7 @@
                 angular.element('.setting-profile').addClass('edit');
             }
         };
+
         $scope.initFunction();
 
     }

@@ -1,1 +1,1 @@
-+function(n,o){"use strict";function i(n,o,i,t,e,c,r,u){n.initFunction=function(){},n.initFunction()}o.module("fandom").registerCtrl("storeCtrl",i),i.$inject=["$scope","$rootScope","$commons","$logger","fandomService","exceptionService","$window","$filter"]}(window,angular);
++function(n,t){"use strict";function i(n,t,i,o,e,c,r,u){n.initFunction=function(){},n.initFunction()}t.module("fantumn").registerCtrl("storeCtrl",i),i.$inject=["$scope","$rootScope","$commons","$logger","fantumnService","exceptionService","$window","$filter"]}(window,angular);

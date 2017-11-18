@@ -86,7 +86,7 @@ function restrictField() {
 };
 
 angular
-    .module('fandom')
+    .module('fantumn')
     .directive('sampleDirective', sampleDirective)
     .directive('colorpicker', colorpicker)
     .directive('numberInput', numberInput)

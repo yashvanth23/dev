@@ -1,1 +1,1 @@
-+function(n,a,d){a.module("fandom-grid-header",["fandom-app","fandom"]).factory("$headers",function(n,a,d){return{}})}(window,window.angular);
++function(n,a,u){a.module("fantumn-grid-header",["fantumn-app","fantumn"]).factory("$headers",function(n,a,u){return{}})}(window,window.angular);

@@ -1,7 +1,7 @@
 + function(window, angular) {
     'use strict';
     angular
-        .module('fandom')
+        .module('fantumn')
         .registerCtrl('alertModalContentCtrl', alertModalContentCtrl);
 
     /**

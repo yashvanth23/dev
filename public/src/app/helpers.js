@@ -15,7 +15,7 @@
     angular.module('helpers', [])
         .factory('$helpers', helpers);
 
-    function helpers($injector, $window, $logger, $rootScope, $timeout, fandomService, $q, $filter) {
+    function helpers($injector, $window, $logger, $rootScope, $timeout, fantumnService, $q, $filter) {
 
         /**
          * Initialise generic instance

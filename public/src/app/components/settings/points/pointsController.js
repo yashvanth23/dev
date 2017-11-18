@@ -19,12 +19,12 @@
 + function(window, angular) {
     'use strict';
     angular
-        .module("fandom")
+        .module("fantumn")
         .registerCtrl('pointCtrl', pointCtrl);
-    pointCtrl.$inject = ["$scope", "$rootScope", "$commons", "$logger", "fandomService", "exceptionService", "$window", "$filter"];
+    pointCtrl.$inject = ["$scope", "$rootScope", "$commons", "$logger", "fantumnService", "exceptionService", "$window", "$filter"];
 
 
-    function pointCtrl($scope, $rootScope, $commons, $logger, fandomService, exceptionService, $window, $filter) {
+    function pointCtrl($scope, $rootScope, $commons, $logger, fantumnService, exceptionService, $window, $filter) {
 
         $scope.initFunction = function() {
 

@@ -19,12 +19,12 @@
 + function(window, angular) {
     'use strict';
     angular
-        .module("fandom")
+        .module("fantumn")
         .registerCtrl('contactCtrl', contactCtrl);
-    contactCtrl.$inject = ["$scope", "$rootScope", "$commons", "$logger", "fandomService", "exceptionService", "$window", "$filter"];
+    contactCtrl.$inject = ["$scope", "$rootScope", "$commons", "$logger", "fantumnService", "exceptionService", "$window", "$filter"];
 
 
-    function contactCtrl($scope, $rootScope, $commons, $logger, fandomService, exceptionService, $window, $filter) {
+    function contactCtrl($scope, $rootScope, $commons, $logger, fantumnService, exceptionService, $window, $filter) {
 
         $scope.initFunction = function() {
             $scope.report = {
@@ -75,7 +75,7 @@
             if (valid) {
                 $rootScope.loader = true;
                 var url = $rootScope.appConfig.baseUrl + $rootScope.appConfig.report;
-                fandomService.post(url, $scope.report).then(function(res) {
+                fantumnService.post(url, $scope.report).then(function(res) {
                     $rootScope.loader = false;
                     if (res && res.data.status == "success") {
                         $scope.toastContent = $('<span>Successfully Send A Email !</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));

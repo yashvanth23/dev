@@ -19,39 +19,40 @@
 + function(window, angular) {
     'use strict';
     angular
-        .module("fandom")
+        .module("fantumn")
         .registerCtrl('historyCtrl', historyCtrl);
-    historyCtrl.$inject = ["$scope", "$rootScope", "$commons", "$logger", "fandomService", "exceptionService", "$window", "$filter"];
+    historyCtrl.$inject = ["$scope", "$rootScope", "$commons", "$logger", "fantumnService", "exceptionService", "$window", "$filter"];
 
 
-    function historyCtrl($scope, $rootScope, $commons, $logger, fandomService, exceptionService, $window, $filter) {
+    function historyCtrl($scope, $rootScope, $commons, $logger, fantumnService, exceptionService, $window, $filter) {
 
         $scope.initFunction = function() {
             $scope.matchDetails = JSON.parse(window.sessionStorage.match);
             $scope.userData = JSON.parse(window.sessionStorage.userDetail);
             $rootScope.loader = true;
             $scope.noScore = false;
+            $scope.userScore = [];
             $scope.noUserScore = false;
             $scope.getHistoryScore();
         };
 
         $scope.getHistoryScore = function() {
             var url = $rootScope.appConfig.baseUrl + $rootScope.appConfig.getBoard + "/" + $scope.matchDetails.matchId;
-            fandomService.get(url).then(function(res) {
+            fantumnService.get(url).then(function(res) {
                 $rootScope.loader = false;
                 if (res && res.data.status == "success") {
                     $scope.historyScore = res.data.data;
                     if ($scope.historyScore.length > 0) {
                         for (var i = 0; i < $scope.historyScore.length; i++) {
                             if ($scope.historyScore[i].user.username == $scope.userData.username) {
-                                $scope.userScore = $scope.historyScore[i];
+                                $scope.userScore.push($scope.historyScore[i]);
                             }
                         }
                         if ($scope.userScore.length > 0) {
                             $scope.noUserScore = false;
                         } else {
                             $scope.userScore = [];
-                            $scope.noUserScore = timeline - overview - window - rulers;
+                            $scope.noUserScore = true;
                         }
                         $scope.noScore = false;
                     } else {

@@ -1,5 +1,5 @@
 ﻿/**
- * @Filename : fandomService.js
+ * @Filename : fantumnService.js
  * @Description : 
  * @Author : Patharraj
  * @Date : Oct 14, 2017
@@ -11,7 +11,7 @@
 
 /**
  * @ngdoc service
- * @name fandomService
+ * @name fantumnService
  * @description
  * 
  */
@@ -19,10 +19,10 @@
 + function(window, angular) {
     'use strict';
     angular
-        .module('fandom')
-        .service('fandomService', fandomService);
+        .module('fantumn')
+        .service('fantumnService', fantumnService);
 
-    function fandomService($http, $logger, $rootScope, $q, $state, $window) {
+    function fantumnService($http, $logger, $rootScope, $q, $state, $window) {
         var logger = $logger.getInstance();
 
         // using to put api Service (Post Method)
@@ -129,10 +129,10 @@
 function(window, angular) {
     'use strict';
     angular
-        .module('fandom')
-        .service('fandomNavigateService', fandomNavigateService);
+        .module('fantumn')
+        .service('fantumnNavigateService', fantumnNavigateService);
 
-    function fandomNavigateService($http, $logger, $window, $state, $rootScope, $filter) {
+    function fantumnNavigateService($http, $logger, $window, $state, $rootScope, $filter) {
         var logger = $logger.getInstance();
         var currentParam = [];
         var pageList = [];

@@ -11,7 +11,7 @@
 
 /**
  * @ngdoc common
- * @name fandomCommon
+ * @name fantumnCommon
  * @description
  * 
  */
@@ -21,16 +21,16 @@
 
     'use strict';
     angular
-        .module('fandom')
-        .service('$commons', fandomCommonFactory);
+        .module('fantumn')
+        .service('$commons', fantumnCommonFactory);
 
 
-    function fandomCommonFactory($logger, $window, $rootScope, $timeout, fandomNavigateService, $state, exceptionService) {
+    function fantumnCommonFactory($logger, $window, $rootScope, $timeout, fantumnNavigateService, $state, exceptionService) {
 
         var fn = {};
         $rootScope.expireCount = 0;
         fn.navigate = function(pageName, params, reloadPage) {
-            fandomNavigateService.data = params;
+            fantumnNavigateService.data = params;
             $window.sessionStorage.data = null;
             $window.sessionStorage.data = params;
             $state.go(pageName, {}, {

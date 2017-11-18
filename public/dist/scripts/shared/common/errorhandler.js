@@ -18,7 +18,7 @@
 
 'use strict';
 
-angular.module('fandom.errorHandler', [])
+angular.module('fantumn.errorHandler', [])
     .constant('httpErrors', {
         0: 'Sorry, The server is unreachable.',
         404: 'Sorry, The requested data or service could not be found.',

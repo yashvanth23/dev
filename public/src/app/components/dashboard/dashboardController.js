@@ -19,7 +19,7 @@
 + function(window, angular) {
     'use strict';
     angular
-        .module("fandom")
+        .module("fantumn")
         .registerCtrl('dashboardCtrl', dashboardCtrl)
     dashboardCtrl.$inject = ["$scope", "$rootScope"];
 
