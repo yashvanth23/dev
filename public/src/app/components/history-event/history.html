@@ -16,9 +16,9 @@
             <span class="history-time">Full Time</span>
         </div>
         <div class="live-play">
-            <ul ng-repeat="play in historyScore | orderBy :'-matchPoints' " ng-show="userData.username == play.user.username">
+            <ul ng-repeat="play in historyScore" ng-show="userData.username == play.user.username">
                 <li>
-                    <p>{{$index+1}}</p>
+                    <p>{{play.rank}}</p>
                 </li>
                 <li>
                     <p>{{play.user.username}}</p>
@@ -40,8 +40,8 @@
             </div>
             <div class="liveMatch-section" ng-class="{cusscroll: historyScore.length>8}">
                 <ul ng-if="historyScore.length>0">
-                    <li ng-repeat="play in historyScore | orderBy :'-matchPoints'">
-                        <div>{{$index+1}}</div>
+                    <li ng-repeat="play in historyScore">
+                        <div>{{play.rank}}</div>
                         <div>{{play.user.username}}</div>
                         <div>{{play.matchPoints}}</div>
                     </li>

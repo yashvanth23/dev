@@ -42,12 +42,23 @@
                 $rootScope.loader = false;
                 if (res && res.data.status == "success") {
                     $scope.liveScore = res.data.data;
+                    $scope.tempArray = [];
+                    $scope.historyScore = $filter("orderBy")($scope.liveScore, "-matchPoints");
                     if ($scope.liveScore.length > 0) {
                         for (var i = 0; i < $scope.liveScore.length; i++) {
+                            var j = 1;
+                            $scope.tempArray.push({
+                                "_id": $scope.liveScore[i]._id,
+                                "username": $scope.liveScore[i].user.username,
+                                "matchPoints": $scope.liveScore[i].matchPoints,
+                                "rank": j
+                            });
+                            j++;
                             if ($scope.liveScore[i].user.username == $scope.userData.username) {
                                 $scope.userScore.push($scope.liveScore[i]);
                             }
                         }
+                        $scope.filterArray($scope.liveScore, $scope.tempArray);
                         if ($scope.userScore.length > 0) {
                             $scope.noUserScore = false;
                         } else {
@@ -78,6 +89,20 @@
             $scope.getLiveScore();
         };
 
+        $scope.filterArray = function(array, filter) {
+            filter = $filter("orderBy")(filter, "matchPoints");
+            for (var i = 0; i < array.length; i++) {
+                for (var k = 0; k < filter.length; k++) {
+                    if (array[i].matchPoints == filter[k].matchPoints) {
+                        $scope.liveScore[i]["rank"] = filter[i].rank;
+                    } else {
+                        $scope.liveScore[i]["rank"] = i + 1;
+                    }
+                }
+            }
+
+            return $scope.liveScore;
+        };
 
         $scope.$watch("liveChange", function() {
             if (window.sessionStorage.match !== $scope.matchDetails) {

@@ -14,9 +14,9 @@
             </div>
         </div>
         <div class="live-play">
-            <ul ng-repeat="match in liveScore | orderBy :'-matchPoints' " ng-show="userData.username == match.user.username">
+            <ul ng-repeat="match in liveScore" ng-show="userData.username == match.user.username">
                 <li>
-                    <p>{{$index+1}}</p>
+                    <p>{{match.rank}}</p>
                 </li>
                 <li>
                     <p>{{match.user.username}}</p>
@@ -38,8 +38,8 @@
             </div>
             <div class="liveMatch-section" ng-class="{cusscroll: liveScore.length>8}">
                 <ul ng-if="liveScore.length>0">
-                    <li ng-repeat="match in liveScore | orderBy :'-matchPoints' ">
-                        <div>{{$index+1}}</div>
+                    <li ng-repeat="match in liveScore ">
+                        <div>{{match.rank}}</div>
                         <div>{{match.user.username}}</div>
                         <div>{{match.matchPoints}}</div>
                     </li>
