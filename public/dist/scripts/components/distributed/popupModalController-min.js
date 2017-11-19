@@ -1,1 +1,0 @@
-+function(t,n){"use strict";function o(t,n,o,e,r){}n.module("fantumn").registerCtrl("alertModalContentCtrl",o),o.$inject=["$scope","$commons","$state","$rootScope","$window"]}(window,angular);

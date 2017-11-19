@@ -155,7 +155,7 @@
                 var file = [];
                 file.push($scope.file);
                 var model = {
-                    "file": $scope.file.name,
+                    "file": file,
                     "username": $scope.userData.username,
                     "type": "image",
                     "viewport": "desktop"
