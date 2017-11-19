@@ -4194,6 +4194,17 @@ textarea.materialize-textarea[readonly="readonly"] {
     margin: 0 auto;
 }
 
+.mobile-screen h5 {
+    font-size: 22px;
+    font-weight: 500;
+    color: #202020;
+}
+
+.mobile-screen p {
+    font-size: 16px;
+    font-weight: 500;
+}
+
 .mobile-screencontent img {
     width: 180px;
     height: 180px;
