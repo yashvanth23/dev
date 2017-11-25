@@ -24,6 +24,9 @@
     settingCtrl.$inject = ["$scope", "$rootScope", "$commons", "$logger", "fantumnService", "exceptionService", "$http"];
 
     function settingCtrl($scope, $rootScope, $commons, $logger, fantumnService, exceptionService, $http) {
+        if (window.sessionStorage.userDetail != undefined) {
+                    if (window.sessionStorage.userDetail != "") {
+        
         $scope.initFunction = function() {
             $scope.userData = JSON.parse(window.sessionStorage.userDetail);
             $scope.settingDrop = false;
@@ -66,12 +69,14 @@
 
         $scope.getProfileInformation = function() {
             var url = $rootScope.appConfig.baseUrl + $rootScope.appConfig.profile + "/" + $scope.userData._id;
+            console.log(url);
             fantumnService.get(url).then(function(res) {
                 $rootScope.loader = false;
                 if (res && res.data.status == "success") {
                     $scope.profile = res.data.data;
+                    
                     $scope.profileInfo.name = $scope.profile.name;
-                    $scope.profileInfo.email = $scope.profile.email;
+                   // $scope.profileInfo.email = $scope.profile.email;
                     $scope.profileInfo.mobile = $scope.profile.mobileNumber;
                     $scope.profileInfo.gender = $scope.profile.gender;
                     $scope.profileInfo.address = $scope.profile.address.line1;
@@ -88,6 +93,17 @@
                 $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                 Materialize.toast($scope.toastContent, 3000);
             });
+            var url2=$rootScope.appConfig.baseUrl+ $rootScope.appConfig.user;
+            console.log(url2);
+            var br ={
+                _id:$scope.userData._id
+            }
+            fantumnService.post(url2,br).then(function(res) {           
+           $scope.profile1 = res.data.data;
+           console.log($scope.profile1);
+           $scope.profileInfo.email=$scope.profile1.email;
+           console.log($scope.profileInfo.email);
+           });
         };
 
         $scope.updateProfile = function(valid) {
@@ -272,6 +288,9 @@
         };
 
         $scope.initFunction();
-
+   }else        
+         $commons.navigate('layout.dashboard', '', false);
+             }else
+                 $commons.navigate('layout.dashboard', '', false);
     }
 }(window, angular);

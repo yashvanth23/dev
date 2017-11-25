@@ -2,18 +2,19 @@
     <div class="col s9 m9 l9 clear-float responsive-width">
         <div class="live-matchSchedule">
             <div class="leaderboard">leaderboard</div>
+            <br>
             <div class="live-leftSection history-event">
                 <img ng-src="{{matchDetails.homeLogo}}" alt="">
                 <p>{{matchDetails.home}}</p>
                 <span class="match-result">{{matchDetails.homeScore}}</span>
             </div>
-            <span class="live-match">VS</span>
+            <span class="hi-match">VS</span>
             <div class="live-rightSection right-align history-event">
                 <span class="match-result">{{matchDetails.awayScore}}</span>
                 <p> {{matchDetails.away}}</p>
                 <img ng-src="{{matchDetails.awayLogo}}" alt="">
             </div>
-            <span class="history-time">Full Time</span>
+            <span class="history-time">&nbsp;Full Time</span>
         </div>
         <div class="live-play">
             <ul ng-repeat="play in historyScore" ng-show="userData.username == play.user.username">
@@ -53,3 +54,4 @@
             </div>
         </div>
     </div>
+</div>

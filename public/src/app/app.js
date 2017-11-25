@@ -1,14 +1,3 @@
-/**
- * @Filename : app.js
- * @Description :
- * @Author : 
- * @Date : Oct 14, 2017
- * 
- * @History
- *  Version     Date          Author        Remarks
- *  1.0         14-10-2017    Patharraj     File Created
- */
-
 angular.module("fantumn", [
     "ui.router",
     "ngCookies",
@@ -27,7 +16,7 @@ angular.module("fantumn", [
         var env = "dev";
 
 
-        $urlRouterProvider.otherwise("/layout/dashboard");
+        $urlRouterProvider.otherwise("/fantumn/home");
         angular.module("fantumn").registerCtrl = $controllerProvider.register;
         /*    $httpProvider.defaults.cache = !0;
             $httpProvider.defaults.withCredentials = true;
@@ -82,13 +71,13 @@ angular.module("fantumn", [
          */
         $stateProvider
             .state("layout", {
-                url: "/layout",
+                url: "/fantumn",
                 templateUrl: "app/components/layout/layout.html",
                 resolve: loader(["scripts/components/layout/layoutController", "scripts/components/distributed/popupModalController"]),
                 controller: "layoutController"
             })
             .state("layout.dashboard", {
-                url: "/dashboard",
+                url: "/home",
                 templateUrl: "app/components/dashboard/dashboard.html",
                 resolve: loader(["scripts/components/dashboard/dashboardController"]),
                 controller: "dashboardCtrl"

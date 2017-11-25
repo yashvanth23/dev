@@ -51,16 +51,14 @@
                                 <p>
                                     <input name="cgender" type="radio" id="gender_male" value="MALE" class="with-gap" ng-model="profileInfo.gender" ng-disabled="!profileEdit">
                                     <label for="gender_male">Male</label>
-                                </p>
-                                <p>
                                     <input name="cgender" type="radio" id="gender_female" value="FEMALE" class="with-gap" ng-model="profileInfo.gender" ng-disabled="!profileEdit">
                                     <label for="gender_female">Female</label>
                                 </p>
                                 <span class="error" ng-show="genderError">Gender is required</span>
                             </div>
                             <div class="input-field col s6">
-                                <span ng-hide="profileEdit">Email</span>
-                                <input type="email" id="email" name="email" ng-mode="profileInfo.email" placeholder="Email" required ng-disabled="!profileEdit">
+                                <span>Email</span>
+                                <input type="email" id="email" name="email" ng-model="profileInfo.email" placeholder="Email" required ng-disabled="true">
                                 <span class="error" ng-show="(profileForm.email.$invalid && !profileForm.email.$pristine) || (profileForm.email.$error.required && submitForm)">Email is required</span>
                             </div>
                         </div>
@@ -131,3 +129,4 @@
         </div>
     </div>
     <div class="setting-backdrop" ng-show="settingDrop"></div>
+    </div>

@@ -25,7 +25,8 @@
 
 
     function liveCtrl($scope, $rootScope, $commons, $logger, fantumnService, exceptionService, $window, $filter) {
-
+if (window.sessionStorage.userDetail != undefined) {
+                    if (window.sessionStorage.userDetail != "") {
         $scope.initFunction = function() {
             $scope.matchDetails = JSON.parse(window.sessionStorage.match);
             $scope.userData = JSON.parse(window.sessionStorage.userDetail);
@@ -112,6 +113,9 @@
             }
         });
         $scope.initFunction();
-
+}else        
+         $commons.navigate('layout.dashboard', '', false);
+             }else
+                 $commons.navigate('layout.dashboard', '', false);
     }
 }(window, angular);

@@ -25,7 +25,8 @@
 
 
     function storeCtrl($scope, $rootScope, $commons, $logger, fantumnService, exceptionService, $window, $filter) {
-
+if (window.sessionStorage.userDetail != undefined) {
+                    if (window.sessionStorage.userDetail != "") {
         $scope.initFunction = function() {
 
         };
@@ -34,6 +35,10 @@
 
 
         $scope.initFunction();
+        }else        
+         $commons.navigate('layout.dashboard', '', false);
+             }else
+                 $commons.navigate('layout.dashboard', '', false);
 
     }
 }(window, angular);

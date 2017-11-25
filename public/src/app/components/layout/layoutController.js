@@ -25,8 +25,7 @@
     layoutController.$inject = ["$scope", "$rootScope", "$commons", "$logger", "$cookies", "fantumnService", "exceptionService", "$q", "$interval", "md5", "$filter"];
 
 
-    function layoutController($scope, $rootScope, $commons, $logger, $cookies, fantumnService, exceptionService, $q, $interval, md5, $filter) {
-
+    function layoutController($scope, $rootScope, $commons, $logger, $cookies, fantumnService, exceptionService, $q, $interval, md5, $filter,$window,location) {
         // var signInParams = "";
         /**
          * @ngdoc method
@@ -78,19 +77,30 @@
                 } else {
                     $scope.footerHide = false;
                 }
-
                 $scope.redirecturl = {
                     "index": "",
                     "match": "",
                     "tabStatus": "",
                     "element": ""
                 };
-                $scope.mobile = false;
-                $scope.getUpcomingMatch();
-
-                setInterval(function() {
-                    $scope.getUpcomingMatch();
-                }, 60000);
+                $scope.mobile = false;     
+                if($scope.loginStatus){
+        var leaderboardUrl = $rootScope.appConfig.baseUrl + $rootScope.appConfig.getLeaderBoard + "/" + $scope.userInfo.username;
+              fantumnService.get(leaderboardUrl).then(function(leaderboard){
+                                  if(leaderboard && leaderboard.data.status == "success")
+                                 $scope.matchCard = leaderboard.data.data.matchCards;           
+        });  }      
+        var upcomingUrl1 = $rootScope.appConfig.baseUrl + $rootScope.appConfig.upcoming;
+            fantumnService.get(upcomingUrl1).then(function(res) {
+                                      $scope.upcome=res.data;            
+                                      $scope.getUpcomingMatch();
+        });        
+       setInterval(function() {
+             fantumnService.get(upcomingUrl1).then(function(res) {
+                      $scope.upcome=res.data;    
+                   });             
+                          $scope.getUpcomingMatch();
+           }, 60000);
 
                 $scope.ageError = false;
                 $rootScope.playerListData = [];
@@ -115,81 +125,79 @@
          * @description get Upcoming match details
          * @param 
          * @returns 
-         */
-        $scope.getUpcomingMatch = function() {
-            try {
+        */
+       $scope.lol =function(){
+       var upcomingUrl1 = $rootScope.appConfig.baseUrl + $rootScope.appConfig.upcoming;
+            fantumnService.get(upcomingUrl1).then(function(res) {
+                                      $scope.upcome=res.data;            
+                                      $scope.getUpcomingMatch();
+        }); }       
+        $scope.lead = function(){
+            var leaderboardUrl = $rootScope.appConfig.baseUrl + $rootScope.appConfig.getLeaderBoard + "/" + $scope.userInfo.username;
+        fantumnService.get(leaderboardUrl).then(function(leaderboard){            
+            if(leaderboard && leaderboard.data.status == "success")
+           $scope.matchCard = leaderboard.data.data.matchCards;
+             $scope.getUpcomingMatch();
+           
+        });
+       }
+        $scope.getUpcomingMatch = function() {             
+            try {                
                 var currentDate = new Date();
                 currentDate = currentDate.toISOString();
-                if ($scope.loginStatus) {
-                    var upcomingUrl = $rootScope.appConfig.baseUrl + $rootScope.appConfig.upcoming,
-                        leaderboardUrl = $rootScope.appConfig.baseUrl + $rootScope.appConfig.getLeaderBoard + "/" + $scope.userInfo.username;
-                    var upcomingPromise = "",
-                        leaderBoardPromise = "";
-                    $q.all([
-                        leaderBoardPromise = fantumnService.get(leaderboardUrl),
-                        upcomingPromise = fantumnService.get(upcomingUrl)
-                    ]).then(function() {
-                        leaderBoardPromise.then(function(leaderboard) {
-                            if (leaderboard && leaderboard.data.status == "success") {
-                                $scope.matchCard = leaderboard.data.data.matchCards;
-
-                            }
-                        });
-                        upcomingPromise.then(function(res) {
-                            if (res && res.data.status == "success") {
+                
+                if ($scope.loginStatus) {                         
+                            if ($scope.upcome.status == "success") {
                                 $scope.upcomingMatch = [];
-                                for (var i = 0; i < res.data.data.length; i++) {
-                                    if (currentDate < res.data.data[i].match.startingDateTime) {
+                                for (var i = 0; i < $scope.upcome.data.length; i++) {
+                                    if (currentDate < $scope.upcome.data[i].match.startingDateTime) {
                                         $scope.upcomingMatch.push({
-                                            competition: res.data.data[i].season.competition.name,
-                                            home: res.data.data[i].team1.name,
-                                            away: res.data.data[i].team2.name,
-                                            homeLogo: res.data.data[i].team1.logo,
-                                            awayLogo: res.data.data[i].team2.logo,
-                                            matchId: res.data.data[i].match.matchId,
-                                            starts: res.data.data[i].match.startingDateTime,
-                                            _id: res.data.data[i].match._id,
-                                            picked: $scope.matchCard.indexOf(res.data.data[i].match._id) != -1,
+                                            competition: $scope.upcome.data[i].season.competition.name,
+                                            home: $scope.upcome.data[i].team1.name,
+                                            away: $scope.upcome.data[i].team2.name,
+                                            homeLogo: $scope.upcome.data[i].team1.logo,
+                                            awayLogo: $scope.upcome.data[i].team2.logo,
+                                            matchId: $scope.upcome.data[i].match.matchId,
+                                            starts: $scope.upcome.data[i].match.startingDateTime,
+                                            _id: $scope.upcome.data[i].match._id,
+                                            picked: $scope.matchCard.indexOf($scope.upcome.data[i].match._id) != -1,
                                             teams: {
-                                                team1: res.data.data[i].team1,
-                                                team2: res.data.data[i].team2
+                                                team1: $scope.upcome.data[i].team1,
+                                                team2: $scope.upcome.data[i].team2
                                             },
                                             match: {
-                                                lineup: res.data.data[i].match.lineup
+                                                lineup: $scope.upcome.data[i].match.lineup
                                             }
                                         });
                                     }
+                                    $scope.matchLoader = false;
                                 }
                                 $scope.calculateViewport($scope.upcomingMatch);
-                                $scope.matchLoader = false;
+                               // $scope.matchLoader = false;
                             } else {
-                                $scope.upcomingMatch = res.data.error;
-                            }
-                        });
-                    });
-                } else {
-                    var url = $rootScope.appConfig.baseUrl + $rootScope.appConfig.upcoming;
-                    fantumnService.get(url).then(function(res) {
-                        if (res && res.data.status == "success") {
+                               $scope.upcomingMatch = "something went wrong";
+                            }                  
+                } else {                    
+                        if ($scope.upcome.status == "success") {
                             $scope.upcomingMatch = [];
-                            for (var i = 0; i < res.data.data.length; i++) {
-                                if (currentDate < res.data.data[i].match.startingDateTime) {
+                            for (var i = 0; i < $scope.upcome.data.length; i++) {
+                                if (currentDate < $scope.upcome.data[i].match.startingDateTime) {
                                     $scope.upcomingMatch.push({
-                                        competition: res.data.data[i].season.competition.name,
-                                        home: res.data.data[i].team1.name,
-                                        away: res.data.data[i].team2.name,
-                                        homeLogo: res.data.data[i].team1.logo,
-                                        awayLogo: res.data.data[i].team2.logo,
-                                        matchId: res.data.data[i].match.matchId,
-                                        starts: res.data.data[i].match.startingDateTime,
-                                        _id: res.data.data[i].match._id,
+                                        competition: $scope.upcome.data[i].season.competition.name,
+                                        home: $scope.upcome.data[i].team1.name,
+                                        away: $scope.upcome.data[i].team2.name,
+                                        homeLogo: $scope.upcome.data[i].team1.logo,
+                                        awayLogo: $scope.upcome.data[i].team2.logo,
+                                        matchId: $scope.upcome.data[i].match.matchId,
+                                        starts: $scope.upcome.data[i].match.startingDateTime,
+                                        _id: $scope.upcome.data[i].match._id,
                                         picked: false,
                                         teams: {
-                                            team1: res.data.data[i].team1,
-                                            team2: res.data.data[i].team2
+                                            team1: $scope.upcome.data[i].team1,
+                                            team2: $scope.upcome.data[i].team2
                                         },
                                         match: {
-                                            lineup: res.data.data[i].match.lineup
+                                            lineup: $scope.upcome.data[i].match.lineup
                                         }
                                     });
                                 }
@@ -197,13 +205,20 @@
                             $scope.calculateViewport($scope.upcomingMatch);
                             $scope.matchLoader = false;
                         } else {
-                            $scope.upcomingMatch = res.data.error;
-                        }
-                    });
+                            $scope.upcomingMatch = "something went wrong";
+                        }                   
                 }
             } catch (err) {
                 exceptionService.promiseRejectsAfterAWhile(err);
             }
+             var url1 = $rootScope.appConfig.baseUrl + $rootScope.appConfig.historyMatch;               
+                    fantumnService.get(url1).then(function(res) {
+                        $scope.history=res.data;
+                    });
+              var url2 = $rootScope.appConfig.baseUrl + $rootScope.appConfig.liveMatch;
+              fantumnService.get(url2).then(function(res) {
+                  $scope.live=res.data;
+              });
         };
 
         /**
@@ -217,52 +232,48 @@
         $scope.getLiveMatch = function() {
             try {
                 var url = $rootScope.appConfig.baseUrl + $rootScope.appConfig.liveMatch;
-                if ($scope.loginStatus) {
-                    fantumnService.get(url).then(function(res) {
-                        if (res && res.data.status == "success") {
+                if ($scope.loginStatus) {                    
+                        if ($scope.live.status == "success") {
                             $scope.liveMatch = [];
-                            for (var i = 0; i < res.data.data.length; i++) {
+                            for (var i = 0; i < $scope.live.data.length; i++) {
                                 $scope.liveMatch.push({
-                                    competition: res.data.data[i].season.competition.name,
-                                    home: res.data.data[i].team1.name,
-                                    away: res.data.data[i].team2.name,
-                                    homeLogo: res.data.data[i].team1.logo,
-                                    awayLogo: res.data.data[i].team2.logo,
-                                    matchId: res.data.data[i].match.matchId,
-                                    starts: res.data.data[i].match.startingDateTime,
+                                    competition: $scope.live.data[i].season.competition.name,
+                                    home: $scope.live.data[i].team1.name,
+                                    away: $scope.live.data[i].team2.name,
+                                    homeLogo: $scope.live.data[i].team1.logo,
+                                    awayLogo: $scope.live.data[i].team2.logo,
+                                    matchId: $scope.live.data[i].match.matchId,
+                                    starts: $scope.live.data[i].match.startingDateTime,
                                     teams: {
-                                        team1: res.data.data[i].team1,
-                                        team2: res.data.data[i].team2
+                                        team1: $scope.live.data[i].team1,
+                                        team2: $scope.live.data[i].team2
                                     },
-                                    picked: $scope.matchCard.indexOf(res.data.data[i].match._id) != -1
+                                    picked: $scope.matchCard.indexOf($scope.live.data[i].match._id) != -1
                                 });
                             }
                             $scope.calculateViewport($scope.liveMatch);
                             $scope.matchLoader = false;
                         } else {
-                            $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                            $scope.toastContent = $('<span>Something went Wrong</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                             Materialize.toast($scope.toastContent, 3000);
                         }
-                    }, function(err) {
-                        $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
-                        Materialize.toast($scope.toastContent, 3000);
-                    });
+                    
                 } else {
-                    fantumnService.get(url).then(function(res) {
-                        if (res && res.data.status == "success") {
+                    
+                        if ($scope.live.status == "success") {
                             $scope.liveMatch = [];
-                            for (var i = 0; i < res.data.data.length; i++) {
+                            for (var i = 0; i < $scope.live.data.length; i++) {
                                 $scope.liveMatch.push({
-                                    competition: res.data.data[i].season.competition.name,
-                                    home: res.data.data[i].team1.name,
-                                    away: res.data.data[i].team2.name,
-                                    homeLogo: res.data.data[i].team1.logo,
-                                    awayLogo: res.data.data[i].team2.logo,
-                                    matchId: res.data.data[i].match.matchId,
-                                    starts: res.data.data[i].match.startingDateTime,
+                                    competition: $scope.live.data[i].season.competition.name,
+                                    home: $scope.live.data[i].team1.name,
+                                    away: $scope.live.data[i].team2.name,
+                                    homeLogo: $scope.live.data[i].team1.logo,
+                                    awayLogo: $scope.live.data[i].team2.logo,
+                                    matchId: $scope.live.data[i].match.matchId,
+                                    starts: $scope.live.data[i].match.startingDateTime,
                                     teams: {
-                                        team1: res.data.data[i].team1,
-                                        team2: res.data.data[i].team2
+                                        team1: $scope.live.data[i].team1,
+                                        team2: $scope.live.data[i].team2
                                     },
                                     picked: false
                                 });
@@ -270,13 +281,10 @@
                             $scope.calculateViewport($scope.liveMatch);
                             $scope.matchLoader = false;
                         } else {
-                            $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                            $scope.toastContent = $('<span> Something Went Wrong</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                             Materialize.toast($scope.toastContent, 3000);
                         }
-                    }, function(err) {
-                        $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
-                        Materialize.toast($scope.toastContent, 3000);
-                    });
+                    
                 }
             } catch (err) {
                 exceptionService.promiseRejectsAfterAWhile(err);
@@ -295,55 +303,52 @@
             try {
                 var url = $rootScope.appConfig.baseUrl + $rootScope.appConfig.historyMatch;
                 if ($scope.loginStatus) {
-                    fantumnService.get(url).then(function(res) {
-                        if (res && res.data.status == "success") {
+                    
+                        if ($scope.history.status == "success") {
                             $scope.historyMatch = [];
-                            for (var i = 0; i < res.data.data.length; i++) {
+                            for (var i = 0; i < $scope.history.data.length; i++) {
                                 $scope.historyMatch.push({
-                                    competition: res.data.data[i].season.competition.name,
-                                    home: res.data.data[i].team1.name,
-                                    away: res.data.data[i].team2.name,
-                                    homeLogo: res.data.data[i].team1.logo,
-                                    awayLogo: res.data.data[i].team2.logo,
-                                    matchId: res.data.data[i].match.matchId,
-                                    starts: res.data.data[i].match.startingDateTime,
-                                    homeScore: res.data.data[i].match.team1Score,
-                                    awayScore: res.data.data[i].match.team2Score,
+                                    competition: $scope.history.data[i].season.competition.name,
+                                    home: $scope.history.data[i].team1.name,
+                                    away: $scope.history.data[i].team2.name,
+                                    homeLogo: $scope.history.data[i].team1.logo,
+                                    awayLogo: $scope.history.data[i].team2.logo,
+                                    matchId: $scope.history.data[i].match.matchId,
+                                    starts: $scope.history.data[i].match.startingDateTime,
+                                    homeScore: $scope.history.data[i].match.team1Score,
+                                    awayScore: $scope.history.data[i].match.team2Score,
                                     teams: {
-                                        team1: res.data.data[i].team1,
-                                        team2: res.data.data[i].team2
+                                        team1: $scope.history.data[i].team1,
+                                        team2: $scope.history.data[i].team2
                                     },
-                                    picked: $scope.matchCard.indexOf(res.data.data[i].match._id) != -1
+                                    picked: $scope.matchCard.indexOf($scope.history.data[i].match._id) != -1
                                 });
                             }
                             $scope.calculateViewport($scope.historyMatch);
                             $scope.matchLoader = false;
                         } else {
-                            $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                            $scope.toastContent = $('<span> errror </span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                             Materialize.toast($scope.toastContent, 3000);
                         }
-                    }, function(err) {
-                        $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
-                        Materialize.toast($scope.toastContent, 3000);
-                    });
+                    
                 } else {
-                    fantumnService.get(url).then(function(res) {
-                        if (res && res.data.status == "success") {
+                   
+                        if ($scope.history.status == "success") {
                             $scope.historyMatch = [];
-                            for (var i = 0; i < res.data.data.length; i++) {
+                            for (var i = 0; i <$scope.history.data.length; i++) {
                                 $scope.historyMatch.push({
-                                    competition: res.data.data[i].season.competition.name,
-                                    home: res.data.data[i].team1.name,
-                                    away: res.data.data[i].team2.name,
-                                    homeLogo: res.data.data[i].team1.logo,
-                                    awayLogo: res.data.data[i].team2.logo,
-                                    matchId: res.data.data[i].match.matchId,
-                                    starts: res.data.data[i].match.startingDateTime,
-                                    homeScore: res.data.data[i].match.team1Score,
-                                    awayScore: res.data.data[i].match.team2Score,
+                                    competition: $scope.history.data[i].season.competition.name,
+                                    home: $scope.history.data[i].team1.name,
+                                    away: $scope.history.data[i].team2.name,
+                                    homeLogo: $scope.history.data[i].team1.logo,
+                                    awayLogo: $scope.history.data[i].team2.logo,
+                                    matchId: $scope.history.data[i].match.matchId,
+                                    starts: $scope.history.data[i].match.startingDateTime,
+                                    homeScore: $scope.history.data[i].match.team1Score,
+                                    awayScore: $scope.history.data[i].match.team2Score,
                                     teams: {
-                                        team1: res.data.data[i].team1,
-                                        team2: res.data.data[i].team2
+                                        team1: $scope.history.data[i].team1,
+                                        team2: $scope.history.data[i].team2
                                     },
                                     picked: false
                                 });
@@ -351,13 +356,10 @@
                             $scope.calculateViewport($scope.historyMatch);
                             $scope.matchLoader = false;
                         } else {
-                            $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                            $scope.toastContent = $('<span>' + $scope.history.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
                             Materialize.toast($scope.toastContent, 3000);
                         }
-                    }, function(err) {
-                        $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
-                        Materialize.toast($scope.toastContent, 3000);
-                    });
+                    
                 }
 
             } catch (err) {
@@ -420,8 +422,7 @@
                 var str;
                 if ($scope.loginStatus) {
                     if ($rootScope.playerListData.length == 0) {
-                        if (tabStatus === "upcoming") {
-                            $scope.pagename = "upcoming";
+                        if (tabStatus === "upcoming") {                            
                             window.sessionStorage.pageName = "upcoming";
                             str = JSON.stringify(match);
                             angular.element('li.upcomingmatch').removeClass('active');
@@ -557,12 +558,14 @@
                         $scope.closeAuth();
                         $scope.userInfo = res.data.data;
                         var str = JSON.stringify(window.sessionStorage.match);
+                        $scope.lol();
+                        
                         if ($scope.redirecturl != "") {
                             $scope.gotoPage($scope.redirecturl.index, $scope.redirecturl.match, $scope.redirecturl.tabStatus, $scope.redirecturl.element);
                         } else {
                             $commons.navigate('layout.dashboard', {}, false);
                         }
-                        $scope.getUpcomingMatch();
+                        
                     } else {
                         $rootScope.loader = false;
                         $scope.loginauthError = res.data.error;
@@ -570,7 +573,10 @@
                         Materialize.toast($scope.toastContent, 3000);
                     }
                 });
+                
+               
             }
+            
         };
 
         $scope.register = function(formValid) {
@@ -578,8 +584,11 @@
             if (formValid) {
                 if ($scope.agreeRegister) {
                     var currentDate = new Date($scope.userDetail.dob);
-                    var ageLimit = $filter("date")(currentDate, "yyyy");
-                    if (ageLimit < "2004") {
+                    var s = (new Date()).getFullYear();
+                    var e=s-13;                    
+                    var agelimit = $filter("date")(currentDate, "yyyy");                  
+                    if (agelimit<e) {
+                        
                         $scope.ageError = false;
                         $rootScope.loader = true;
                         var url = $rootScope.appConfig.baseUrl + $rootScope.appConfig.register;
@@ -642,6 +651,7 @@
                             }
                         });
                     } else {
+                        
                         $scope.ageError = true;
                     }
 
@@ -1093,7 +1103,6 @@
             $scope.closeWarning();
         };
 
-
         $(document).on('click', '#toast-container .toast button', function() {
             var element = $(this).parent();
             $(element).fadeOut();
@@ -1107,7 +1116,6 @@
                 $scope.mobile = false;
             }
         };
-
         $scope.$watch("pagename", function() {
             if (window.sessionStorage.pageName == "upcoming") {
                 $scope.footerHide = true;

@@ -3,11 +3,11 @@
         <div class="responsive-header col s12 m12 l12 nopadding">
             <!--<div class="res-logo"><img src="assets/images/logo.png" alt=""></div>-->
             <div class="header sidenav-header">
-                <div class="left valign-wrapper">
+                <div class="left" style="word-break: break-all !important;width: 70% !important">
                     <div ng-show="loginStatus">
                         <div ng-if="!userInfo.social_auth">
                             <img ng-src="{{userInfo.avatar}}" alt="user">
-                            <span>{{userInfo.username | uppercase}} </span>
+                            <span >{{userInfo.username | uppercase}} </span>
                         </div>
                         <div ng-if="userInfo.social_auth">
                             <div ng-if="userInfo.facebook.social_id !=null">
@@ -64,7 +64,7 @@
                                 <div>
                                     <div class="left-container">
                                         <img ng-src="{{match.homeLogo}}" alt="">
-                                        <p>{{match.home}}</p>
+                                        <p style="margin-top:1px">{{match.home}}</p>
                                     </div>
                                     <span class="matchvs">VS</span>
                                     <div class="right-container">
@@ -157,13 +157,12 @@
             </div>
         </div>
         <div class="col s3 m3 l3 side-navigation responsive-sidemenu nopadding">
-            <div class="sidenav-header">
-                <div>
+            <div class="sidenav-header">                
                     <div class="left valign-wrapper">
                         <div ng-show="loginStatus">
-                            <div ng-if="!userInfo.social_auth">
+                            <div ng-if="!userInfo.social_auth" style="word-break: break-all; width: 70%">
                                 <img ng-src="{{userInfo.avatar}}" alt="user">
-                                <span>{{userInfo.username | uppercase}} </span>
+                                <div style="width: 80%;margin-top: -40px;margin-left: 60px">{{userInfo.username | uppercase}} </div>
                             </div>
                             <div ng-if="userInfo.social_auth">
                                 <div ng-if="userInfo.facebook.social_id !=null">
@@ -177,7 +176,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="right">
+                <div class="right" style="position: absolute;margin-left: 250px">
                         <a href="javascript:void(0)" ng-click="gotoNavigate('home')" class="home"></a>
                         <a href="javascript:void(0)" class="setting-menu dropdown-button" ng-click="menuOpen()"></a>
                         <ul class="drop-menu dropdown-content" id="menu">
@@ -192,7 +191,7 @@
                             <li ng-show="loginStatus"><a href="javascript:void(0)" ng-click="logout()" class="waves-effect">Logout</a></li>
                         </ul>
                     </div>
-                </div>
+                
             </div>
             <div class="sidenav-content cus-scroll">
                 <div class="subloader valign-wrapper" ng-show="matchLoader">
@@ -219,12 +218,12 @@
                             <div>
                                 <div class="left-container">
                                     <img ng-src="{{match.homeLogo}}" alt="">
-                                    <p>{{match.home}}</p>
+                                    <p style="margin-top: 8px;text-align: center">{{match.home}}</p>
                                 </div>
                                 <span class="matchvs">VS</span>
                                 <div class="right-container">
                                     <img ng-src="{{match.awayLogo}}" alt="">
-                                    <p>{{match.away}}</p>
+                                    <p style="margin-top: 8px;text-align: center">{{match.away}}</p>
                                 </div>
                             </div>
                             <p class="play" ng-hide="match.picked">Play</p>
@@ -249,12 +248,12 @@
                             <div>
                                 <div class="left-container ">
                                     <img ng-src="{{match.homeLogo}} " alt=" ">
-                                    <p>{{match.home}}</p>
+                                    <p style="margin-top: 7px;text-align: center">{{match.home}}</p>
                                 </div>
                                 <span class="matchvs">VS</span>
                                 <div class="right-container ">
                                     <img ng-src="{{match.awayLogo}} " alt=" ">
-                                    <p>{{match.away}}</p>
+                                    <p style="margin-top: 7px;text-align: center">{{match.away}}</p>
                                 </div>
                             </div>
                             <div class="history-timer">
@@ -273,14 +272,15 @@
                             <div>
                                 <div class="left-container ">
                                     <img ng-src="{{match.homeLogo}} " alt=" ">
-                                    <p>{{match.home}}</p>
+                                    <p style="margin-top: 1px;text-align: center">{{match.home}}</p>
                                 </div>
                                 <span class="matchvs">VS</span>
                                 <div class="right-container ">
                                     <img ng-src="{{match.awayLogo}} " alt=" ">
-                                    <p>{{match.away}}</p>
+                                    <p style="margin-top: 1px;text-align: center">{{match.away}}</p>
                                 </div>
                             </div>
+                            
                             <div class="history-timer">
                                 <span>{{match.starts | date :'dd MMMM,yyyy'}}</span>
                             </div>
@@ -372,7 +372,7 @@
                         <span class="error" ng-show="(registerForm.user.$invalid && !registerForm.user.$pristine) || (registerForm.user.$error.required && registerSubmit)">Username is required</span>
                     </div>
                     <div class="input-field col s12">
-                        <datepicker date-format="dd-MM-yyyy">
+                        <datepicker date-format="MM-dd-yyyy">
                             <input type="text" name="date" id="date" ng-model="userDetail.dob" placeholder="Date of Birth" required>
                         </datepicker>
                         <span class="error" ng-show="(registerForm.date.$invalid && !registerForm.date.$pristine) || (registerForm.date.$error.required && registerSubmit)">DOB is required</span>

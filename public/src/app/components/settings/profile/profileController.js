@@ -24,8 +24,9 @@
     profileCtrl.$inject = ["$scope", "$rootScope", "$commons", "$logger", "fantumnService", "exceptionService", "$window", "$filter"];
 
 
-    function profileCtrl($scope, $rootScope, $commons, $logger, fantumnService, exceptionService, $window, $filter) {
-
+    function profileCtrl($scope, $rootScope, $commons, $logger, fantumnService, exceptionService, $window, $filter,$location) {
+             if (window.sessionStorage.userDetail != undefined) {
+                    if (window.sessionStorage.userDetail != "") {
         $scope.initFunction = function() {
             $scope.userData = JSON.parse(window.sessionStorage.userDetail);
             $scope.getPLayerHistory();
@@ -55,5 +56,9 @@
         };
         $scope.initFunction();
 
-    }
+    }else        
+         $commons.navigate('layout.dashboard', '', false);
+             }else
+                 $commons.navigate('layout.dashboard', '', false);
+         }
 }(window, angular);

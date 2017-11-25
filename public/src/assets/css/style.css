@@ -156,11 +156,14 @@ footer a span,
 }
 
 ul.drop-menu {
+    margin-top: -15px;
     z-index: 9999;
     display: block;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     opacity: 1;
     top: 70px;
-    right: 20px;
+    right:  0px;
     color: #333;
     width: 200px;
     display: none;
@@ -250,6 +253,8 @@ ul.drop-menu li a.profile {
     font-size: 12px;
     padding: 5px;
     right: 0;
+   // border: 1px solid;
+    //width: 20%;
     margin: 0 auto;
     text-align: center;
     background: transparent;
@@ -316,7 +321,7 @@ ul.drop-menu li a.profile {
     font-size: 16px;
     font-weight: 600;
     margin: 0 auto;
-    left: 50%;
+    left: 46%;
     text-align: center;
     transform: translateX(-50%);
 }
@@ -675,13 +680,13 @@ ul.drop-menu li a.profile {
 }
 
 .history-timer {
-    color: #4CAF50;
+    color: #f45f24;;
     position: absolute;
     bottom: 9px;
     font-size: 15px;
     font-weight: 500;
     margin: 0 auto;
-    left: 50%;
+    left: 51%;
     text-align: center;
     transform: translateX(-50%);
 }
@@ -712,10 +717,10 @@ ul.drop-menu li a.profile {
 
 .matchvs {
     position: absolute;
-    top: 44px;
+    top: 45px;
     font-weight: 500;
-    font-size: 17px;
-    color: #1e1e1e;
+    font-size: 16px;
+    color: gray;
     left: 0;
     right: 0;
     text-align: center;
@@ -881,13 +886,13 @@ ul.drop-menu li a.profile {
 }
 
 .upcoming-schedule .clear-float img {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
 }
 
 .left-container {
     float: left;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .left-container p {
@@ -904,7 +909,7 @@ ul.drop-menu li a.profile {
 
 .right-container {
     float: right;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .right-container p {
@@ -924,7 +929,7 @@ ul.drop-menu li a.profile {
     font-weight: 600;
     position: absolute;
     top: 4px;
-    margin-left: 10px;
+    margin-top: -5px;
     left: 25px;
     font-size: 16px;
 }
@@ -941,15 +946,15 @@ ul.drop-menu li a.profile {
 
 .upcoming-schedule .upcoming-event {
     position: absolute;
-    left: 44%;
+    left: 41.4%;
     text-align: center;
     margin: 0 auto;
     bottom: -3px;
 }
 
 .upcoming-schedule .upcoming-event img {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
 }
 
 span.upcoming-match {
@@ -960,6 +965,7 @@ span.upcoming-match {
     font-size: 15px;
     text-align: center;
     top: 50px;
+    color: gray;
 }
 
 .upcoming-scheduleEvent {
@@ -1515,8 +1521,8 @@ ul.match-custom-btn li:last-child {
 }
 
 .live-matchSchedule .live-leftSection img {
-    width: 90px;
-    height: 90px;
+    width: 70px;
+    height: 70px;
     float: left;
 }
 
@@ -1524,11 +1530,12 @@ ul.match-custom-btn li:last-child {
     float: left;
     position: absolute;
     top: 30px;
-    left: 110px;
+    left: 90px;
     font-size: 17px;
     font-weight: 500;
     color: #444;
     width: 160px;
+    
 }
 
 .live-matchSchedule .live-rightSection {
@@ -1538,8 +1545,8 @@ ul.match-custom-btn li:last-child {
 }
 
 .live-matchSchedule .live-rightSection img {
-    width: 90px;
-    height: 90px;
+    width: 70px;
+    height: 70px;
 }
 
 .live-matchSchedule .live-rightSection p {
@@ -1558,6 +1565,15 @@ ul.match-custom-btn li:last-child {
     font-size: 18px;
     font-weight: 600;
     color: #444;
+    
+}
+.hi-match {
+    position: absolute;
+    bottom: 30px;
+    font-size: 18px;
+    font-weight: 500;
+    color: gray;
+    margin-left: -10px;
 }
 
 .float-refresh {
@@ -1636,17 +1652,17 @@ ul.match-custom-btn li:last-child {
     position: absolute;
     left: 270px;
     padding: 0;
-    top: 28px;
+    top: 10px;
 }
 
 .live-matchSchedule .history-event p {
-    top: 16px;
+    top: 1px;
 }
 
 .live-matchSchedule .live-rightSection .match-result {
     position: absolute;
-    right: 250px;
-    top: 28px;
+    right: 265px;
+    top: 10px;
     padding: 0;
 }
 
@@ -4325,6 +4341,7 @@ textarea.materialize-textarea[readonly="readonly"] {
     .sidenav-content ul li.upcomingmatch div.right-container img {
         width: 80px;
         height: 80px;
+        
     }
     .sidenav-content ul li.upcomingmatch div.right-container p {
         font-size: 15px;
@@ -4394,6 +4411,7 @@ textarea.materialize-textarea[readonly="readonly"] {
     span.history-time {
         bottom: 10px;
         font-size: 20px;
+        color:#f45f24;
     }
     .live-matchSchedule .live-leftSection {
         padding-left: 80px;

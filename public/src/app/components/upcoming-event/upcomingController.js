@@ -21,7 +21,9 @@
     angular.module("fantumn").registerCtrl("upcomingCtrl", upcomingCtrl);
     upcomingCtrl.$inject = ["$scope", "$rootScope", "$commons", "$logger", "fantumnService", "exceptionService", "$window", "$filter", "$q"];
 
-    function upcomingCtrl($scope, $rootScope, $commons, $logger, fantumnService, exceptionService, $window, $filter, $q) {
+    function upcomingCtrl($scope, $rootScope, $commons, $logger, fantumnService, exceptionService, $window, $filter,$mdToast, $q) {
+        if (window.sessionStorage.userDetail != undefined) {
+                    if (window.sessionStorage.userDetail != "") {
         $scope.initFunction = function() {
             $scope.matchDetails = JSON.parse(window.sessionStorage.match);
             $scope.userDetailInfo = JSON.parse(window.sessionStorage.userDetail);
@@ -296,7 +298,7 @@
                     },
                     function(err) {
                         $scope.toastContent = $("<span>Something went wrong</span>").add($('<button class="btn-flat toast-action">OK</button>'));
-                        Materialize.toast($scope.toastContent, 3000);
+                        Materialize.toast($scope.toastContent, 1000);
                     }
                 );
             } catch (err) {
@@ -307,15 +309,8 @@
         $scope.getLeaderBoard = function() {
             $rootScope.loader = true;
             var leaderboardUrl = $rootScope.appConfig.baseUrl + $rootScope.appConfig.rosterPlayer + "/" + $scope.userDetailInfo._id + "/" + $scope.matchDetails.matchId,
-                getPlayerUrl = $rootScope.appConfig.baseUrl + $rootScope.appConfig.getPlayersInfo + "/" + $scope.matchDetails.matchId;
-            var leaderboardPromise = "",
-                getPlayerPromise = "";
-            $q.all([
-                    leaderboardPromise = fantumnService.get(leaderboardUrl),
-                    getPlayerPromise = fantumnService.get(getPlayerUrl)
-                ])
-                .then(function() {
-                    leaderboardPromise.then(function(res) {
+                getPlayerUrl = $rootScope.appConfig.baseUrl + $rootScope.appConfig.getPlayersInfo + "/" + $scope.matchDetails.matchId;            
+                     fantumnService.get(leaderboardUrl).then(function(res) {
                         if (res && res.data.status == "success") {
                             $scope.allLineup = res.data.data.match.lineup;
                             $scope.matchInfo = res.data.data.players;
@@ -384,7 +379,7 @@
                             }
                         }
                     });
-                    getPlayerPromise.then(function(res) {
+                   fantumnService.get(getPlayerUrl).then(function(res) {
                         if (res && res.data.status == "success") {
                             $scope.allPlayers = res.data.data;
                             $rootScope.loader = false;
@@ -411,7 +406,7 @@
                             filterArray($scope.allPlayers, $scope.playerList);
                         }
                     });
-                });
+                
         };
         $scope.navigateTab = function(tabName) {
             try {
@@ -465,8 +460,8 @@
                             $scope.findStatus(player.playerId);
                             $scope.goalKeep++;
                         } else {
-                            $scope.toastContent = $('<span>Selected one Goal keeper already</span><button class="btn-flat toast-action">OK</button>');
-                            Materialize.toast($scope.toastContent, 3000);
+                            $scope.toastContent = $('<span>Selected one Goal keeper already</span><button class="btn-flat toast-action">OK</button>');                            
+                             Materialize.toast($scope.toastContent, 1750);
                         }
                     } else if (player.position === "2") {
                         if ($scope.defPlayer <= 4) {
@@ -481,7 +476,7 @@
                                 if (defTeam.length == 3) {
                                     $scope.defPlayer--;
                                     $scope.toastContent = $("<span>Cannot select 4 defenders same team</span>").add($('<button class="btn-flat toast-action">OK</button>'));
-                                    Materialize.toast($scope.toastContent, 3000);
+                                    Materialize.toast($scope.toastContent, 1750);
                                 } else {
                                     $scope.playerList.push(player);
                                     $scope.reviewPush(player);
@@ -497,7 +492,7 @@
                             $scope.defPlayer++;
                         } else {
                             $scope.toastContent = $("<span>Selected 4 defenders already</span>").add($('<button class="btn-flat toast-action">OK</button>'));
-                            Materialize.toast($scope.toastContent, 3000);
+                            Materialize.toast($scope.toastContent, 1750);
                         }
                     } else if (player.position === "3") {
                         if ($scope.midPlayer <= 3) {
@@ -512,7 +507,7 @@
                                 if (midTeam.length == 2) {
                                     $scope.midPlayer--;
                                     $scope.toastContent = $("<span>Cannot select 3 midFielders same team</span>").add($('<button class="btn-flat toast-action">OK</button>'));
-                                    Materialize.toast($scope.toastContent, 3000);
+                                    Materialize.toast($scope.toastContent, 1750);
                                 } else {
                                     $scope.playerList.push(player);
                                     $scope.reviewPush(player);
@@ -528,7 +523,7 @@
                             $scope.midPlayer++;
                         } else {
                             $scope.toastContent = $("<span>Selected 3 midfielders already</span>").add($('<button class="btn-flat toast-action">OK</button>'));
-                            Materialize.toast($scope.toastContent, 3000);
+                            Materialize.toast($scope.toastContent, 1750);
                         }
                     } else {
                         if ($scope.fwdPlayer <= 3) {
@@ -543,7 +538,7 @@
                                 if (fkTeam.length == 2) {
                                     $scope.fwdPlayer--;
                                     $scope.toastContent = $("<span>Cannot select 3 forward players same team</span>").add($('<button class="btn-flat toast-action">OK</button>'));
-                                    Materialize.toast($scope.toastContent, 3000);
+                                    Materialize.toast($scope.toastContent, 1750);
                                 } else {
                                     $scope.playerList.push(player);
                                     $scope.reviewPush(player);
@@ -559,12 +554,12 @@
                             $scope.fwdPlayer++;
                         } else {
                             $scope.toastContent = $("<span>Selected 3 forward already</span>").add($('<button class="btn-flat toast-action">OK</button>'));
-                            Materialize.toast($scope.toastContent, 3000);
+                            Materialize.toast($scope.toastContent, 1750);
                         }
                     }
                 } else {
                     $scope.toastContent = $("<span>Selected 11 players already</span>").add($('<button class="btn-flat toast-action">OK</button>'));
-                    Materialize.toast($scope.toastContent, 3000);
+                    Materialize.toast($scope.toastContent, 1750);
                 }
             } else {
                 for (var j = 0; j < $scope.allPlayers.length; j++) {
@@ -608,7 +603,7 @@
                             $rootScope.loader = false;
                             if (res.data.error == "") {
                                 $rootScope.playerListData = [];
-                                $scope.getUpcomingMatch();
+                                $scope.lead();                                
                                 if (!$scope.matchStatus) {
                                     $commons.showSuccess("#successModal", "Successfully Create New team !", true);
                                     $scope.matchStatus = true;
@@ -814,5 +809,10 @@
         });
 
         $scope.initFunction();
+        }else        
+         $commons.navigate('layout.dashboard', '', false);
+             }else{                
+                 $commons.navigate('layout.dashboard', '', false);
+             }
     }
 })(window, angular);
