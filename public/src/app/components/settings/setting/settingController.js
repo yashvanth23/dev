@@ -43,6 +43,7 @@
                 "notification": false,
                 "mobile": "",
                 "gender": "",
+                "dob":"",
                 "address": "",
                 "city": "",
                 "state": "",
@@ -69,16 +70,21 @@
 
         $scope.getProfileInformation = function() {
             var url = $rootScope.appConfig.baseUrl + $rootScope.appConfig.profile + "/" + $scope.userData._id;
-            console.log(url);
+             var url2=$rootScope.appConfig.baseUrl+ $rootScope.appConfig.user;            
+            var br ={
+                _id:$scope.userData._id
+            }            
             fantumnService.get(url).then(function(res) {
                 $rootScope.loader = false;
                 if (res && res.data.status == "success") {
                     $scope.profile = res.data.data;
                     
-                    $scope.profileInfo.name = $scope.profile.name;
+                    $scope.profileInfo.name = $scope.profile.firstName;
+                    $scope.profileInfo.lastname = $scope.profile.firstName;
                    // $scope.profileInfo.email = $scope.profile.email;
                     $scope.profileInfo.mobile = $scope.profile.mobileNumber;
                     $scope.profileInfo.gender = $scope.profile.gender;
+                     $scope.profileInfo.dob = $scope.profile.dob;
                     $scope.profileInfo.address = $scope.profile.address.line1;
                     $scope.profileInfo.city = $scope.profile.address.city;
                     $scope.profileInfo.state = $scope.profile.address.state;
@@ -86,27 +92,24 @@
                     $scope.profileInfo.country = $scope.profile.address.country;
                     $scope.profileInfo.notification = $scope.profile.pushNotification;
                 } else {
-                    $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
-                    Materialize.toast($scope.toastContent, 3000);
+                   // $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
+                    $scope.toastContent=res.data.error;
+                   Materialize.toast($scope.toastContent, 1500,'rounded');
                 }
             }, function(err) {
-                $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
-                Materialize.toast($scope.toastContent, 3000);
-            });
-            var url2=$rootScope.appConfig.baseUrl+ $rootScope.appConfig.user;
-            console.log(url2);
-            var br ={
-                _id:$scope.userData._id
-            }
-            fantumnService.post(url2,br).then(function(res) {           
-           $scope.profile1 = res.data.data;
-           console.log($scope.profile1);
+                $scope.toastContent = err ;
+                Materialize.toast($scope.toastContent, 1500);
+            });                      
+             fantumnService.post(url2,br).then(function(res) {           
+           $scope.profile1 = res.data.data;           
            $scope.profileInfo.email=$scope.profile1.email;
-           console.log($scope.profileInfo.email);
+           
            });
+       
         };
 
         $scope.updateProfile = function(valid) {
+           
             $scope.submitForm = true;
             var controlSubmit = false;
             if ($scope.profileInfo.gender == "") {
@@ -125,9 +128,11 @@
                 var url = $rootScope.appConfig.baseUrl + $rootScope.appConfig.updateProfile;
                 var model = {
                     "_id": $scope.userData._id,
-                    "name": $scope.profileInfo.name,
+                    "fistName": $scope.profileInfo.name,
+                    "lastName": $scope.profileInfo.lastname,
                     "gender": $scope.profileInfo.gender,
-                    "mobileNumber": $scope.profileInfo.mobile,
+                    "dob":Date.now($scope.profileInfo.dob),
+                    "mobileNumber": $scope.profileInfo.mobile,                    
                     "address": {
                         "line1": $scope.profileInfo.address,
                         "city": $scope.profileInfo.city,
@@ -146,12 +151,13 @@
                         $scope.getProfileInformation();
                         $scope.enableProfile();
                     } else {
-                        $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action">OK</button>'));
-                        Materialize.toast($scope.toastContent, 3000);
+                        //$scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action">OK</button>'));
+                     $scope.toastContent=res.data.error;
+                        Materialize.toast($scope.toastContent, 1500,'rounded');
                     }
                 }, function(err) {
-                    $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action">OK</button>'));
-                    Materialize.toast($scope.toastContent, 3000);
+                    $scope.toastContent =  err ;
+                    Materialize.toast($scope.toastContent, 1500,'rounded');
                 });
             }
         };
@@ -183,16 +189,16 @@
                         $commons.showSuccess('#successModal', "Profile Picture Uploaded Successfully", true);
                         $scope.profileUpload = false;
                     } else {
-                        $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
-                        Materialize.toast($scope.toastContent, 3000);
+                        $scope.toastContent = res.data.error;
+                        Materialize.toast($scope.toastContent, 1500,'rounded');
                     }
                 }, function(err) {
                     $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
-                    Materialize.toast($scope.toastContent, 3000);
+                    Materialize.toast($scope.toastContent, 1500,'rounded');
                 });
             } else {
-                $scope.toastContent = $('<span> Please Upload Profile Picture</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
-                Materialize.toast($scope.toastContent, 3000);
+                $scope.toastContent = 'Please Upload Profile Picture';
+                 Materialize.toast($scope.toastContent, 1500,'rounded');
             }
         };
         $scope.addProfile = function() {
@@ -267,12 +273,12 @@
                         console.log(res.data.data);
                         $commons.showSuccess('#successModal', "Password Changed Successfully", true);
                     } else {
-                        $scope.toastContent = $('<span>' + res.data.error + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
-                        Materialize.toast($scope.toastContent, 3000);
+                        $scope.toastContent =  res.data.error 
+                         Materialize.toast($scope.toastContent, 1500,'rounded');
                     }
                 }, function(err) {
-                    $scope.toastContent = $('<span>' + err + '</span>').add($('<button class="btn-flat toast-action"  >OK</button>'));
-                    Materialize.toast($scope.toastContent, 3000);
+                    $scope.toastContent =  err ;
+                     Materialize.toast($scope.toastContent, 1500,'rounded');
                 });
             }
         };

@@ -35,14 +35,14 @@
                         <h4 class="setting-heading">Personal Info</h4>
                         <div class="row">
                             <div class="input-field col s6">
-                                <span ng-hide="profileEdit" class="label">Name</span>
+                                <span ng-hide="profileEdit" class="label">FirstName</span>
                                 <input id="name" type="text" name="name" ng-model="profileInfo.name" placeholder="Name" required ng-disabled="!profileEdit">
                                 <span class="error" ng-show="(profileForm.name.$invalid && !profileForm.name.$pristine) || (profileForm.name.$error.required && submitForm)">Name is required</span>
                             </div>
                             <div class="input-field col s6">
-                                <span ng-hide="profileEdit" class="label">Mobile No</span>
-                                <input id="mobileNo" type="text" name="mobileNo" placeholder="Mobile No" ng-model="profileInfo.mobile" number-input maxlength="10" required ng-maxlength="10" ng-minlength="10" ng-disabled="!profileEdit">
-                                <span class="error" ng-show="(profileForm.mobileNo.$invalid && !profileForm.mobileNo.$pristine) || (profileForm.mobileNo.$error.required && submitForm)">Mobile is required</span>
+                                <span ng-hide="profileEdit" class="label">LastName</span>
+                                <input id="lastName" type="text" name="Lastname" placeholder="Lastname" ng-model="profileInfo.lastname" ng-disabled="!profileEdit">
+                                <span class="error" ng-show="(profileForm.name.$invalid && !profileForm.name.$pristine) || (profileForm.name.$error.required && submitForm)">LastName is required</span>
                             </div>
                         </div>
                         <div class="row">
@@ -62,6 +62,21 @@
                                 <span class="error" ng-show="(profileForm.email.$invalid && !profileForm.email.$pristine) || (profileForm.email.$error.required && submitForm)">Email is required</span>
                             </div>
                         </div>
+                        <div class="row">
+                        <div class="col s6 gender-field">
+                             <label for="genter_select">Date of Birth</label>
+                        <datepicker date-format="dd-MM-yyyy">
+                            <input type="text" name="date" id="date" ng-model="profileInfo.dob" placeholder="Date of Birth" required ng-disabled="!profileEdit">
+                        </datepicker>
+                        <span class="error" ng-show="(profileForm.date.$invalid && !profileForm.date.$pristine) || (profileForm.date.$error.required && submitForm)">DOB is required</span>
+                        
+                        </div>
+                        <div class="input-field col s6">
+                                <span ng-hide="profileEdit" class="label">Mobile No</span>
+                                <input id="mobileNo" type="text" name="mobileNo" placeholder="Mobile No" ng-model="profileInfo.mobile" number-input maxlength="10" required ng-maxlength="10" ng-minlength="10" ng-disabled="!profileEdit">
+                                <span class="error" ng-show="(profileForm.mobileNo.$invalid && !profileForm.mobileNo.$pristine) || (profileForm.mobileNo.$error.required && submitForm)">Mobile is required</span>
+                            </div></div>
+
                         <h4 class="setting-heading">Location Details</h4>
                         <div class="row">
                             <div class="input-field col s6">

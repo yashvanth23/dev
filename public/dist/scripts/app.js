@@ -6,9 +6,10 @@ angular.module("fantumn", [
     "angularMoment",
     "720kb.datepicker",
     "720kb.socialshare",
-    "angular-md5"
+    "angular-md5" 
+    
 ]).config([
-    "$stateProvider", "$urlRouterProvider", "$locationProvider", "$controllerProvider", "$provide",
+    "$stateProvider", "$urlRouterProvider", "$locationProvider", "$controllerProvider", "$provide", 
     function($stateProvider, $urlRouterProvider, $locationProvider, $controllerProvider, $provide) {
         "use strict";
         //To set the environment prod/dev

@@ -973,7 +973,7 @@ span.upcoming-match {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     background: #fff;
-    height: 490px;
+    height: 495px;
     box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.08), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.3);
     padding: 5px 30px;
     -webkit-box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.08), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.3);
@@ -1016,14 +1016,14 @@ span.upcoming-match {
 
 .match-header ul li {
     float: left;
-    width: 33.333333%;
+    width: 25.333333%;
     font-weight: 500;
     color: #00a99d;
     cursor: pointer;
 }
 
 .matchfix-padding {
-    padding: 10px 70px;
+    padding: 10px 60px;
 }
 
 .match-section li {
@@ -1034,10 +1034,11 @@ span.upcoming-match {
     clear: both;
     cursor: pointer;
     margin-bottom: 5px;
+   
 }
 
 .match-section li div {
-    width: 33.3333%;
+    width: 50%;
     float: left;
     font-size: 15px;
     color: #333;
@@ -1098,6 +1099,11 @@ ul.match-custom-btn li {
 
 ul.match-custom-btn li.addteam {
     border-radius: 0px 32px 32px 0px;
+}
+.mm li.active {
+    border-radius: 25px;
+    background: #c0e9e6;
+    margin-bottom: 5px;
 }
 
 ul.match-custom-btn li:last-child {
@@ -4688,7 +4694,7 @@ textarea.materialize-textarea[readonly="readonly"] {
         width: 70%;
     }
     .row .col.side-navigation.responsive-sidemenu,
-    .sidenav-tab {
+    {
         width: 30%;
     }
     .row .col.responsive-width {

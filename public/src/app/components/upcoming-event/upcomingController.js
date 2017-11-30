@@ -21,13 +21,15 @@
     angular.module("fantumn").registerCtrl("upcomingCtrl", upcomingCtrl);
     upcomingCtrl.$inject = ["$scope", "$rootScope", "$commons", "$logger", "fantumnService", "exceptionService", "$window", "$filter", "$q"];
 
-    function upcomingCtrl($scope, $rootScope, $commons, $logger, fantumnService, exceptionService, $window, $filter,$mdToast, $q) {
+    function upcomingCtrl($scope, $rootScope, $commons, $logger, fantumnService, exceptionService, $window, $filter,$timeout, $q) {
         if (window.sessionStorage.userDetail != undefined) {
                     if (window.sessionStorage.userDetail != "") {
+                        //start up fuction loads when screen loads
         $scope.initFunction = function() {
             $scope.matchDetails = JSON.parse(window.sessionStorage.match);
             $scope.userDetailInfo = JSON.parse(window.sessionStorage.userDetail);
             $scope.countdown = $scope.matchDetails.starts;
+            
             $scope.home = {
                 id: $scope.matchDetails.teams.team1.teamId,
                 name: $scope.matchDetails.teams.team1.name
@@ -50,6 +52,7 @@
             $scope.userInfo = JSON.parse(window.sessionStorage.userDetail);
             $scope.playerList = [];
             $scope.reviewList = [];
+            $scope.show_toast="";
             $scope.logic = "Logic : Show everything Line by line.";
             $scope.teamJerSey = [{
                     teamId: "52",
@@ -262,13 +265,14 @@
                 $scope.getPlayers();
             }
         };
-
+       //getting players for roster screen
         $scope.getPlayers = function() {
             try {
                 var url = $rootScope.appConfig.baseUrl + $rootScope.appConfig.getPlayersInfo + "/" + $scope.matchDetails.matchId;
                 fantumnService.get(url).then(function(res) {
                         if (res && res.data.status == "success") {
                             $scope.allPlayers = res.data.data;
+                            
                             for (var i = 0; i < $scope.allPlayers.length; i++) {
                                 $scope.allPlayers[i]["status"] = false;
                                 if ($scope.allPlayers[i].playerPositionId == 1) {
@@ -284,7 +288,34 @@
                                     $scope.allPlayers[i]["positionPlay"] = "FW";
                                     $scope.allPlayers[i]["position"] = "4";
                                 }
+                            }                            
+                            $scope.allhome=[];
+                            $scope.allaway=[];
+                            
+                            for (var i = 0; i < $scope.allPlayers.length; i++){
+                                $scope.d=[];
+                            if($scope.allPlayers[i].playerDetails.teamId==$scope.home.id){
+                               
+                                $scope.allhome.push({
+                                    playerName:$scope.allPlayers[i].playerName,
+                                    positionPlay:$scope.allPlayers[i].positionPlay,
+                                    playerId :$scope.allPlayers[i].playerId,
+                                    teamId:$scope.allPlayers[i].playerDetails.teamId,
+                                    position:$scope.allPlayers[i].position,
+                                    status:$scope.allPlayers[i].status
+                                });
+                            }else{                     
+                                $scope.allaway.push({
+                                    playerName:$scope.allPlayers[i].playerName,
+                                    positionPlay:$scope.allPlayers[i].positionPlay,
+                                     playerId :$scope.allPlayers[i].playerId,
+                                     teamId:$scope.allPlayers[i].playerDetails.teamId,
+                                     position:$scope.allPlayers[i].position,
+                                     status:$scope.allPlayers[i].status
+                                });
                             }
+                            }
+                            
                             $rootScope.loader = false;
                             $scope.matchStatus = false;
                             if ($scope.allPlayers.length >= 9) {
@@ -297,19 +328,20 @@
                         }
                     },
                     function(err) {
-                        $scope.toastContent = $("<span>Something went wrong</span>").add($('<button class="btn-flat toast-action">OK</button>'));
-                        Materialize.toast($scope.toastContent, 1000);
+                        $scope.toastContent = 'Something went wrong';
+                        Materialize.toast($scope.toastContent, 1000,'rounded');
                     }
                 );
             } catch (err) {
                 exceptionService.promiseRejectsAfterAWhile(err);
             }
         };
-
+//for history of the players
         $scope.getLeaderBoard = function() {
             $rootScope.loader = true;
             var leaderboardUrl = $rootScope.appConfig.baseUrl + $rootScope.appConfig.rosterPlayer + "/" + $scope.userDetailInfo._id + "/" + $scope.matchDetails.matchId,
-                getPlayerUrl = $rootScope.appConfig.baseUrl + $rootScope.appConfig.getPlayersInfo + "/" + $scope.matchDetails.matchId;            
+                getPlayerUrl = $rootScope.appConfig.baseUrl + $rootScope.appConfig.getPlayersInfo + "/" + $scope.matchDetails.matchId;  
+        
                      fantumnService.get(leaderboardUrl).then(function(res) {
                         if (res && res.data.status == "success") {
                             $scope.allLineup = res.data.data.match.lineup;
@@ -382,8 +414,16 @@
                    fantumnService.get(getPlayerUrl).then(function(res) {
                         if (res && res.data.status == "success") {
                             $scope.allPlayers = res.data.data;
-                            $rootScope.loader = false;
+                            $rootScope.loader = false;                           
                             for (var i = 0; i < $scope.allPlayers.length; i++) {
+                                 for (var j = 0; j < $scope.playerList.length; j++){
+                                 if($scope.allPlayers[i].playerId == $scope.playerList[j].playerId) {                                
+                                     $scope.allPlayers[i]["status"] = true;
+                                 console.log($scope.allPlayers[i].status);
+                             }else{
+                                     $scope.allPlayers[i]["status1"] = false;
+                                 }
+                                 }
                                 if ($scope.allPlayers[i].playerPositionId == 1) {
                                     $scope.allPlayers[i]["positionPlay"] = "GK";
                                     $scope.allPlayers[i]["position"] = "1";
@@ -398,6 +438,33 @@
                                     $scope.allPlayers[i]["position"] = "4";
                                 }
                             }
+                            //spliting up screen into for home and away
+                            $scope.allhome=[];
+                            $scope.allaway=[];                            
+                            for (var i = 0; i < $scope.allPlayers.length; i++){ 
+                               
+                            if($scope.allPlayers[i].playerDetails.teamId==$scope.home.id){
+                               
+                                $scope.allhome.push({
+                                    playerName:$scope.allPlayers[i].playerName,
+                                    positionPlay:$scope.allPlayers[i].positionPlay,
+                                    playerId :$scope.allPlayers[i].playerId,
+                                    teamId:$scope.allPlayers[i].playerDetails.teamId,
+                                    position:$scope.allPlayers[i].position,
+                                    status:$scope.allPlayers[i].status
+                                });
+                            }else{                     
+                                $scope.allaway.push({
+                                    playerName:$scope.allPlayers[i].playerName,
+                                    positionPlay:$scope.allPlayers[i].positionPlay,
+                                     playerId :$scope.allPlayers[i].playerId,
+                                     teamId:$scope.allPlayers[i].playerDetails.teamId,
+                                     position:$scope.allPlayers[i].position,
+                                     status:$scope.allPlayers[i].status
+                                });
+                            }
+                            }
+                            
                             if ($scope.allPlayers.length >= 9) {
                                 angular.element(".allplay").addClass("cus-scroll");
                             } else {
@@ -419,7 +486,7 @@
         $scope.navigateActiveTab = function(tab) {
             return $scope.playerTab === tab;
         };
-
+        //slide changing button
         $scope.slider = function(slideName) {
             if (slideName === "prev") {
                 if ($scope.playerTab === "all") {
@@ -447,7 +514,9 @@
                 }
             }
         };
-        $scope.addPlayer = function(player, index, playerPosition) {
+        
+        // adding player from rosterscreeen
+        $scope.addPlayer = function(player, index, sec) {
             var defTeam = [],
                 midTeam = [],
                 fkTeam = [];
@@ -457,116 +526,126 @@
                         if ($scope.goalKeep == 1) {
                             $scope.playerList.push(player);
                             $scope.reviewPush(player);
-                            $scope.findStatus(player.playerId);
+                            $scope.findStatus(player.playerId,sec);
                             $scope.goalKeep++;
                         } else {
-                            $scope.toastContent = $('<span>Selected one Goal keeper already</span><button class="btn-flat toast-action">OK</button>');                            
-                             Materialize.toast($scope.toastContent, 1750);
+                            $scope.toastContent = 'Already selected goal keeper';                         
+                             Materialize.toast($scope.toastContent, 2000,'rounded');
+
                         }
                     } else if (player.position === "2") {
                         if ($scope.defPlayer <= 4) {
                             if ($scope.defPlayer == 4) {
                                 for (var i = 0; i < $scope.playerList.length; i++) {
                                     if ($scope.playerList[i].position == "2") {
-                                        if (player.playerDetails.teamId == $scope.playerList[i].playerDetails.teamId) {
-                                            defTeam.push($scope.playerList[i].playerDetails.teamId);
+                                        if (player.teamId == $scope.playerList[i].teamId) {
+                                            defTeam.push($scope.playerList[i].teamId);
                                         }
                                     }
                                 }
                                 if (defTeam.length == 3) {
                                     $scope.defPlayer--;
-                                    $scope.toastContent = $("<span>Cannot select 4 defenders same team</span>").add($('<button class="btn-flat toast-action">OK</button>'));
-                                    Materialize.toast($scope.toastContent, 1750);
+                                    $scope.toastContent = 'Cannot select 4 defenders same team';
+                                    Materialize.toast($scope.toastContent,2000,'rounded');
                                 } else {
                                     $scope.playerList.push(player);
                                     $scope.reviewPush(player);
-                                    $scope.findStatus(player.playerId);
+                                    $scope.findStatus(player.playerId,sec);
                                     $rootScope.playerListData = $scope.playerList;
                                 }
                             } else {
                                 $scope.playerList.push(player);
                                 $scope.reviewPush(player);
-                                $scope.findStatus(player.playerId);
+                                $scope.findStatus(player.playerId,sec);
                                 $rootScope.playerListData = $scope.playerList;
                             }
                             $scope.defPlayer++;
                         } else {
-                            $scope.toastContent = $("<span>Selected 4 defenders already</span>").add($('<button class="btn-flat toast-action">OK</button>'));
-                            Materialize.toast($scope.toastContent, 1750);
+                            $scope.toastContent = 'Selected 4 defenders already';
+                            Materialize.toast($scope.toastContent, 2000,'rounded');
                         }
                     } else if (player.position === "3") {
                         if ($scope.midPlayer <= 3) {
                             if ($scope.midPlayer == 3) {
                                 for (var mid = 0; mid < $scope.playerList.length; mid++) {
-                                    if ($scope.playerList[mid].position == "3") {
-                                        if (player.playerDetails.teamId == $scope.playerList[mid].playerDetails.teamId) {
-                                            midTeam.push($scope.playerList[mid].playerDetails.teamId);
+                                    if ($scope.playerList[mid].position == "3") {                                       
+                                        if (player.teamId == $scope.playerList[mid].teamId) {
+                                            midTeam.push($scope.playerList[mid].teamId);
+                                            
                                         }
                                     }
                                 }
                                 if (midTeam.length == 2) {
                                     $scope.midPlayer--;
-                                    $scope.toastContent = $("<span>Cannot select 3 midFielders same team</span>").add($('<button class="btn-flat toast-action">OK</button>'));
-                                    Materialize.toast($scope.toastContent, 1750);
+                                    $scope.toastContent = 'Cannot select 3 midFielders same team';
+                                    Materialize.toast($scope.toastContent, 2000,'rounded');
                                 } else {
                                     $scope.playerList.push(player);
                                     $scope.reviewPush(player);
-                                    $scope.findStatus(player.playerId);
+                                    $scope.findStatus(player.playerId,sec);
                                     $rootScope.playerListData = $scope.playerList;
                                 }
                             } else {
                                 $scope.playerList.push(player);
                                 $scope.reviewPush(player);
-                                $scope.findStatus(player.playerId);
+                                $scope.findStatus(player.playerId,sec);
                                 $rootScope.playerListData = $scope.playerList;
                             }
                             $scope.midPlayer++;
                         } else {
-                            $scope.toastContent = $("<span>Selected 3 midfielders already</span>").add($('<button class="btn-flat toast-action">OK</button>'));
-                            Materialize.toast($scope.toastContent, 1750);
+                            $scope.toastContent = 'Selected 3 midfielders already';
+                            Materialize.toast($scope.toastContent, 2000,'rounded');
                         }
                     } else {
                         if ($scope.fwdPlayer <= 3) {
                             if ($scope.fwdPlayer == 3) {
                                 for (var fw = 0; fw < $scope.playerList.length; fw++) {
                                     if ($scope.playerList[fw].position == "4") {
-                                        if (player.playerDetails.teamId == $scope.playerList[fw].playerDetails.teamId) {
-                                            fkTeam.push($scope.playerList[fw].playerDetails.teamId);
+                                        if (player.teamId == $scope.playerList[fw].teamId) {
+                                            fkTeam.push($scope.playerList[fw].teamId);
                                         }
                                     }
                                 }
                                 if (fkTeam.length == 2) {
                                     $scope.fwdPlayer--;
-                                    $scope.toastContent = $("<span>Cannot select 3 forward players same team</span>").add($('<button class="btn-flat toast-action">OK</button>'));
-                                    Materialize.toast($scope.toastContent, 1750);
+                                    $scope.toastContent = 'Cannot select 3 forward players same team';
+                                    Materialize.toast($scope.toastContent, 2000,'rounded');
                                 } else {
                                     $scope.playerList.push(player);
                                     $scope.reviewPush(player);
-                                    $scope.findStatus(player.playerId);
+                                    $scope.findStatus(player.playerId,sec);
                                     $rootScope.playerListData = $scope.playerList;
                                 }
                             } else {
                                 $scope.playerList.push(player);
                                 $scope.reviewPush(player);
-                                $scope.findStatus(player.playerId);
+                                $scope.findStatus(player.playerId,sec);
                                 $rootScope.playerListData = $scope.playerList;
                             }
                             $scope.fwdPlayer++;
                         } else {
-                            $scope.toastContent = $("<span>Selected 3 forward already</span>").add($('<button class="btn-flat toast-action">OK</button>'));
-                            Materialize.toast($scope.toastContent, 1750);
+                            $scope.toastContent = 'Selected 3 forward already';
+                            Materialize.toast($scope.toastContent, 2000,'rounded');
                         }
                     }
                 } else {
-                    $scope.toastContent = $("<span>Selected 11 players already</span>").add($('<button class="btn-flat toast-action">OK</button>'));
-                    Materialize.toast($scope.toastContent, 1750);
+                    $scope.toastContent = 'Selected 11 players already';
+                    Materialize.toast($scope.toastContent, 2000,'rounded');
                 }
             } else {
-                for (var j = 0; j < $scope.allPlayers.length; j++) {
-                    if (player.playerId == $scope.allPlayers[j].playerId) {
-                        $scope.allPlayers[j].status = false;
-                    }
+                 if(sec=='alla'){                
+            for (var j = 0; j < $scope.allaway.length; j++) {
+                if (player.playerId == $scope.allaway[j].playerId) {
+                    $scope.allaway[j].status = false;                    
                 }
+            }
+        }else{
+            for (var statusArray = 0; statusArray < $scope.allhome.length; statusArray++) {
+                if (player.playerId == $scope.allhome[statusArray].playerId) {
+                    $scope.allhome[statusArray].status = false;
+                }
+            }
+        }
                 if (player.position == 1) {
                     $scope.goalKeep--;
                 } else if (player.position == 2) {
@@ -612,7 +691,7 @@
                                 }
                                 $scope.matchStatus = true;
                             } else {
-                                $scope.toastContent = $("<span>" + res.data.error + "</span>").add($('<button class="btn-flat toast-action">OK</button>'));
+                                $scope.toastContent = res.data.error;
                                 Materialize.toast($scope.toastContent, 3000);
                             }
                         } else {}
@@ -622,23 +701,33 @@
                     }
                 );
             } else {
-                $scope.toastContent = $("<span> Please Select 11 Players in Team</span>").add($('<button class="btn-flat toast-action">OK</button>'));
-                Materialize.toast($scope.toastContent, 3000);
+                $scope.toastContent = 'Please Select 11 Players in Team';
+                Materialize.toast($scope.toastContent, 2000,'rounded');
             }
         };
 
-        $scope.findStatus = function(player) {
-            for (var statusArray = 0; statusArray < $scope.allPlayers.length; statusArray++) {
-                if (player == $scope.allPlayers[statusArray].playerId) {
-                    $scope.allPlayers[statusArray].status = true;
+        $scope.findStatus = function(player,data) {
+            console.log(data);
+            if(data=='alla'){
+                console.log("yup")
+            for (var statusArray = 0; statusArray < $scope.allaway.length; statusArray++) {
+                if (player == $scope.allaway[statusArray].playerId) {
+                    $scope.allaway[statusArray].status = true;
                 }
             }
+        }else{
+            for (var statusArray = 0; statusArray < $scope.allhome.length; statusArray++) {
+                if (player == $scope.allhome[statusArray].playerId) {
+                    $scope.allhome[statusArray].status = true;
+                }
+            }
+        }
         };
 
         $scope.reviewPush = function(player) {
             if (player.positionPlay === "GK") {
                 for (var j = 0; j < $scope.goalKeeJersey.length; j++) {
-                    if (player.playerDetails.teamId == $scope.goalKeeJersey[j].teamId) {
+                    if (player.teamId == $scope.goalKeeJersey[j].teamId) {
                         $scope.reviewList.push(player);
                         $scope.reviewList[$scope.reviewList.length - 1]["image"] = $scope.goalKeeJersey[j].jersey;
                         $scope.reviewList[$scope.reviewList.length - 1]["name"] = $scope.reviewList[$scope.reviewList.length - 1].playerName;
@@ -646,7 +735,7 @@
                 }
             } else {
                 for (var i = 0; i < $scope.teamJerSey.length; i++) {
-                    if (player.playerDetails.teamId == $scope.teamJerSey[i].teamId) {
+                    if (player.teamId == $scope.teamJerSey[i].teamId) {
                         $scope.reviewList.push(player);
                         $scope.reviewList[$scope.reviewList.length - 1]["image"] = $scope.teamJerSey[i].jersey;
                         $scope.reviewList[$scope.reviewList.length - 1]["name"] = $scope.reviewList[$scope.reviewList.length - 1].playerName;
@@ -665,8 +754,8 @@
                 $scope.gkReview = $filter("filter")($scope.reviewList, "GK");
             } else {
                 $scope.review = false;
-                $scope.toastContent = $("<span>Please select players</span>").add($('<button class="btn-flat toast-action">OK</button>'));
-                Materialize.toast($scope.toastContent, 3000);
+                $scope.toastContent = 'Please select players';
+                Materialize.toast($scope.toastContent, 2000,'rounded');
             }
         };
 
@@ -748,21 +837,7 @@
             });
         };
 
-        $scope.teamSort = function(event) {
-            if (angular.element(".sort").hasClass("active")) {
-                angular.element(".sort").removeClass("active");
-                angular.element(".sort").find("img").css({
-                    transform: "rotate(180deg)"
-                });
-                $scope.orderAll = "-playerDetails.teamId";
-            } else {
-                angular.element(".sort").addClass("active");
-                angular.element(".sort").find("img").css({
-                    transform: "rotate(0deg)"
-                });
-                $scope.orderAll = "playerDetails.teamId";
-            }
-        };
+       
 
         $scope.playerSort = function(event) {
             if (angular.element(".playerSort").hasClass("active")) {
@@ -780,10 +855,26 @@
             }
         };
 
+
         $scope.$watch("matchChange", function() {
             if (window.sessionStorage.match !== $scope.matchDetails) {
                 $scope.matchDetails = JSON.parse(window.sessionStorage.match);
-                $scope.countdown = $scope.matchDetails.starts;
+                $scope.countdown1 = $scope.matchDetails.starts;
+                
+               
+                setInterval(function() {
+                    $scope.countdown1 = $scope.matchDetails.starts;
+                     var countDownDate = new Date($scope.countdown1).getTime();
+    var now = new Date().getTime();  
+    var distance = countDownDate - now;
+     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    $scope.countdown = days + "D:" + hours+ ":" + minutes + ":" + seconds; 
+     
+   // console.log($scope.countdown1); 
+    }, 1000);
                 $scope.home = {
                     id: $scope.matchDetails.teams.team1.teamId,
                     name: $scope.matchDetails.teams.team1.name
@@ -801,7 +892,7 @@
                     $scope.reviewList = [];
                 $scope.review = false;
                 if ($scope.matchDetails.picked) {
-                    $scope.getLeaderBoard();
+                        $scope.getLeaderBoard();
                 } else {
                     $scope.getPlayers();
                 }
