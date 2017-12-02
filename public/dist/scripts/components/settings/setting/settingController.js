@@ -23,7 +23,7 @@
         .registerCtrl('settingCtrl', settingCtrl);
     settingCtrl.$inject = ["$scope", "$rootScope", "$commons", "$logger", "fantumnService", "exceptionService", "$http"];
 
-    function settingCtrl($scope, $rootScope, $commons, $logger, fantumnService, exceptionService, $http) {
+    function settingCtrl($scope, $rootScope, $commons, $logger, fantumnService, exceptionService, $http,$filter) {
         if (window.sessionStorage.userDetail != undefined) {
                     if (window.sessionStorage.userDetail != "") {
         
@@ -36,6 +36,9 @@
                 "oldPass": "",
                 "newPass": ""
             };
+            setInterval(function() {
+            Materialize.Toast.removeAll();            
+                },3000);
             $rootScope.loader = true;
             $scope.profileInfo = {
                 "name": "",
@@ -80,11 +83,15 @@
                     $scope.profile = res.data.data;
                     
                     $scope.profileInfo.name = $scope.profile.firstName;
-                    $scope.profileInfo.lastname = $scope.profile.firstName;
+                    $scope.profileInfo.lastname = $scope.profile.lastName;
                    // $scope.profileInfo.email = $scope.profile.email;
                     $scope.profileInfo.mobile = $scope.profile.mobileNumber;
                     $scope.profileInfo.gender = $scope.profile.gender;
-                     $scope.profileInfo.dob = $scope.profile.dob;
+                    var t=$scope.profile.dob; 
+                      var a = t.split('T');
+                      
+                     
+                     $scope.profileInfo.dob = a[0];
                     $scope.profileInfo.address = $scope.profile.address.line1;
                     $scope.profileInfo.city = $scope.profile.address.city;
                     $scope.profileInfo.state = $scope.profile.address.state;
@@ -101,7 +108,8 @@
                 Materialize.toast($scope.toastContent, 1500);
             });                      
              fantumnService.post(url2,br).then(function(res) {           
-           $scope.profile1 = res.data.data;           
+           $scope.profile1 = res.data.data;
+           console.log()
            $scope.profileInfo.email=$scope.profile1.email;
            
            });
@@ -125,13 +133,18 @@
 
             if (valid && controlSubmit) {
                 $rootScope.loader = true;
+                var t=$scope.profileInfo.dob; 
+               var a = t.split(" ");
+                 var date = a[0];
+               var time = a[1];
+                console.log(date);
                 var url = $rootScope.appConfig.baseUrl + $rootScope.appConfig.updateProfile;
                 var model = {
                     "_id": $scope.userData._id,
-                    "fistName": $scope.profileInfo.name,
+                    "firstName": $scope.profileInfo.name,
                     "lastName": $scope.profileInfo.lastname,
                     "gender": $scope.profileInfo.gender,
-                    "dob":Date.now($scope.profileInfo.dob),
+                    "dob":$scope.profileInfo.dob,
                     "mobileNumber": $scope.profileInfo.mobile,                    
                     "address": {
                         "line1": $scope.profileInfo.address,
@@ -147,6 +160,7 @@
                     if (res && res.data.status == "success") {
                         $scope.profile = res.data.data;
                         $scope.submitForm = false;
+                        $scope.name=$scope.profile.firstName;
                         $commons.showError('#successModal', "Profile Updated Successfully", true);
                         $scope.getProfileInformation();
                         $scope.enableProfile();

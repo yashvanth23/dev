@@ -59,7 +59,7 @@
                     "username": "",
                     "avatar": ""
                 };
-
+               $scope.loadfalse="345688";
                 var userInfo = $cookies.get('userInfo');
                 if (userInfo != undefined) {
                     window.sessionStorage.userDetail = userInfo;
@@ -68,6 +68,10 @@
                     if (window.sessionStorage.userDetail != "") {
                         $scope.userInfo = JSON.parse(window.sessionStorage.userDetail);
                         $scope.loginStatus = true;
+                        if(window.sessionStorage.match !=undefined)
+                        $scope.matchDetails = JSON.parse(window.sessionStorage.match);
+                          else
+                               $scope.matchDetails="undefined";
                     }
                 }
                 if (window.sessionStorage.pageName == "upcoming") {
@@ -83,18 +87,44 @@
                     "tabStatus": "",
                     "element": ""
                 };
-                $scope.mobile = false;     
+                  setInterval(function() {
+            Materialize.Toast.removeAll();            
+                },3000);
+                if($scope.loginStatus){
+                    var  model2={
+                        _id:$scope.userInfo._id
+                    }
+                     var url1 = $rootScope.appConfig.baseUrl + $rootScope.appConfig.updateProfile;
+                                 fantumnService.post(url1, model2).then(function(res1) {
+                            if (res1 && res1.data.status == "success") {                       
+                                $scope.name1 =res1.data.data.firstName;
+                                if($scope.name1==null){
+                                    $scope.name =res1.data.data.username;
+                                }
+                                else{
+                                  $scope.name =res1.data.data.firstName  
+                                }}
+                              });
+                }
+                $scope.mobile = false; 
+                 var upcomingUrl1 = $rootScope.appConfig.baseUrl + $rootScope.appConfig.upcoming;
                 if($scope.loginStatus){
         var leaderboardUrl = $rootScope.appConfig.baseUrl + $rootScope.appConfig.getLeaderBoard + "/" + $scope.userInfo.username;
               fantumnService.get(leaderboardUrl).then(function(leaderboard){
                                   if(leaderboard && leaderboard.data.status == "success")
                                  $scope.matchCard = leaderboard.data.data.matchCards;           
-        });  }      
-        var upcomingUrl1 = $rootScope.appConfig.baseUrl + $rootScope.appConfig.upcoming;
+        });       
             fantumnService.get(upcomingUrl1).then(function(res) {
                                       $scope.upcome=res.data;            
                                       $scope.getUpcomingMatch();
-        });        
+                                  })
+                              }else{
+                                   fantumnService.get(upcomingUrl1).then(function(res) {
+                                      $scope.upcome=res.data;            
+                                      $scope.getUpcomingMatch();
+                                  })
+                              }   
+    
        setInterval(function() {
              fantumnService.get(upcomingUrl1).then(function(res) {
                       $scope.upcome=res.data;    
@@ -137,16 +167,18 @@
         fantumnService.get(leaderboardUrl).then(function(leaderboard){            
             if(leaderboard && leaderboard.data.status == "success")
            $scope.matchCard = leaderboard.data.data.matchCards;
-             $scope.lol();
-             $scope.getUpcomingMatch();
-           
-        });
+             var upcomingUrl1 = $rootScope.appConfig.baseUrl + $rootScope.appConfig.upcoming;
+            fantumnService.get(upcomingUrl1).then(function(res) {
+                                      $scope.upcome=res.data;            
+                                      $scope.getUpcomingMatch();
+                                  });
+          });
        }
         $scope.getUpcomingMatch = function() {             
             try {                
                 var currentDate = new Date();
                 currentDate = currentDate.toISOString();
-                
+               // $scope.lead();
                 if ($scope.loginStatus) {                         
                             if ($scope.upcome.status == "success") {
                                 $scope.upcomingMatch = [];
@@ -156,8 +188,8 @@
                                             competition: $scope.upcome.data[i].season.competition.name,
                                             home: $scope.upcome.data[i].team1.name,
                                             away: $scope.upcome.data[i].team2.name,
-                                            homeLogo: $scope.upcome.data[i].team1.logo,
-                                            awayLogo: $scope.upcome.data[i].team2.logo,
+                                            homeLogo: $scope.upcome.data[i].team1.duplicateLogo,
+                                            awayLogo: $scope.upcome.data[i].team2.duplicateLogo,
                                             matchId: $scope.upcome.data[i].match.matchId,
                                             starts: $scope.upcome.data[i].match.startingDateTime,
                                             _id: $scope.upcome.data[i].match._id,
@@ -187,8 +219,8 @@
                                         competition: $scope.upcome.data[i].season.competition.name,
                                         home: $scope.upcome.data[i].team1.name,
                                         away: $scope.upcome.data[i].team2.name,
-                                        homeLogo: $scope.upcome.data[i].team1.logo,
-                                        awayLogo: $scope.upcome.data[i].team2.logo,
+                                        homeLogo: $scope.upcome.data[i].team1.duplicateLogo,
+                                        awayLogo: $scope.upcome.data[i].team2.duplicateLogo,
                                         matchId: $scope.upcome.data[i].match.matchId,
                                         starts: $scope.upcome.data[i].match.startingDateTime,
                                         _id: $scope.upcome.data[i].match._id,
@@ -241,8 +273,8 @@
                                     competition: $scope.live.data[i].season.competition.name,
                                     home: $scope.live.data[i].team1.name,
                                     away: $scope.live.data[i].team2.name,
-                                    homeLogo: $scope.live.data[i].team1.logo,
-                                    awayLogo: $scope.live.data[i].team2.logo,
+                                    homeLogo: $scope.live.data[i].team1.duplicateLogo,
+                                    awayLogo: $scope.live.data[i].team2.duplicateLogo,
                                     matchId: $scope.live.data[i].match.matchId,
                                     starts: $scope.live.data[i].match.startingDateTime,
                                     teams: {
@@ -268,8 +300,8 @@
                                     competition: $scope.live.data[i].season.competition.name,
                                     home: $scope.live.data[i].team1.name,
                                     away: $scope.live.data[i].team2.name,
-                                    homeLogo: $scope.live.data[i].team1.logo,
-                                    awayLogo: $scope.live.data[i].team2.logo,
+                                    homeLogo: $scope.live.data[i].team1.duplicateLogo,
+                                    awayLogo: $scope.live.data[i].team2.duplicateLogo,
                                     matchId: $scope.live.data[i].match.matchId,
                                     starts: $scope.live.data[i].match.startingDateTime,
                                     teams: {
@@ -312,8 +344,8 @@
                                     competition: $scope.history.data[i].season.competition.name,
                                     home: $scope.history.data[i].team1.name,
                                     away: $scope.history.data[i].team2.name,
-                                    homeLogo: $scope.history.data[i].team1.logo,
-                                    awayLogo: $scope.history.data[i].team2.logo,
+                                    homeLogo: $scope.history.data[i].team1.duplicateLogo,
+                                    awayLogo: $scope.history.data[i].team2.duplicateLogo,
                                     matchId: $scope.history.data[i].match.matchId,
                                     starts: $scope.history.data[i].match.startingDateTime,
                                     homeScore: $scope.history.data[i].match.team1Score,
@@ -341,8 +373,8 @@
                                     competition: $scope.history.data[i].season.competition.name,
                                     home: $scope.history.data[i].team1.name,
                                     away: $scope.history.data[i].team2.name,
-                                    homeLogo: $scope.history.data[i].team1.logo,
-                                    awayLogo: $scope.history.data[i].team2.logo,
+                                    homeLogo: $scope.history.data[i].team1.duplicateLogo,
+                                    awayLogo: $scope.history.data[i].team2.duplicateLogo,
                                     matchId: $scope.history.data[i].match.matchId,
                                     starts: $scope.history.data[i].match.startingDateTime,
                                     homeScore: $scope.history.data[i].match.team1Score,
@@ -420,8 +452,10 @@
          */
         $scope.gotoPage = function(index, match, tabStatus, element) {
             try {
-                var str;
+                var str;                
                 if ($scope.loginStatus) {
+                    if($scope.matchDetails!=undefined){
+                    if($scope.matchDetails.matchId!=match.matchId) {                      
                     if ($rootScope.playerListData.length == 0) {
                         if (tabStatus === "upcoming") {                            
                             window.sessionStorage.pageName = "upcoming";
@@ -429,13 +463,15 @@
                             angular.element('li.upcomingmatch').removeClass('active');
                             angular.element('#' + element.target.id).addClass('active');
                             window.sessionStorage.match = JSON.stringify(match);
+                            $scope.matchDetails = JSON.parse(window.sessionStorage.match);
                             $rootScope.matchChange = match;
                             $rootScope.loader = true;
+                            $scope.loadfalse=str;
                             $commons.navigate('layout.upcoming', str, false);
                         } else if (tabStatus === "live") {
                             $scope.pagename = "live";
-                            window.sessionStorage.pageName = "live";
                             str = JSON.stringify(match);
+                            window.sessionStorage.pageName = "live";                            
                             angular.element('li.upcomingmatch').removeClass('active');
                             angular.element('#' + element.target.id).addClass('active');
                             window.sessionStorage.match = JSON.stringify(match);
@@ -443,8 +479,8 @@
                             $commons.navigate('layout.live', str, false);
                         } else {
                             $scope.pagename = "history";
-                            window.sessionStorage.pageName = "history";
                             str = JSON.stringify(match);
+                            window.sessionStorage.pageName = "history";                           
                             angular.element('li.upcomingmatch').removeClass('active');
                             angular.element("#" + element.target.id).addClass('active');
                             window.sessionStorage.match = JSON.stringify(match);
@@ -459,7 +495,47 @@
                             "tabStatus": tabStatus,
                             "element": element
                         };
-                    }
+                    } }}else{
+                if ($rootScope.playerListData.length == 0) {
+                        if (tabStatus === "upcoming") {                            
+                            window.sessionStorage.pageName = "upcoming";
+                            str = JSON.stringify(match);
+                            angular.element('li.upcomingmatch').removeClass('active');
+                            angular.element('#' + element.target.id).addClass('active');
+                            window.sessionStorage.match = JSON.stringify(match);
+                            $scope.matchDetails = JSON.parse(window.sessionStorage.match);
+                            $rootScope.matchChange = match;
+                            $rootScope.loader = true;
+                            $scope.loadfalse=str;
+                            $commons.navigate('layout.upcoming', str, false);
+                        } else if (tabStatus === "live") {
+                            $scope.pagename = "live";
+                            str = JSON.stringify(match);
+                            window.sessionStorage.pageName = "live";                            
+                            angular.element('li.upcomingmatch').removeClass('active');
+                            angular.element('#' + element.target.id).addClass('active');
+                            window.sessionStorage.match = JSON.stringify(match);
+                            $rootScope.liveChange = match;
+                            $commons.navigate('layout.live', str, false);
+                        } else {
+                            $scope.pagename = "history";
+                            str = JSON.stringify(match);
+                            window.sessionStorage.pageName = "history";                           
+                            angular.element('li.upcomingmatch').removeClass('active');
+                            angular.element("#" + element.target.id).addClass('active');
+                            window.sessionStorage.match = JSON.stringify(match);
+                            $rootScope.historyChange = match;
+                            $commons.navigate('layout.history', str, false);
+                        }
+                    } else {
+                        $commons.showWarning("#warningModal", "", true);
+                        $scope.redirecturl = {
+                            "index": index,
+                            "match": match,
+                            "tabStatus": tabStatus,
+                            "element": element
+                        };
+                    }}
                 } else {
                     window.sessionStorage.match = JSON.stringify(match);
                     $rootScope.matchChange = match;
@@ -547,8 +623,7 @@
                 var url = $rootScope.appConfig.baseUrl + $rootScope.appConfig.login;
                 fantumnService.post(url, $scope.user).then(function(res) {
                     if (res && res.data.status == "success") {
-                        $rootScope.loader = false;
-                        $scope.loginStatus = true;
+                        $rootScope.loader = false;                        
                         window.sessionStorage.userDetail = JSON.stringify(res.data.data);
                         var now = new Date();
                         now.setDate(now.getDate() + 7);
@@ -557,18 +632,27 @@
                         });
                         $scope.loginSubmit = false;
                         $scope.closeAuth();
-                        $scope.userInfo = res.data.data;                        
+                        $scope.userInfo = JSON.parse(window.sessionStorage.userDetail);                        
                         var str = JSON.stringify(window.sessionStorage.match);
+                         $scope.userD = JSON.parse(window.sessionStorage.userDetail);
+                          $scope.loginStatus = true;
+                          $scope.lead();
+                        var model2 ={
+                            "_id": $scope.userD._id
+                        }
                         var url1 = $rootScope.appConfig.baseUrl + $rootScope.appConfig.updateProfile;
                                  fantumnService.post(url1, model2).then(function(res1) {
-                            if (res1 && res1.data.status == "success") {
-                                
-                                $scope.name =res1.data.data.name;
-                                if($scope.name=="")
+                            if (res1 && res1.data.status == "success") {                       
+                                $scope.name1 =res1.data.data.firstName;                                
+                                if($scope.name1==null){
                                     $scope.name =res1.data.data.username;
                                 }
+                                else{
+                                  $scope.name =res1.data.data.firstName  
+                                }}
                               });
-                        $scope.lead();
+                             
+                        
                         
                         if ($scope.redirecturl != "") {
                             $scope.gotoPage($scope.redirecturl.index, $scope.redirecturl.match, $scope.redirecturl.tabStatus, $scope.redirecturl.element);
@@ -590,7 +674,7 @@
         };
 
         $scope.register = function(formValid) {
-            $scope.registerSubmit = true;
+            $scope.registerSubmit = true;            
             if (formValid) {
                 if ($scope.agreeRegister) {                    
                         $rootScope.loader = true;
@@ -616,10 +700,7 @@
                                 "idToken": null,
                                 "imgUrl": null
                             }
-                        };
-                        var model2 ={
-                            "username": $scope.userDetail.username
-                        }
+                        };                       
                         fantumnService.post(url, model).then(function(res) {
                             $rootScope.loader = false;
                             if (res && res.data.status == "success") {
@@ -630,20 +711,25 @@
                                 $cookies.put('userInfo', window.sessionStorage.userDetail, {
                                     expires: now
                                 });
+                                $scope.userData = JSON.parse(window.sessionStorage.userDetail);                                
+                                 var model2 ={
+                                     "_id": $scope.userData._id
+                                       }
                                 var url1 = $rootScope.appConfig.baseUrl + $rootScope.appConfig.updateProfile;
-                                 fantumnService.post(url1, model2).then(function(res1) {
-                            if (res1 && res1.data.status == "success") {
-                                $scope.name =res1.data.data.username;
+                                 fantumnService.post(url1, model2).then(function(res1) {                                     
+                                 if (res1 && res1.data.status == "success") {   
+                                  $scope.name =res1.data.data.username;
                                 }
                               });
                                 $scope.userInfo = res.data.data;
+                                $scope.lol();
                                 $scope.closeAuth();
                                 if ($scope.redirecturl != "") {
                                     $scope.gotoPage($scope.redirecturl.index, $scope.redirecturl.match, $scope.redirecturl.tabStatus, $scope.redirecturl.element);
                                 } else {
                                     $commons.navigate('layout.dashboard', {}, false);
                                 }
-                                $scope.lol();
+                                
                             } else {
                                 $scope.error = "";
                                  if (res.data.error == '{ "username": "Invalid username" }') {
@@ -802,11 +888,11 @@
                     var request = gapi.client.plus.people.get({
                         'userId': 'me'
                     });
-                    request.execute(function(resp) {
+                    request.execute(function(resp) {                        
                         var user = {
                             "username": resp.result.name.givenName,
                             "name": resp.result.name.givenName,
-                            "lastname":resp.result.last_name,
+                            "lastname":resp.result.familyName,
                             "email": resp.result.emails[0].value,
                             "gender": "",
                             "dob": new Date(),
@@ -833,7 +919,7 @@
                                     locale: 'en_US',
                                     fields: 'id,first_name,last_name,email,link,gender,locale,picture,birthday'
                                 },
-                                function(response) {
+                                function(response) {                                   
                                     var user = {
                                         "username": response.first_name + response.last_name,
                                         "name": response.first_name ,
@@ -868,7 +954,7 @@
                                 locale: 'en_US',
                                 fields: 'id,first_name,last_name,email,link,gender,locale,picture,birthday'
                             },
-                            function(response) {
+                            function(response) {                                
                                 var user = {
                                     "username": response.first_name + response.last_name,
                                     "name": response.first_name  ,
@@ -892,9 +978,51 @@
             }
         };
 
-        $scope.socialRegister = function(user) {
-            if (user.email != undefined) {
-                $scope.SocailUsername=true;
+        $scope.socialRegister = function(user) {            
+            if (user.email != undefined) { 
+            var url3 = $rootScope.appConfig.baseUrl + $rootScope.appConfig.socialuser+ "/" +user.email;           
+            var model2 ="";
+            fantumnService.get(url3).then(function(res) {               
+                if(res && res.data.status == "success"){
+               $scope.f= res.data.data;               
+               $scope.loginEnable=false;
+                 $scope.registerEnable=false;
+                $scope.SocailUsername=false;
+                 window.sessionStorage.userDetail = JSON.stringify(res.data.data);
+                        var now = new Date();
+                        now.setDate(now.getDate() + 7);
+                        $cookies.put('userInfo', window.sessionStorage.userDetail, {
+                            expires: now
+                        }); 
+                        $scope.userInfo = JSON.parse(window.sessionStorage.userDetail); 
+                        $scope.loginStatus = true;
+                        $scope.lead();
+                         var url1 = $rootScope.appConfig.baseUrl + $rootScope.appConfig.updateProfile;
+                        model2 ={
+                        "_id": $scope.f._id,
+                    }
+                        fantumnService.post(url1, model2).then(function(res1) {
+                            if (res1 && res1.data.status == "success") {
+                                $scope.name =res1.data.data.firstName;
+                            }
+                        });
+                        
+                        if ($scope.redirecturl != "") {
+                            $scope.gotoPage($scope.redirecturl.index, $scope.redirecturl.match, $scope.redirecturl.tabStatus, $scope.redirecturl.element);
+                        } else {
+                            $commons.navigate('layout.dashboard', {}, false);
+                            
+                        }
+                        
+                        $scope.closeAuth();
+                        
+                }
+            else{
+                
+                $scope.registerEnable=false;
+                         $scope.loginEnable=false;
+                         $scope.SocailUsername=true;           
+                                     
                 $scope.reg =function(formValid){                           
                if(formValid){                
                 var url = $rootScope.appConfig.baseUrl + $rootScope.appConfig.register;
@@ -904,7 +1032,7 @@
                     model = {
                         "username": $scope.userDetail.username,
                         "email": user.email,
-                        "password":$scope.userDetail.password,
+                        "password":"",
                         "social_auth": true,
                         "digitalSignature": $scope.agreeRegister,
                         "facebook": {
@@ -919,18 +1047,12 @@
                         }
                       
                     };
-                     model2 ={
-                        "username": $scope.userDetail.username,
-                         "firstname": user.name,
-                        "lastname": user.lastname,
-                         "dob": user.dob,
-                        "gender": user.gender
-                    };
+                    
                 } else {
                     model = {
                         "username": $scope.userDetail.username,
                         "email": user.email,                       
-                        "password": $scope.userDetail.password,
+                        "password":"",
                         "social_auth": true,
                         "digitalSignature": $scope.agreeRegister,
                         "facebook": {
@@ -945,25 +1067,28 @@
                         }
                        
                     };
-                    model2 ={
-                        "username": $scope.userDetail.username,
-                         "firstname": user.name,
-                        "lastname": user.lastname,
-                         "dob": user.dob,
-                        "gender": user.gender
-                    };
+                    
                 }
                 fantumnService.post(url, model).then(function(res) {
                     $rootScope.loader = false;
-                    if (res && res.data.status == "success") {
-                        $scope.loginStatus = true;
+                    if (res && res.data.status == "success") {                  
+                         $scope.loginStatus = true;
                         $scope.userInfo = res.data.data;
+                        model2 ={
+                        "_id": $scope.userInfo._id,
+                         "firstName": user.name,
+                        "lastName": user.lastname,
+                         "dob": user.dob,
+                        "gender": user.gender
+                    };
                         window.sessionStorage.userDetail = JSON.stringify(res.data.data);
                         var now = new Date();
                         now.setDate(now.getDate() + 7);
                         $cookies.put('userInfo', window.sessionStorage.userDetail, {
                             expires: now
-                        });
+                        });  
+                        
+                        $scope.lead();
                         var url1 = $rootScope.appConfig.baseUrl + $rootScope.appConfig.updateProfile;
                         fantumnService.post(url1, model2).then(function(res1) {
                             if (res1 && res1.data.status == "success") {
@@ -988,9 +1113,10 @@
                 });
                  }
              else {
-                $scope.toastContent = 'Set Your username and password ';
+                $scope.toastContent = 'Select Your username';
                 Materialize.toast($scope.toastContent, 3000);
-            }}
+            }} }
+            }); 
             } else {
                 $scope.toastContent = 'Email address not available in Social Login';
                 Materialize.toast($scope.toastContent, 3000);

@@ -101,7 +101,14 @@
                 return error;
             });
         };
-
+     var getdata = function(url, model) {        
+            return $http.get(url, model).then(function(success) {
+                
+                return success;
+            }, function(error) {
+                return error;
+            });
+        };
         // using to delete api Service(delete Method)
         var deleteApi = function(url) {
             return $http.delete(url).then(function(success) {
@@ -117,6 +124,7 @@
             put: put,
             post: post,
             get: get,
+            getdata:getdata,
             postEmpty: postEmpty,
             delete: deleteApi
         };

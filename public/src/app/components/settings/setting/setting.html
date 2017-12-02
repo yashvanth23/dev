@@ -65,7 +65,7 @@
                         <div class="row">
                         <div class="col s6 gender-field">
                              <label for="genter_select">Date of Birth</label>
-                        <datepicker date-format="dd-MM-yyyy">
+                        <datepicker date-format="yyyy-MM-dd">
                             <input type="text" name="date" id="date" ng-model="profileInfo.dob" placeholder="Date of Birth" required ng-disabled="!profileEdit">
                         </datepicker>
                         <span class="error" ng-show="(profileForm.date.$invalid && !profileForm.date.$pristine) || (profileForm.date.$error.required && submitForm)">DOB is required</span>

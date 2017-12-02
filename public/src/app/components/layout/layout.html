@@ -7,7 +7,7 @@
                     <div ng-show="loginStatus">
                         <div ng-if="!userInfo.social_auth">
                             <img ng-src="{{userInfo.avatar}}" alt="user">
-                            <span >{{name}} </span>
+                            <span>{{name}} </span>
                         </div>
                         <div ng-if="userInfo.social_auth">
                             <div ng-if="userInfo.facebook.social_id !=null">
@@ -162,16 +162,16 @@
                         <div ng-show="loginStatus">
                             <div ng-if="!userInfo.social_auth" style="word-break: break-all; width: 70%">
                                 <img ng-src="{{userInfo.avatar}}" alt="user">
-                                <div style="width: 80%;margin-top: -40px;margin-left: 60px">{{userInfo.username | uppercase}} </div>
+                                <div style="width: 100%;margin-top: -40px;margin-left: 60px">{{name | uppercase}} </div>
                             </div>
                             <div ng-if="userInfo.social_auth">
                                 <div ng-if="userInfo.facebook.social_id !=null">
                                     <img ng-src="{{userInfo.facebook.profile}}" alt="user">
-                                    <span>{{userInfo.username | uppercase}} </span>
+                                    <span>{{name | uppercase}} </span>
                                 </div>
                                 <div ng-if="userInfo.google.idToken !=null">
                                     <img ng-src="{{userInfo.google.imgUrl}}" alt="user">
-                                    <span>{{userInfo.username | uppercase}} </span>
+                                    <span>{{name | uppercase}} </span>
                                 </div>
                             </div>
                         </div>
@@ -215,7 +215,7 @@
                 <div class="side-upcoming" ng-show="isActiveTab('upcoming')">
                     <ul ng-if="upcomingMatch.length>0">
                         <li ng-repeat="match in upcomingMatch | orderBy:'starts'" class="upcomingmatch waves-effect" ng-class="{ 'matchpicked' : match.picked }" ng-click="gotoPage($index,match,'upcoming',$event)" id="upcoming{{$index}}">
-                            <div><div style="margin-left: 30%;font-weight: 500;color: goldenrod">{{match.competition}}</div>
+                            <div><div style="text-align: center;font-size:12px; font-weight: 500;color: goldenrod">{{match.competition}}</div>
                                 <div class="left-container" style="margin-top: 10px">
                                     <img ng-src="{{match.homeLogo}}" alt="">
                                     <p style="margin-top: 8px;text-align: center">{{match.home}}</p>
@@ -223,7 +223,7 @@
                                 <span class="matchvs">VS</span>
                                 <div class="right-container" style="margin-top: 10px">
                                     <img ng-src="{{match.awayLogo}}" alt="">
-                                    <p style="margin-top: 8px;text-align: center">{{match.away}}</p>
+                                    <p style="margin-top: 8px;text-align: center;margin-right: 6px">{{match.away}}</p>
                                 </div>
                             </div>
                             <p class="play" ng-hide="match.picked">Play</p>
@@ -277,7 +277,7 @@
                                 <span class="matchvs">VS</span>
                                 <div class="right-container" style="margin-top: 10px">
                                     <img ng-src="{{match.awayLogo}} " alt=" ">
-                                    <p style="margin-top: 1px;text-align: center">{{match.away}}</p>
+                                    <p style="margin-top: 1px;text-align: center;margin-right: 6px">{{match.away}}</p>
                                 </div>
                             </div>
                             
@@ -345,7 +345,9 @@
                     </div>
                 </div>
             </form>
-           
+           <p>OR</p>
+            <button type="button" class="btn waves-effect waves-light fb-login" ng-click="signupWithFacebook('login')">Continue with facebook</button>
+            <button type="button" class="btn waves-effect waves-light google-login" ng-click="signupWithGoogle('login')">Continue with google</button>
             <a href="javascript:void(0);" ng-click="forgotOpen()">Forgot your password?</a>
             <hr>
             <p class="register">Not on Fantumn yet? <a href="javascript:void(0);" ng-click="authEnable('regiter')">Sign Up</a></p>
@@ -368,8 +370,7 @@
                         <input id="user" type="text" name="user" pattern=".{5,18}"   ng-model="userDetail.username" required>
                         <label for="user">Username</label>
                         <span class="error" ng-show="(registerForm.user.$invalid && !registerForm.user.$pristine) || (registerForm.user.$error.required && registerSubmit)">Username is required</span>
-                    </div>
-                   
+                    </div>                   
                     <div class="input-field col s12 password-field">
                         <input id="pass" type="password" name="pass" pattern=".{8,}" title="Must contain at least 8 or more characters" class="validate" ng-model="userDetail.password" required>
                         <label for="pass">Password</label>
@@ -406,11 +407,7 @@
                         <span class="error" ng-show="(registerForm.user.$invalid && !registerForm.user.$pristine) || (registerForm.user.$error.required && registerSubmit)">Username is required</span>
                     </div>
                    
-                    <div class="input-field col s12 password-field">
-                        <input id="pass" type="password" name="pass" pattern=".{8,}" title="Must contain at least 8 or more characters" class="validate" ng-model="userDetail.password" required>
-                        <label for="pass">Password</label>
-                        <span class="error" ng-show="(registerForm.pass.$invalid && !registerForm.pass.$pristine) || (registerForm.pass.$error.required && registerSubmit)">Password is required</span>
-                    </div>
+                   
                     <div class="input-field col s12">
                         <button type="submit" class="btn waves-effect waves-light">Continue</button>
                     </div>

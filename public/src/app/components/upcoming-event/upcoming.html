@@ -17,7 +17,7 @@
                 </div>
                 <div class="upcoming-event">
                     <img src="assets/images/stopwatch.svg" alt="">
-                    <span >{{countdown}} </span>
+                    <span >{{countdown2}} </span>
                 </div>
 
             </div>
@@ -80,7 +80,7 @@
                     <div class="cus-scroll"  style="width: 50%;margin-left: 50%;height: 300px;overflow-y: scroll;font-weight:500;cursor: pointer;">
                     <ul style="overflow-x:   hidden">
                         <li ng-repeat="player in allaway | orderBy:orderAll" class="matchfix-padding" ng-class="{active: player.status}" ng-click="addPlayer(player,$index,'alla')">                     
-                            <div style="float: left;width: 70%;margin-left: -10%"  >{{player.playerName}}</div>                            
+                            <div style="float: left;width: 73%;margin-left: -10%"  >{{player.playerName}}</div>                            
                             <!--div><span class="matchfixpoint">{{player.playerDetails.points}} </span></div-->
                             <div >{{player.positionPlay}}</div>
                         </li>
@@ -105,7 +105,7 @@
                     <div class="cus-scroll"  style="width: 50%;margin-left: 50%;height: 300px;overflow-y: scroll;font-weight:500;cursor: pointer;">
                     <ul style="overflow-x:   hidden">
                         <li ng-repeat="player in allaway |filter : 'DEF'| orderBy:orderAll" class="matchfix-padding" ng-class="{active: player.status}" ng-click="addPlayer(player,$index,'alla')">                     
-                            <div style="float: left;width: 70%;margin-left: -10%"  >{{player.playerName}}</div>                            
+                            <div style="float: left;width: 73%;margin-left: -10%"  >{{player.playerName}}</div>                            
                             <!--div><span class="matchfixpoint">{{player.playerDetails.points}} </span></div-->
                             <div >{{player.positionPlay}}</div>
                         </li>
@@ -130,9 +130,9 @@
                     <div class="cus-scroll"  style="width: 50%;margin-left: 50%;height: 300px;overflow-y: scroll;font-weight:500;cursor: pointer;">
                     <ul style="overflow-x:   hidden">
                         <li ng-repeat="player in allaway |filter : 'MID'| orderBy:orderAll" class="matchfix-padding" ng-class="{active: player.status}" ng-click="addPlayer(player,$index,'alla')">                     
-                            <div style="float: left;width: 70%;margin-left: -10%"  >{{player.playerName}}</div>                            
+                            <div style="float: left;width: 73%;margin-left: -10%"  >{{player.playerName}}</div>                            
                             <!--div><span class="matchfixpoint">{{player.playerDetails.points}} </span></div-->
-                            <div >{{player.positionPlay}}</div>
+                            <div>{{player.positionPlay}}</div>
                         </li>
                     </ul>
                     
@@ -155,7 +155,7 @@
                     <div class="cus-scroll"  style="width: 50%;margin-left: 50%;height: 300px;overflow-y: scroll;font-weight:500;cursor: pointer;">
                     <ul style="overflow-x:   hidden">
                         <li ng-repeat="player in allaway |filter : 'FW'| orderBy:orderAll" class="matchfix-padding" ng-class="{active: player.status}" ng-click="addPlayer(player,$index,'alla')">                     
-                            <div style="float: left;width: 70%;margin-left: -10%"  >{{player.playerName}}</div>                            
+                            <div style="float: left;width: 73%;margin-left: -10%"  >{{player.playerName}}</div>                            
                             <!--div><span class="matchfixpoint">{{player.playerDetails.points}} </span></div-->
                             <div >{{player.positionPlay}}</div>
                         </li>
@@ -181,7 +181,7 @@
                     <div class="cus-scroll"  style="width: 50%;margin-left: 50%;height: 300px;overflow-y: scroll;font-weight:500;cursor: pointer;">
                     <ul style="overflow-x:   hidden">
                         <li ng-repeat="player in allaway |filter : 'GK'| orderBy:orderAll" class="matchfix-padding" ng-class="{active: player.status}" ng-click="addPlayer(player,$index,'alla')">                     
-                            <div style="float: left;width: 60%;margin-left: -10%"  >{{player.playerName}}</div>                            
+                            <div style="float: left;width: 73%;margin-left: -10%"  >{{player.playerName}}</div>                            
                             <!--div><span class="matchfixpoint">{{player.playerDetails.points}} </span></div-->
                             <div >{{player.positionPlay}}</div>
                         </li>

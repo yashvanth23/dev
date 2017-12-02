@@ -35,6 +35,9 @@ if (window.sessionStorage.userDetail != undefined) {
             $scope.noUserScore = false;
             $scope.userScore = [];
             $scope.getLiveScore();
+            setInterval(function() {
+            Materialize.Toast.removeAll();            
+                },3000);
         };
 
         $scope.getLiveScore = function() {

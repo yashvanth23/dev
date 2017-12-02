@@ -35,6 +35,9 @@ if (window.sessionStorage.userDetail != undefined) {
             $scope.userScore = [];
             $scope.noUserScore = false;
             $scope.getHistoryScore();
+            setInterval(function() {
+            Materialize.Toast.removeAll();            
+                },3000);
         };
 
         $scope.getHistoryScore = function() {

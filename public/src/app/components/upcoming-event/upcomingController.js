@@ -28,8 +28,29 @@
         $scope.initFunction = function() {
             $scope.matchDetails = JSON.parse(window.sessionStorage.match);
             $scope.userDetailInfo = JSON.parse(window.sessionStorage.userDetail);
-            $scope.countdown = $scope.matchDetails.starts;
-            
+           // $scope.countdown = $scope.matchDetails.starts;
+            setInterval(function() {
+                    $scope.countdown1 = $scope.matchDetails.starts;
+                     var countDownDate = new Date($scope.countdown1).getTime();
+                     var now = new Date().getTime();  
+                     var distance = countDownDate - now;
+                     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                     var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                     if(hours.length ==1)
+                               hours="0" +hours;
+                           if(minutes.length==1)
+                               minutes="0" +minutes; 
+                   if(days==0){                         
+                      if(hours==0){
+                      $scope.countdown2 = minutes + ":" + seconds; 
+                                   }else
+                                         $scope.countdown2 = hours+ ":" + minutes + ":" + seconds;
+                              }else
+                               $scope.countdown2 = days + "D:" + hours+ ":" + minutes + ":" + seconds; 
+                           
+                    }, 1000);
             $scope.home = {
                 id: $scope.matchDetails.teams.team1.teamId,
                 name: $scope.matchDetails.teams.team1.name
@@ -45,6 +66,9 @@
                 fk: true,
                 gk: true
             };
+              setInterval(function() {
+            Materialize.Toast.removeAll();            
+                },3000);
             $scope.goalKeep = 1,
                 $scope.defPlayer = 1,
                 $scope.midPlayer = 1,
@@ -329,7 +353,7 @@
                     },
                     function(err) {
                         $scope.toastContent = 'Something went wrong';
-                        Materialize.toast($scope.toastContent, 1000,'rounded');
+                        Materialize.toast($scope.toastContent, 3000,'rounded');
                     }
                 );
             } catch (err) {
@@ -530,7 +554,7 @@
                             $scope.goalKeep++;
                         } else {
                             $scope.toastContent = 'Already selected goal keeper';                         
-                             Materialize.toast($scope.toastContent, 2000,'rounded');
+                             Materialize.toast($scope.toastContent, 3000,'rounded');
 
                         }
                     } else if (player.position === "2") {
@@ -546,7 +570,7 @@
                                 if (defTeam.length == 3) {
                                     $scope.defPlayer--;
                                     $scope.toastContent = 'Cannot select 4 defenders same team';
-                                    Materialize.toast($scope.toastContent,2000,'rounded');
+                                    Materialize.toast($scope.toastContent,3000,'rounded');
                                 } else {
                                     $scope.playerList.push(player);
                                     $scope.reviewPush(player);
@@ -562,7 +586,7 @@
                             $scope.defPlayer++;
                         } else {
                             $scope.toastContent = 'Selected 4 defenders already';
-                            Materialize.toast($scope.toastContent, 2000,'rounded');
+                            Materialize.toast($scope.toastContent, 3000,'rounded');
                         }
                     } else if (player.position === "3") {
                         if ($scope.midPlayer <= 3) {
@@ -578,7 +602,7 @@
                                 if (midTeam.length == 2) {
                                     $scope.midPlayer--;
                                     $scope.toastContent = 'Cannot select 3 midFielders same team';
-                                    Materialize.toast($scope.toastContent, 2000,'rounded');
+                                    Materialize.toast($scope.toastContent, 3000,'rounded');
                                 } else {
                                     $scope.playerList.push(player);
                                     $scope.reviewPush(player);
@@ -594,7 +618,7 @@
                             $scope.midPlayer++;
                         } else {
                             $scope.toastContent = 'Selected 3 midfielders already';
-                            Materialize.toast($scope.toastContent, 2000,'rounded');
+                            Materialize.toast($scope.toastContent, 3000,'rounded');
                         }
                     } else {
                         if ($scope.fwdPlayer <= 3) {
@@ -609,7 +633,7 @@
                                 if (fkTeam.length == 2) {
                                     $scope.fwdPlayer--;
                                     $scope.toastContent = 'Cannot select 3 forward players same team';
-                                    Materialize.toast($scope.toastContent, 2000,'rounded');
+                                    Materialize.toast($scope.toastContent, 3000,'rounded');
                                 } else {
                                     $scope.playerList.push(player);
                                     $scope.reviewPush(player);
@@ -625,12 +649,12 @@
                             $scope.fwdPlayer++;
                         } else {
                             $scope.toastContent = 'Selected 3 forward already';
-                            Materialize.toast($scope.toastContent, 2000,'rounded');
+                            Materialize.toast($scope.toastContent, 3000,'rounded');
                         }
                     }
                 } else {
                     $scope.toastContent = 'Selected 11 players already';
-                    Materialize.toast($scope.toastContent, 2000,'rounded');
+                    Materialize.toast($scope.toastContent, 3000,'rounded');
                 }
             } else {
                  if(sec=='alla'){                
@@ -706,10 +730,8 @@
             }
         };
 
-        $scope.findStatus = function(player,data) {
-            console.log(data);
-            if(data=='alla'){
-                console.log("yup")
+        $scope.findStatus = function(player,data) {           
+            if(data=='alla'){               
             for (var statusArray = 0; statusArray < $scope.allaway.length; statusArray++) {
                 if (player == $scope.allaway[statusArray].playerId) {
                     $scope.allaway[statusArray].status = true;
@@ -755,7 +777,7 @@
             } else {
                 $scope.review = false;
                 $scope.toastContent = 'Please select players';
-                Materialize.toast($scope.toastContent, 2000,'rounded');
+                Materialize.toast($scope.toastContent, 3000,'rounded');
             }
         };
 
@@ -814,6 +836,7 @@
                         // $("#twitterShare").attr("socialshare-url", imgageData);
                         // document.getElementById("twitterShare").click();
                     } else if (social == "download") {
+                        
                         $rootScope.loader = true;
                         $scope.downloaUri = imgageData;
                         $("#downloadPitch").attr("href", imgageData);
@@ -835,6 +858,7 @@
                     $rootScope.loader = false;
                 }
             });
+            console.log("coming");
         };
 
        
@@ -857,24 +881,34 @@
 
 
         $scope.$watch("matchChange", function() {
-            if (window.sessionStorage.match !== $scope.matchDetails) {
+           $rootScope.loader =false;
+            if (window.sessionStorage.match != $scope.matchDetails) {
                 $scope.matchDetails = JSON.parse(window.sessionStorage.match);
-                $scope.countdown1 = $scope.matchDetails.starts;
-                
-               
-                setInterval(function() {
+              setInterval(function() {
                     $scope.countdown1 = $scope.matchDetails.starts;
                      var countDownDate = new Date($scope.countdown1).getTime();
-    var now = new Date().getTime();  
-    var distance = countDownDate - now;
-     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    $scope.countdown = days + "D:" + hours+ ":" + minutes + ":" + seconds; 
-     
-   // console.log($scope.countdown1); 
-    }, 1000);
+                     var now = new Date().getTime();  
+                     var distance = countDownDate - now;
+                     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                     var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                       var seconds = Math.floor((distance % (1000 * 60)) / 1000);                       
+                           
+                           if(hours.length ==1){
+                               hours="0" +hours;
+                               console.log("yup")
+                           }
+                           if(minutes.length==1)
+                               minutes="0" +minutes;
+                       if(days==0){                         
+                      if(hours==0){
+                      $scope.countdown2 = minutes + ":" + seconds; 
+                                   }else
+                                         $scope.countdown2 = hours+ ":" + minutes + ":" + seconds;
+                              }else
+                               $scope.countdown2 = days + "D:" + hours+ ":" + minutes + ":" + seconds; 
+                          
+                       }, 1000);
                 $scope.home = {
                     id: $scope.matchDetails.teams.team1.teamId,
                     name: $scope.matchDetails.teams.team1.name
@@ -897,6 +931,7 @@
                     $scope.getPlayers();
                 }
             }
+            
         });
 
         $scope.initFunction();
