@@ -292,6 +292,7 @@
        //getting players for roster screen
         $scope.getPlayers = function() {
             try {
+                $rootScope.loader =true;
                 var url = $rootScope.appConfig.baseUrl + $rootScope.appConfig.getPlayersInfo + "/" + $scope.matchDetails.matchId;
                 fantumnService.get(url).then(function(res) {
                         if (res && res.data.status == "success") {
@@ -689,8 +690,7 @@
         };
 
         $scope.addTeam = function() {
-            if ($scope.playerList.length == 11) {
-                $rootScope.loader = true;
+            if ($scope.playerList.length == 11) {                
                 var url = $rootScope.appConfig.baseUrl + $rootScope.appConfig.createMatch;
                 var players = [];
                 for (var i = 0; i < $scope.playerList.length; i++) {
@@ -701,6 +701,7 @@
                     matchId: $scope.matchDetails.matchId,
                     players: players
                 };
+                $rootScope.loader = true;
                 fantumnService.post(url, model).then(function(res) {
                         if (res && res.data.status == "success") {
                             $rootScope.loader = false;
@@ -881,7 +882,7 @@
 
 
         $scope.$watch("matchChange", function() {
-           $rootScope.loader =false;
+           
             if (window.sessionStorage.match != $scope.matchDetails) {
                 $scope.matchDetails = JSON.parse(window.sessionStorage.match);
               setInterval(function() {

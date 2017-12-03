@@ -7,8 +7,8 @@ body {
     outline: none;
     font-family: 'Montserrat', sans-serif;
     background: #f7f9fa;
+    font-size: 13px;
 }
-
 .nopadding {
     padding: 0px !important;
 }
@@ -310,8 +310,10 @@ ul.drop-menu li a.profile {
     width: 75px;
     margin: 15px 0px 0px 0px;
     font-size: 12px;
-    position: absolute;
-    right: 50px;
+   // position: absolute;
+    //right: 50px;
+    margin-top:8px;
+    margin-right:9px;
 }
 
 .sidenav-content ul li.upcomingmatch div.timer {
@@ -337,6 +339,15 @@ ul.drop-menu li a.profile {
     float: left;
 }
 
+.review{
+    background: white;
+    height: 635px;
+    margin-top: 1.5%;
+    width: 23%;
+    border-radius: 7px;
+    float: right;
+    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.08), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.3);
+}
 .setting-menu {
     transition: all 0.3s ease;
     background-color: transparent;
@@ -946,10 +957,9 @@ ul.drop-menu li a.profile {
 
 .upcoming-schedule .upcoming-event {
     position: absolute;
-    left: 41.4%;
-    text-align: center;
-    margin: 0 auto;
-    bottom: -3px;
+    left: 43%;
+    text-align: center;    
+    bottom: 3px;
 }
 
 .upcoming-schedule .upcoming-event img {
@@ -957,6 +967,10 @@ ul.drop-menu li a.profile {
     height: 24px;
 }
 
+
+.gg{
+    width: 100%;margin-top: -40px;margin-left: 65px;
+}
 span.upcoming-match {
     position: absolute;
     left: 0;
@@ -1040,7 +1054,7 @@ span.upcoming-match {
 .match-section li div {
     width: 50%;
     float: left;
-    font-size: 15px;
+    
     color: #333;
 }
 
@@ -1285,6 +1299,14 @@ ul.match-custom-btn li:last-child {
     background-color: #475993;
     background-size: 50%;
 }
+.new_team{
+    width: 50%;
+    margin-left: 50%;
+    height: 300px;
+    overflow-y: scroll;
+    font-weight:500;
+    cursor: pointer;
+}
 
 .review-section .social-share button.twitter-share {
     background-image: url('../images/twitter-logo.svg');
@@ -1505,7 +1527,7 @@ ul.match-custom-btn li:last-child {
     margin-top: 15px;
     box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.08), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.3);
     position: relative;
-    height: 120px;
+    height: 130px;
 }
 
 .live-matchSchedule .leaderboard {
@@ -1518,6 +1540,7 @@ ul.match-custom-btn li:last-child {
     text-transform: capitalize;
     margin: 0 auto;
     text-align: center;
+    margin-top: -1.5%;
 }
 
 .live-matchSchedule .live-leftSection {
@@ -1575,7 +1598,7 @@ ul.match-custom-btn li:last-child {
 }
 .hi-match {
     position: absolute;
-    bottom: 30px;
+    bottom: 40px;
     font-size: 18px;
     font-weight: 500;
     color: gray;
@@ -1658,18 +1681,19 @@ ul.match-custom-btn li:last-child {
     position: absolute;
     left: 270px;
     padding: 0;
-    top: 10px;
+    top: 20px;
+    font-size: 18px;
 }
 
 .live-matchSchedule .history-event p {
-    top: 1px;
+    top: 4px;
 }
 
 .live-matchSchedule .live-rightSection .match-result {
     position: absolute;
     right: 265px;
-    top: 10px;
-    padding: 0;
+    top: 20px;
+    font-size: 18px;
 }
 
 span.history-time {
@@ -1678,7 +1702,7 @@ span.history-time {
     right: 0;
     text-align: center;
     bottom: 2px;
-    color: #4CAF50;
+    color: #f45f24;
     font-size: 17px;
     font-weight: 500;
 }
@@ -3360,6 +3384,9 @@ textarea.materialize-textarea[readonly="readonly"] {
 }
 
 @media screen and (min-width:1400px) and (max-width:1440px) {
+    .new_team{
+        height: 300px;
+    }
     .liveMatch-section {
         height: 400px;
     }
@@ -3422,6 +3449,9 @@ textarea.materialize-textarea[readonly="readonly"] {
 }
 
 @media screen and (min-width:1920px) {
+    .new_team{
+        height: 300px
+    }
     .profile-content {
         height: 300px;
         margin-top: 50px;
@@ -3551,6 +3581,9 @@ textarea.materialize-textarea[readonly="readonly"] {
     .login-container button.fb-login,
     .login-container .social-login button {
         background-position: 10%;
+    }
+    .new_team{
+        height: 555px;
     }
     .login-container .social-login button {
         width: 100%;
@@ -3929,7 +3962,7 @@ textarea.materialize-textarea[readonly="readonly"] {
 }
 
 .match-header.match-headerAll ul li:nth-child(4) {
-    padding-left: 15px;
+    padding-left: 50px;
 }
 
 .match-section.allplay li div {
@@ -3980,6 +4013,7 @@ textarea.materialize-textarea[readonly="readonly"] {
     transform: translateY(20px);
     transition: all 0.5s;
     visibility: hidden;
+    
     margin: 0 auto;
     z-index: 999999;
 }
@@ -4272,8 +4306,24 @@ textarea.materialize-textarea[readonly="readonly"] {
 /*********************** Responsive Styles ********************/
 
 @media only screen and (min-width: 1920px) {
+   .gg{
+    width: 90%;margin-top: -55px;margin-left: 75px;
+       } 
+    body{
+        font-size: 18px;
+    }
+    .review{
+        height: 960px;
+    }
+    .ww{
+        padding-left: 55px;
+    }
+    
     .upcoming-schedule {
         height: 160px;
+    }
+    .new_team{
+        height: 555px;
     }
     .logo-section p {
         font-size: 24px;
@@ -4300,7 +4350,7 @@ textarea.materialize-textarea[readonly="readonly"] {
         font-size: 18px;
     }
     .upcoming-scheduleEvent {
-        height: 730px;
+        height: 790px;
     }
     .match-section {
         height: 555px;
@@ -4337,22 +4387,24 @@ textarea.materialize-textarea[readonly="readonly"] {
         font-size: 19px;
     }
     .sidenav-content ul li.upcomingmatch div.left-container img {
-        width: 80px;
-        height: 80px;
+        width: 70px;
+        height:70px;
     }
     .sidenav-content ul li.upcomingmatch div.left-container p {
         font-size: 16px;
         margin: 20px;
     }
     .sidenav-content ul li.upcomingmatch div.right-container img {
-        width: 80px;
-        height: 80px;
+        width: 70px;
+        height: 70px;
         
     }
     .sidenav-content ul li.upcomingmatch div.right-container p {
         font-size: 15px;
-        margin: 20px;
-        right: 80px;
+        margin: 30px;
+      // right: 80px;
+     //  margin-right:5px;
+        margin-top: 8px;
     }
     .sidenav-content ul li.upcomingmatch div.timer img {
         height: 30px;
@@ -4403,7 +4455,7 @@ textarea.materialize-textarea[readonly="readonly"] {
     }
     .live-matchSchedule .history-event p {
         right: 210px;
-        top: 20px;
+       
         font-size: 21px;
     }
     .live-match {
@@ -4411,8 +4463,8 @@ textarea.materialize-textarea[readonly="readonly"] {
         bottom: 55px;
     }
     .live-matchSchedule .live-rightSection img {
-        height: 130px;
-        width: 130px;
+        height: 100px;
+        width: 100px;
     }
     span.history-time {
         bottom: 10px;
@@ -4424,15 +4476,18 @@ textarea.materialize-textarea[readonly="readonly"] {
     }
     .live-matchSchedule .live-leftSection span.match-result {
         left: 400px;
-        top: 55px;
+        top: 30px;
     }
     .live-matchSchedule .live-rightSection .match-result {
         right: 380px;
-        top: 55px;
+        top: 30px;
+    }
+    .hi-match{
+        top: 85px;
     }
     .live-matchSchedule .live-leftSection img {
-        width: 130px;
-        height: 130px;
+        width: 100px;
+        height: 100px;
     }
     .live-matchSchedule .history-event p {
         margin-left: 125px;
@@ -4517,8 +4572,8 @@ textarea.materialize-textarea[readonly="readonly"] {
         bottom: 55px;
     }
     .live-matchSchedule .live-rightSection img {
-        height: 130px;
-        width: 130px;
+        height: 100px;
+        width: 100px;
     }
     span.history-time {
         bottom: 10px;
@@ -4528,8 +4583,8 @@ textarea.materialize-textarea[readonly="readonly"] {
         padding-left: 100px;
     }
     .live-matchSchedule .live-leftSection img {
-        width: 130px;
-        height: 130px;
+        width: 100px;
+        height: 100px;
     }
     .live-matchSchedule .history-event p {
         margin-left: 145px;
@@ -4690,6 +4745,9 @@ textarea.materialize-textarea[readonly="readonly"] {
 }
 
 @media only screen and (max-width: 1280px) {
+    body{
+        font-size: 10.9px;
+    }
     .row .col.ui-content.responsive-uicontent {
         width: 70%;
     }
@@ -4698,8 +4756,24 @@ textarea.materialize-textarea[readonly="readonly"] {
         width: 30%;
     }
     .row .col.responsive-width {
-        width: 90%;
+        width: 75%;
     }
+    .match-header.match-headerAll ul li:nth-child(4) {
+    padding-left: 25px;
+}
+.live-matchSchedule .live-leftSection span.match-result {
+    left:230px;
+} 
+.live-matchSchedule .live-rightSection .match-result {
+    right: 230px;
+}
+.live-matchSchedule {
+    height: 150px;
+    font-size: 13px;
+}
+.hi-match{
+    top: 60px;
+}
 }
 
 @media only screen and (max-width: 1024px) {
@@ -4768,6 +4842,5 @@ textarea.materialize-textarea[readonly="readonly"] {
     margin: 50px auto 0px auto;
     color: #868686;
 }
-
 
 /*********************** Responsive Styles ********************/

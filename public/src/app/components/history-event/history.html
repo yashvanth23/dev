@@ -41,15 +41,16 @@
             </div>
             <div class="liveMatch-section" ng-class="{cusscroll: historyScore.length>8}">
                 <ul ng-if="historyScore.length>0">
-                    <li ng-repeat="play in historyScore">
+                    <li ng-repeat="play in historyScore ">
                         <div>{{play.rank}}</div>
                         <div>{{play.user.username}}</div>
                         <div>{{play.matchPoints}}</div>
                     </li>
                 </ul>
-                <div ng-if="historyScore.length==0" class="no-record">
+                <div ng-if="historyScore.length==0" class="no-record" >
                     <img src="assets/images/noPlayer.svg" alt="">
                     <p>0 users played this match</p>
+                    
                 </div>
             </div>
         </div>

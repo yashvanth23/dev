@@ -162,7 +162,7 @@
                         <div ng-show="loginStatus">
                             <div ng-if="!userInfo.social_auth" style="word-break: break-all; width: 70%">
                                 <img ng-src="{{userInfo.avatar}}" alt="user">
-                                <div style="width: 100%;margin-top: -40px;margin-left: 60px">{{name | uppercase}} </div>
+                                <div class="gg">{{name | uppercase}} </div>
                             </div>
                             <div ng-if="userInfo.social_auth">
                                 <div ng-if="userInfo.facebook.social_id !=null">
@@ -223,7 +223,7 @@
                                 <span class="matchvs">VS</span>
                                 <div class="right-container" style="margin-top: 10px">
                                     <img ng-src="{{match.awayLogo}}" alt="">
-                                    <p style="margin-top: 8px;text-align: center;margin-right: 6px">{{match.away}}</p>
+                                    <p class="away">{{match.away}}</p>
                                 </div>
                             </div>
                             <p class="play" ng-hide="match.picked">Play</p>
@@ -245,10 +245,10 @@
 
                     <ul ng-if="liveMatch.length>0">
                         <li ng-repeat="match in liveMatch" class="upcomingmatch waves-effect waves-light" ng-class="{ 'matchpicked' : match.picked }" ng-click=" gotoPage($index,match,'live',$event) " id="live{{$index}}">
-                            <div><div style="margin-left: 30%;font-weight: 500;color: goldenrod">{{match.competition}}</div>
+                            <div><div style="text-align: center;font-size:12px; font-weight: 500;color: goldenrod">{{match.competition}}</div>
                                 <div class="left-container " style="margin-top: 10px">
                                     <img ng-src="{{match.homeLogo}} " alt=" ">
-                                    <p style="margin-top: 7px;text-align: center">{{match.home}}</p>
+                                    <p style="margin-top: 8px;text-align: center">{{match.home}}</p>
                                 </div>
                                 <span class="matchvs">VS</span>
                                 <div class="right-container" style="margin-top: 10px">
@@ -269,15 +269,15 @@
                 <div class="side-upcoming" ng-show="isActiveTab('history')">
                     <ul ng-if="historyMatch.length>0">
                         <li ng-repeat="match in historyMatch | orderBy:'-starts'" class="upcomingmatch waves-effect waves-light" ng-class="{ 'matchpicked' : match.picked }" ng-click=" gotoPage($index,match,'history',$event) " id="history{{$index}}">
-                            <div><div style="margin-left: 30%;font-weight: 500;color: goldenrod">{{match.competition}}</div>
+                            <div><div style="text-align: center;font-size:12px; font-weight: 500;color: goldenrod">{{match.competition}}</div>
                                 <div class="left-container" style="margin-top: 10px">
                                     <img ng-src="{{match.homeLogo}} " alt=" ">
-                                    <p style="margin-top: 1px;text-align: center">{{match.home}}</p>
+                                    <p style="margin-top: 8px;text-align: center">{{match.home}}</p>
                                 </div>
                                 <span class="matchvs">VS</span>
                                 <div class="right-container" style="margin-top: 10px">
                                     <img ng-src="{{match.awayLogo}} " alt=" ">
-                                    <p style="margin-top: 1px;text-align: center;margin-right: 6px">{{match.away}}</p>
+                                    <p class="away">{{match.away}}</p>
                                 </div>
                             </div>
                             
@@ -389,7 +389,7 @@
                 <label for="filled">I agree the </label><a href="#" ng-click="showTermsOfCondition()"> Terms of Use</a>
             </p>
             <hr>
-            <p class="register">Already member? <a href="javascript:void(0);" ng-click="authEnable('login')">Log in</a></p>
+            <p class="register">Already a member? <a href="javascript:void(0);" ng-click="authEnable('login')">Log in</a></p>
         </div>
     </div>
     <div class="login-section register-section" style="min-height: 440px !important" ng-show="SocailUsername">
@@ -415,7 +415,7 @@
             </form>
             
             <hr>
-            <p class="register">Already member? <a href="javascript:void(0);" ng-click="authEnable('login')">Log in</a></p>
+            <p class="register">Already a member? <a href="javascript:void(0);" ng-click="authEnable('login')">Log in</a></p>
         </div>
     </div>
 </div>

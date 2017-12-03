@@ -17,7 +17,7 @@
                 </div>
                 <div class="upcoming-event">
                     <img src="assets/images/stopwatch.svg" alt="">
-                    <span >{{countdown2}} </span>
+                    <span >&nbsp;{{countdown2}} </span>
                 </div>
 
             </div>
@@ -49,7 +49,7 @@
                         
                         <li ng-click="playerSort($event)" class="playerSort" >Player Name<img src="assets/images/up-arrow.svg" alt="" class=""></li>
                         <!--li>Previous Match Points</li-->
-                        <li style="float: right;margin-top: -20px">Player Position</li>
+                        <li  style="width: 24%;padding-left: 23px">Player Position</li>
                     </ul>
                 </div>
                 <div class="match-header match-headerAll matchfix-padding" ng-show="navigateActiveTab('all')">
@@ -64,32 +64,32 @@
                     </ul>
                 </div>
                 <div class="mm" ng-show="navigateActiveTab('all')">
-                    <div style="float: left;margin-left: 7%;margin-top: 1%;position: absolute;m"><b>{{matchDetails.home}}</b></div>
+                    <div style="float: left;margin-left: 9%;margin-top: 1%;position: absolute;"><b>{{matchDetails.home}}</b></div>
                     
                 <div class="match-section cus-scroll"  style="width: 50%;float: left;margin-top: 3%">
                     
                     <ul style="overflow-x: hidden">
-                        <li ng-repeat="player in allhome | orderBy:orderAll" class="matchfix-padding" ng-class="{active: player.status}" ng-click="addPlayer(player,$index,'allh')">
+                        <li ng-repeat="player in allhome | orderBy:orderAll" class="matchfix-padding"  ng-class="{active: player.status}" ng-click="addPlayer(player,$index,'allh')">
                             
                             <div >{{player.playerName}}</div>
-                            <div style="text-align: center" >{{player.positionPlay}}</div>
+                            <div style="text-align: right" >{{player.positionPlay}}</div>
                             
                         </li>
                         </ul >
-                </div><div style="float: right;margin-right: 20%;"><b>{{matchDetails.away}}</b></div>
-                    <div class="cus-scroll"  style="width: 50%;margin-left: 50%;height: 300px;overflow-y: scroll;font-weight:500;cursor: pointer;">
+                </div><div style="float: right;margin-right: 20%;margin-top: 1%"><b>{{matchDetails.away}}</b></div>
+                    <div class="cus-scroll new_team" >
                     <ul style="overflow-x:   hidden">
-                        <li ng-repeat="player in allaway | orderBy:orderAll" class="matchfix-padding" ng-class="{active: player.status}" ng-click="addPlayer(player,$index,'alla')">                     
-                            <div style="float: left;width: 73%;margin-left: -10%"  >{{player.playerName}}</div>                            
+                        <li ng-repeat="player in allaway | orderBy:orderAll" class="matchfix-padding" style="padding-bottom: 5px" ng-class="{active: player.status}" ng-click="addPlayer(player,$index,'alla')">                     
+                            <div style="width: 73%;margin-left: -10%"  >{{player.playerName}}</div>                            
                             <!--div><span class="matchfixpoint">{{player.playerDetails.points}} </span></div-->
-                            <div >{{player.positionPlay}}</div>
+                            <div style="float: right;margin-right: 13%;margin-top: -18px">{{player.positionPlay}}</div>
                         </li>
                     </ul>
                     
                 </div>
             </div>
                 <div class="mm" ng-show="navigateActiveTab('def')">
-                    <div style="float: left;margin-left: 14%"><b>{{matchDetails.home}}</b></div>
+                    <div style="float: left;margin-left: 14%;margin-top:2%"><b>{{matchDetails.home}}</b></div>
                     
                     <div class="match-section cus-scroll"  style="width: 50%;float: left">
                     
@@ -101,20 +101,20 @@
                             
                         </li>
                         </ul >
-                </div><div style="float: right;margin-right: 20%;margin-top: -3%"><b>{{matchDetails.away}}</b></div>
-                    <div class="cus-scroll"  style="width: 50%;margin-left: 50%;height: 300px;overflow-y: scroll;font-weight:500;cursor: pointer;">
+                </div><div style="float: right;margin-right: 20%;margin-top: -2.7%"><b>{{matchDetails.away}}</b></div>
+                    <div class="cus-scroll new_team"  >
                     <ul style="overflow-x:   hidden">
-                        <li ng-repeat="player in allaway |filter : 'DEF'| orderBy:orderAll" class="matchfix-padding" ng-class="{active: player.status}" ng-click="addPlayer(player,$index,'alla')">                     
-                            <div style="float: left;width: 73%;margin-left: -10%"  >{{player.playerName}}</div>                            
+                        <li ng-repeat="player in allaway |filter : 'DEF'| orderBy:orderAll" style="padding-bottom: 5px" class="matchfix-padding" ng-class="{active: player.status}" ng-click="addPlayer(player,$index,'alla')">                     
+                            <div style="width: 70%;margin-left: -10%"  >{{player.playerName}}</div>                            
                             <!--div><span class="matchfixpoint">{{player.playerDetails.points}} </span></div-->
-                            <div >{{player.positionPlay}}</div>
+                            <div style="float: right;margin-right:13%;margin-top: -18px" >{{player.positionPlay}}</div>
                         </li>
                     </ul>
                     
                 </div>
                 </div>
                 <div class="mm" ng-show="navigateActiveTab('mid')">
-                    <div style="float: left;margin-left: 14%"><b>{{matchDetails.home}}</b></div>
+                    <div style="float: left;margin-left: 14%;margin-top:2%"><b>{{matchDetails.home}}</b></div>
                    
                     <div class="match-section cus-scroll"  style="width: 50%;float: left">
                     
@@ -126,20 +126,20 @@
                             
                         </li>
                         </ul >
-                </div> <div style="float: right;margin-right: 20%;margin-top: -3%"><b>{{matchDetails.away}}</b></div>
-                    <div class="cus-scroll"  style="width: 50%;margin-left: 50%;height: 300px;overflow-y: scroll;font-weight:500;cursor: pointer;">
+                </div> <div style="float: right;margin-right: 20%;margin-top: -2.7%"><b>{{matchDetails.away}}</b></div>
+                    <div class="cus-scroll new_team"  >
                     <ul style="overflow-x:   hidden">
-                        <li ng-repeat="player in allaway |filter : 'MID'| orderBy:orderAll" class="matchfix-padding" ng-class="{active: player.status}" ng-click="addPlayer(player,$index,'alla')">                     
-                            <div style="float: left;width: 73%;margin-left: -10%"  >{{player.playerName}}</div>                            
+                        <li ng-repeat="player in allaway |filter : 'MID'| orderBy:orderAll" style="padding-bottom: 5px" class="matchfix-padding" ng-class="{active: player.status}" ng-click="addPlayer(player,$index,'alla')">                     
+                            <div style="width: 70%;margin-left: -10%"  >{{player.playerName}}</div>                            
                             <!--div><span class="matchfixpoint">{{player.playerDetails.points}} </span></div-->
-                            <div>{{player.positionPlay}}</div>
+                            <div style="float: right;margin-right: 13%;margin-top: -18px">{{player.positionPlay}}</div>
                         </li>
                     </ul>
                     
                 </div>
                 </div>
                 <div class="mm" ng-show="navigateActiveTab('fk')">
-                    <div style="float: left;margin-left: 14%"><b>{{matchDetails.home}}</b></div>
+                    <div style="float: left;margin-left: 14%;margin-top:2%"><b>{{matchDetails.home}}</b></div>
                     
                    <div class="match-section cus-scroll"  style="width: 50%;float: left">
                     
@@ -151,20 +151,20 @@
                             
                         </li>
                         </ul >
-                </div><div style="float: right;margin-right: 20%;margin-top: -3%"><b>{{matchDetails.away}}</b></div>
-                    <div class="cus-scroll"  style="width: 50%;margin-left: 50%;height: 300px;overflow-y: scroll;font-weight:500;cursor: pointer;">
+                </div><div style="float: right;margin-right: 20%;margin-top: -2.7%"><b>{{matchDetails.away}}</b></div>
+                    <div class="cus-scroll new_team"  >
                     <ul style="overflow-x:   hidden">
-                        <li ng-repeat="player in allaway |filter : 'FW'| orderBy:orderAll" class="matchfix-padding" ng-class="{active: player.status}" ng-click="addPlayer(player,$index,'alla')">                     
-                            <div style="float: left;width: 73%;margin-left: -10%"  >{{player.playerName}}</div>                            
+                        <li ng-repeat="player in allaway |filter : 'FW'| orderBy:orderAll" style="padding-bottom: 5px" class="matchfix-padding" ng-class="{active: player.status}" ng-click="addPlayer(player,$index,'alla')">                     
+                            <div style="width: 70%;margin-left: -10%"  >{{player.playerName}}</div>                            
                             <!--div><span class="matchfixpoint">{{player.playerDetails.points}} </span></div-->
-                            <div >{{player.positionPlay}}</div>
+                            <div style="float: right;margin-right: 13%;margin-top: -18px">{{player.positionPlay}}</div>
                         </li>
                     </ul>
                     
                 </div>
                 </div>
                 <div class="mm" ng-show="navigateActiveTab('gk')">
-                    <div style="float: left;margin-left: 14%"><b>{{matchDetails.home}}</b></div>
+                    <div style="float: left;margin-left: 14%;margin-top:2%"><b>{{matchDetails.home}}</b></div>
                     
                     <div class="match-section cus-scroll"  style="width: 50%;float: left">
                     
@@ -177,13 +177,13 @@
                         </li>
                         </ul >
                 </div>
-                    <div style="float: right;margin-right: 20%;margin-top: -3%"><b>{{matchDetails.away}}</b></div>
-                    <div class="cus-scroll"  style="width: 50%;margin-left: 50%;height: 300px;overflow-y: scroll;font-weight:500;cursor: pointer;">
+                    <div style="float: right;margin-right: 20%;margin-top: -2.7%"><b>{{matchDetails.away}}</b></div>
+                    <div class="cus-scroll new_team" >
                     <ul style="overflow-x:   hidden">
-                        <li ng-repeat="player in allaway |filter : 'GK'| orderBy:orderAll" class="matchfix-padding" ng-class="{active: player.status}" ng-click="addPlayer(player,$index,'alla')">                     
-                            <div style="float: left;width: 73%;margin-left: -10%"  >{{player.playerName}}</div>                            
+                        <li ng-repeat="player in allaway |filter : 'GK'| orderBy:orderAll" style="padding-bottom: 5px" class="matchfix-padding" ng-class="{active: player.status}" ng-click="addPlayer(player,$index,'alla')">                     
+                            <div style="width: 70%;margin-left: -10%"  >{{player.playerName}}</div>                            
                             <!--div><span class="matchfixpoint">{{player.playerDetails.points}} </span></div-->
-                            <div >{{player.positionPlay}}</div>
+                            <div style="float: right;margin-right: 13%;margin-top: -18px" >{{player.positionPlay}}</div>
                         </li>
                     </ul>
                     
@@ -201,46 +201,46 @@
     </div>
     
     
-    <div style="background: white;height: 630px;margin-top: 1.5%;width: 23%;border-radius: 7px;float: right;box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.08), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.3);">
+    <div class="review">
         
         <p  style="color:#2bbbad;text-align: center;"><b>Selected Players</b></p>
         <ul>
-            <b style="margin-left: 35%">Defender</b> <div ng-if="playerList.length==0" style="padding: 1px;margin-left: 25%">Not Yet Selected</div>
+            <b style="margin-left: 35%">Defender</b> <div ng-if="playerList.length==0" style="padding: 1px;text-align: center">Not Yet Selected</div>
         <li ng-repeat="pla in playerList|filter : 'DEF'" >
             <div style="padding: 1px;margin-left: 10px;margin-right: 16px">
                 <span ng-if="pla.teamId==home.id"><img style="height: 24px;border-radius: 50px;" ng-src="{{matchDetails.homeLogo}}" alt=""></span>
                 <span ng-if="pla.teamId==away.id"><img style="height: 24px;border-radius: 50px;" ng-src="{{matchDetails.awayLogo}}" alt=""></span>
-                <span style="padding: 8px;position: absolute;margin-top: -7px" >{{pla.name}}</span>
+                <span style="padding: 8px;position: absolute;margin-top: -7px;word-break:break-all;width:10%" >{{pla.name}}</span>
             <span style="float: right !important" >{{pla. positionPlay}}</span>
             </div>
            
         </li>
            
-             <p  style="text-align: center;"><b>Forward</b></p><div ng-if="playerList.length==0" style="padding: 1px;margin-left: 25%">Not Yet Selected</div>
+             <p  style="text-align: center;"><b>Forward</b></p><div ng-if="playerList.length==0" style="padding: 1px;text-align: center">Not Yet Selected</div>
         <li ng-repeat="pla in playerList|filter : 'FW'" >
             <div style="padding: 1px;margin-left: 10px;margin-right: 16px">
                 <span ng-if="pla.teamId==home.id"><img style="height: 24px;border-radius: 50px;" ng-src="{{matchDetails.homeLogo}}" alt=""></span>
                 <span ng-if="pla.teamId==away.id"><img style="height: 24px;border-radius: 50px;" ng-src="{{matchDetails.awayLogo}}" alt=""></span>
-                <span style="padding: 8px ;position: absolute;margin-top: -7px" >{{pla.name}}</span>
+                <span style="padding: 8px ;position: absolute;margin-top: -7px;word-break:break-all;width:10%" >{{pla.name}}</span>
             <span style="float: right !important" >{{pla. positionPlay}}</span>
             </div></li>
            
-            <p  style="text-align: center;"><b>Midfielder</b></p><div ng-if="playerList.length==0" style="padding: 1px;margin-left: 25%">Not Yet Selected</div>
+            <p  style="text-align: center;"><b>Midfielder</b></p><div ng-if="playerList.length==0" style="padding: 1px;text-align: center">Not Yet Selected</div>
         <li ng-repeat="pla in playerList|filter : 'MID'" >
             <div style="padding: 1px;margin-left: 10px;margin-right: 16px">
                 <span ng-if="pla.teamId==home.id"><img style="height: 24px;border-radius: 50px;" ng-src="{{matchDetails.homeLogo}}" alt=""></span>
                 <span ng-if="pla.teamId==away.id"><img style="height: 24px;border-radius: 50px;" ng-src="{{matchDetails.awayLogo}}" alt=""></span>
-                <span style="padding: 8px;position: absolute;margin-top: -7px" >{{pla.name}}</span>
+                <span style="padding: 8px;position: absolute;margin-top: -7px;word-break:break-all;width:10%" >{{pla.name}}</span>
             <span style="float: right !important" >{{pla. positionPlay}}</span>
             </div></li>
             
-             <p  style="text-align: center;"><b>Goal Keeper</b></p><div ng-if="playerList.length==0" style="padding: 1px;margin-left: 25%">Not Yet Selected</div>
+             <p  style="text-align: center;"><b>Goal Keeper</b></p><div ng-if="playerList.length==0" style="padding: 1px;text-align: center">Not Yet Selected</div>
         <li ng-repeat="pla in playerList|filter : 'GK'" >
             <div style="padding: 1px;margin-left: 10px;margin-right: 16px">
                 <span ng-if="pla.teamId==home.id"><img style="height: 24px;border-radius: 50px;" ng-src="{{matchDetails.homeLogo}}" alt=""></span>
                 <span ng-if="pla.teamId==away.id"><img style="height: 24px;border-radius: 50px;" ng-src="{{matchDetails.awayLogo}}" alt=""></span>
-                <span style="padding: 8px;position: absolute;margin-top: -7px" >{{pla.name}}</span>
-            <span style="float: right !important" >{{pla. positionPlay}}</span>
+                <span style="padding: 8px;position: absolute;margin-top: -7px;word-break:break-all;width:10%" >{{pla.name}}</span>
+                 <span style="float: right !important" >{{pla. positionPlay}}</span>
             </div></li></ul>
     </div>
    

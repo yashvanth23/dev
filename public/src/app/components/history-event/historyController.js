@@ -96,6 +96,8 @@ if (window.sessionStorage.userDetail != undefined) {
                         $scope.historyScore[i]["rank"] = i + 1;
                     }
                 }
+               
+               
             }
 
             return $scope.historyScore;

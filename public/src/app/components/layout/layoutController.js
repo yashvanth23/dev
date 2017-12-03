@@ -462,12 +462,12 @@
                             str = JSON.stringify(match);
                             angular.element('li.upcomingmatch').removeClass('active');
                             angular.element('#' + element.target.id).addClass('active');
-                            window.sessionStorage.match = JSON.stringify(match);
-                            $scope.matchDetails = JSON.parse(window.sessionStorage.match);
+                            window.sessionStorage.match = JSON.stringify(match);                            
                             $rootScope.matchChange = match;
                             $rootScope.loader = true;
                             $scope.loadfalse=str;
                             $commons.navigate('layout.upcoming', str, false);
+                            $scope.matchDetails = JSON.parse(window.sessionStorage.match);
                         } else if (tabStatus === "live") {
                             $scope.pagename = "live";
                             str = JSON.stringify(match);
@@ -477,6 +477,7 @@
                             window.sessionStorage.match = JSON.stringify(match);
                             $rootScope.liveChange = match;
                             $commons.navigate('layout.live', str, false);
+                            $scope.matchDetails = JSON.parse(window.sessionStorage.match);
                         } else {
                             $scope.pagename = "history";
                             str = JSON.stringify(match);
@@ -486,6 +487,7 @@
                             window.sessionStorage.match = JSON.stringify(match);
                             $rootScope.historyChange = match;
                             $commons.navigate('layout.history', str, false);
+                            $scope.matchDetails = JSON.parse(window.sessionStorage.match);
                         }
                     } else {
                         $commons.showWarning("#warningModal", "", true);
@@ -502,12 +504,12 @@
                             str = JSON.stringify(match);
                             angular.element('li.upcomingmatch').removeClass('active');
                             angular.element('#' + element.target.id).addClass('active');
-                            window.sessionStorage.match = JSON.stringify(match);
-                            $scope.matchDetails = JSON.parse(window.sessionStorage.match);
+                            window.sessionStorage.match = JSON.stringify(match);                           
                             $rootScope.matchChange = match;
                             $rootScope.loader = true;
                             $scope.loadfalse=str;
                             $commons.navigate('layout.upcoming', str, false);
+                            $scope.matchDetails = JSON.parse(window.sessionStorage.match);
                         } else if (tabStatus === "live") {
                             $scope.pagename = "live";
                             str = JSON.stringify(match);
@@ -517,6 +519,7 @@
                             window.sessionStorage.match = JSON.stringify(match);
                             $rootScope.liveChange = match;
                             $commons.navigate('layout.live', str, false);
+                            $scope.matchDetails = JSON.parse(window.sessionStorage.match);
                         } else {
                             $scope.pagename = "history";
                             str = JSON.stringify(match);
@@ -526,6 +529,7 @@
                             window.sessionStorage.match = JSON.stringify(match);
                             $rootScope.historyChange = match;
                             $commons.navigate('layout.history', str, false);
+                            $scope.matchDetails = JSON.parse(window.sessionStorage.match);
                         }
                     } else {
                         $commons.showWarning("#warningModal", "", true);
