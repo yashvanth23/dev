@@ -381,7 +381,7 @@
                                             iconId: "",
                                             playerId: $scope.matchInfo[k].playerId,
                                             id: $scope.matchInfo[k].playerId,
-                                            name: $scope.matchInfo[k].name,
+                                            playerName: $scope.matchInfo[k].name,
                                             positionId: $scope.matchInfo[k].positionId,
                                             position: $scope.matchInfo[k].position,
                                             teamId: $scope.allLineup[lineup].teamId,
@@ -391,7 +391,7 @@
                                             colorCode: "",
                                             iconId: "",
                                             playerId: $scope.matchInfo[k].playerId,
-                                            name: $scope.matchInfo[k].name,
+                                            playerName: $scope.matchInfo[k].name,
                                             positionId: $scope.matchInfo[k].positionId,
                                             position: $scope.matchInfo[k].position,
                                             teamId: $scope.allLineup[lineup].teamId,
@@ -686,7 +686,7 @@
                         $scope.reviewList.splice(playerLength, 1);
                     }
                 }
-            }
+            }          
         };
 
         $scope.addTeam = function() {
@@ -748,6 +748,7 @@
         };
 
         $scope.reviewPush = function(player) {
+           
             if (player.positionPlay === "GK") {
                 for (var j = 0; j < $scope.goalKeeJersey.length; j++) {
                     if (player.teamId == $scope.goalKeeJersey[j].teamId) {
@@ -759,12 +760,13 @@
             } else {
                 for (var i = 0; i < $scope.teamJerSey.length; i++) {
                     if (player.teamId == $scope.teamJerSey[i].teamId) {
-                        $scope.reviewList.push(player);
+                        $scope.reviewList.push(player);                       
                         $scope.reviewList[$scope.reviewList.length - 1]["image"] = $scope.teamJerSey[i].jersey;
                         $scope.reviewList[$scope.reviewList.length - 1]["name"] = $scope.reviewList[$scope.reviewList.length - 1].playerName;
                     }
                 }
             }
+            
             return $scope.reviewList;
         };
 
@@ -780,6 +782,7 @@
                 $scope.toastContent = 'Please select players';
                 Materialize.toast($scope.toastContent, 3000,'rounded');
             }
+            console.log($scope.defReview);
         };
 
         $scope.reviewClose = function() {

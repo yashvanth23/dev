@@ -210,7 +210,7 @@
             <div style="padding: 1px;margin-left: 10px;margin-right: 16px">
                 <span ng-if="pla.teamId==home.id"><img style="height: 24px;border-radius: 50px;" ng-src="{{matchDetails.homeLogo}}" alt=""></span>
                 <span ng-if="pla.teamId==away.id"><img style="height: 24px;border-radius: 50px;" ng-src="{{matchDetails.awayLogo}}" alt=""></span>
-                <span style="padding: 8px;position: absolute;margin-top: -7px;word-break:break-all;width:10%" >{{pla.name}}</span>
+                <span style="padding: 8px;position: absolute;margin-top: -7px;word-break:break-all;width:10%" >{{pla.playerName}}</span>
             <span style="float: right !important" >{{pla. positionPlay}}</span>
             </div>
            
@@ -221,7 +221,7 @@
             <div style="padding: 1px;margin-left: 10px;margin-right: 16px">
                 <span ng-if="pla.teamId==home.id"><img style="height: 24px;border-radius: 50px;" ng-src="{{matchDetails.homeLogo}}" alt=""></span>
                 <span ng-if="pla.teamId==away.id"><img style="height: 24px;border-radius: 50px;" ng-src="{{matchDetails.awayLogo}}" alt=""></span>
-                <span style="padding: 8px ;position: absolute;margin-top: -7px;word-break:break-all;width:10%" >{{pla.name}}</span>
+                <span style="padding: 8px ;position: absolute;margin-top: -7px;word-break:break-all;width:10%" >{{pla.playerName}}</span>
             <span style="float: right !important" >{{pla. positionPlay}}</span>
             </div></li>
            
@@ -230,7 +230,7 @@
             <div style="padding: 1px;margin-left: 10px;margin-right: 16px">
                 <span ng-if="pla.teamId==home.id"><img style="height: 24px;border-radius: 50px;" ng-src="{{matchDetails.homeLogo}}" alt=""></span>
                 <span ng-if="pla.teamId==away.id"><img style="height: 24px;border-radius: 50px;" ng-src="{{matchDetails.awayLogo}}" alt=""></span>
-                <span style="padding: 8px;position: absolute;margin-top: -7px;word-break:break-all;width:10%" >{{pla.name}}</span>
+                <span style="padding: 8px;position: absolute;margin-top: -7px;word-break:break-all;width:10%" >{{pla.playerName}}</span>
             <span style="float: right !important" >{{pla. positionPlay}}</span>
             </div></li>
             
@@ -239,7 +239,7 @@
             <div style="padding: 1px;margin-left: 10px;margin-right: 16px">
                 <span ng-if="pla.teamId==home.id"><img style="height: 24px;border-radius: 50px;" ng-src="{{matchDetails.homeLogo}}" alt=""></span>
                 <span ng-if="pla.teamId==away.id"><img style="height: 24px;border-radius: 50px;" ng-src="{{matchDetails.awayLogo}}" alt=""></span>
-                <span style="padding: 8px;position: absolute;margin-top: -7px;word-break:break-all;width:10%" >{{pla.name}}</span>
+                <span style="padding: 8px;position: absolute;margin-top: -7px;word-break:break-all;width:10%" >{{pla.playerName}}</span>
                  <span style="float: right !important" >{{pla. positionPlay}}</span>
             </div></li></ul>
     </div>
@@ -264,14 +264,14 @@
                 <div class="review-gk">
                     <div class="review-gk-content" ng-repeat="player in gkReview">
                         <img ng-src="{{player.image}}">
-                        <p>{{player.name}}</p>
+                        <p>{{player.playerName}}</p>
                     </div>
                 </div>
                 <div class="review-def">
                     <ul>
                         <li ng-repeat="player in defReview" id="defPlayer{{$index}} " ng-class="{ defSingle: defReview.length==1 } ">
                             <img ng-src="{{player.image}}">
-                            <p>{{player.name}}</p>
+                            <p>{{player.playerName}}</p>
                         </li>
                     </ul>
                 </div>
@@ -279,7 +279,7 @@
                     <ul>
                         <li ng-repeat="player in midReview" id="midplayer{{$index}}" ng-class="{ midSingle : midReview.length==1 } ">
                             <img ng-src="{{player.image}}">
-                            <p>{{player.name}}</p>
+                            <p>{{player.playerName}}</p>
                         </li>
                     </ul>
                 </div>
@@ -287,7 +287,7 @@
                     <ul>
                         <li ng-repeat="player in fwReview" id="fwdplayer{{$index}}" ng-class="{ fwdSingle : fwReview.length==1 } ">
                             <img ng-src="{{player.image}}">
-                            <p>{{player.name}}</p>
+                            <p>{{player.playerName}}</p>
                         </li>
                     </ul>
                 </div>
@@ -306,14 +306,14 @@
                     <div class="snapshot-gf">
                         <div ng-repeat="player in gkReview">
                             <img ng-src="{{player.image}}">
-                            <p>{{player.name}}</p>
+                            <p>{{player.playerName}}</p>
                         </div>
                     </div>
                     <div class="snapshot-def">
                         <ul>
                             <li ng-repeat="player in defReview" id="snapDef{{$index}}" ng-class="{ defSingle: defReview.length==1 } ">
                                 <img ng-src="{{player.image}}">
-                                <p>{{player.name}}</p>
+                                <p>{{player.playerName}}</p>
                             </li>
                         </ul>
                     </div>
@@ -329,7 +329,7 @@
                         <ul>
                             <li ng-repeat="player in fwReview" id="snapFwd{{$index}}" ng-class="{ fwdSingle : fwReview.length==1 } ">
                                 <img ng-src="{{player.image}}">
-                                <p>{{player.name}}</p>
+                                <p>{{player.playerName}}</p>
                             </li>
                         </ul>
                     </div>

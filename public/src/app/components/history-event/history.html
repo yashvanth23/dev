@@ -1,5 +1,5 @@
-<div class="col s12 m12 l12">
-    <div class="col s9 m9 l9 clear-float responsive-width">
+<div class="col s12 m12 l12" ng-click="disable()">
+    <div class="col s9 m9 l9 clear-float responsive-width" >
         <div class="live-matchSchedule">
             <div class="leaderboard">leaderboard</div>
             <br>
@@ -17,7 +17,7 @@
             <span class="history-time">&nbsp;Full Time</span>
         </div>
         <div class="live-play">
-            <ul ng-repeat="play in historyScore" ng-show="userData.username == play.user.username">
+            <ul ng-repeat="play in historyScore" ng-show="userData.username == play.user.username"  ng-click="Viewuser(play)">
                 <li>
                     <p>{{play.rank}}</p>
                 </li>
@@ -41,7 +41,7 @@
             </div>
             <div class="liveMatch-section" ng-class="{cusscroll: historyScore.length>8}">
                 <ul ng-if="historyScore.length>0">
-                    <li ng-repeat="play in historyScore ">
+                    <li ng-repeat="play in historyScore " ng-click="Viewuser(play)">
                         <div>{{play.rank}}</div>
                         <div>{{play.user.username}}</div>
                         <div>{{play.matchPoints}}</div>
@@ -49,10 +49,32 @@
                 </ul>
                 <div ng-if="historyScore.length==0" class="no-record" >
                     <img src="assets/images/noPlayer.svg" alt="">
-                    <p>0 users played this match</p>
+                    <p>No users had played this match</p>
                     
                 </div>
             </div>
         </div>
     </div>
 </div>
+<div class="momo" >
+    <div class="head">
+        <div>&nbsp;</div>
+        <img ng-src="{{otheruser.user.avatar}}" alt="" style="height: 11%;border-radius: 100%;position: absolute;margin-top: -2%">
+        <b style="margin-left: 30%"> {{otheruser.user.username}}</b>
+        <b style="float: right;margin-right: 5%;font-size: 20px;cursor: pointer;color: red" ng-click="close()">&times;</b>
+        <span> {{otheruser.matchPoints}}</span>
+        
+    </div><div class="cus-scroll" style="height: 80%;">
+    <div class="suma">Player Name</div>
+    <div class="suma">Position</div>
+    <div class="suma">Point</div>
+    
+         <ul ng-if="otheruserdata.length>0">
+             <li ng-repeat="play in otheruserdata" >
+                 <div class="suma1">{{play.name}}</div>
+                        <div class="suma1">{{play.positionPlay}}</div>
+                        <div class="suma1">{{play.points}}</div>
+                    </li>
+                </ul>
+            </div>
+        </div>

@@ -1,4 +1,4 @@
-<div class="col s12 m12 l12">
+<div class="col s12 m12 l12" ng-click="disable()">
     <div class="col s9 m9 l9 clear-float responsive-width">
 
         <div class="live-matchSchedule">
@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="live-play">
-            <ul ng-repeat="match in liveScore" ng-show="userData.username == match.user.username">
+            <ul ng-repeat="match in liveScore" ng-show="userData.username == match.user.username"  ng-click="Viewuser(match)">
                 <li>
                     <p>{{match.rank}}</p>
                 </li>
@@ -52,3 +52,22 @@
         </div>
         <button type="button" class="float-refresh waves-effect waves-teal" ng-click="refreshLive()"><img src="assets/images/refresh-button.svg" alt=""></button>
     </div>
+    <div class="momo" >
+    <div class="head">
+        <img ng-src="{{otheruser.user.avatar}}" alt="" style="height: 11%;border-radius: 100%;position: absolute;">
+        <b style="margin-left: 35%"> {{otheruser.user.username}}</b>
+        <span> {{otheruser.matchPoints}}</span><b style="margin-left: 15%;font-size: 20px;cursor: pointer;color: red" ng-click="close()">&times;</b>
+    </div><div class="cus-scroll" style="height: 80%;">
+    <div class="suma">Player Name</div>
+    <div class="suma">Position</div>
+    <div class="suma">Point</div>
+    
+         <ul ng-if="otheruserdata.length>0">
+             <li ng-repeat="play in otheruserdata" >
+                 <div class="suma1">{{play.name}}</div>
+                        <div class="suma1">{{play.position}}</div>
+                        <div class="suma1">{{play.points}}</div>
+                    </li>
+                </ul>
+            </div>
+        </div>

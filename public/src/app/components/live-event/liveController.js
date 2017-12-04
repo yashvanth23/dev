@@ -34,12 +34,40 @@ if (window.sessionStorage.userDetail != undefined) {
             $scope.noScore = false;
             $scope.noUserScore = false;
             $scope.userScore = [];
+             $scope.ea=0;
             $scope.getLiveScore();
             setInterval(function() {
             Materialize.Toast.removeAll();            
                 },3000);
         };
-
+$scope.Viewuser = function(data){
+           
+            $scope.otheruser = data;
+            $scope.otheruserdata=data.players;
+            angular.element('.momo').css({
+                'opacity': '1',
+                "display": 'block'
+            });
+            $timeout(function(){
+                $scope.ea=1;
+            },1300);
+        }
+        $scope.disable =function(){            
+            if($scope.ea==1){                
+             angular.element('.momo').css({
+                'opacity': '0',
+                "display": 'none'
+            });
+              $scope.ea=0;
+          }
+        }
+        $scope.close = function(){
+            angular.element('.momo').css({
+                'opacity': '0',
+                "display": 'none'
+            });
+            $scope.ea=0;
+        }
         $scope.getLiveScore = function() {
             var url = $rootScope.appConfig.baseUrl + $rootScope.appConfig.getBoard + "/" + $scope.matchDetails.matchId;
             fantumnService.get(url).then(function(res) {

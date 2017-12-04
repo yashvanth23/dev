@@ -81,6 +81,7 @@
                 } else {
                     $scope.footerHide = false;
                 }
+                $scope.pageredirect =""
                 $scope.redirecturl = {
                     "index": "",
                     "match": "",
@@ -89,7 +90,7 @@
                 };
                   setInterval(function() {
             Materialize.Toast.removeAll();            
-                },3000);
+                },4000);
                 if($scope.loginStatus){
                     var  model2={
                         _id:$scope.userInfo._id
@@ -170,7 +171,7 @@
              var upcomingUrl1 = $rootScope.appConfig.baseUrl + $rootScope.appConfig.upcoming;
             fantumnService.get(upcomingUrl1).then(function(res) {
                                       $scope.upcome=res.data;            
-                                      $scope.getUpcomingMatch();
+                                      $scope.getUpcomingMatch();                                      
                                   });
           });
        }
@@ -184,8 +185,15 @@
                                 $scope.upcomingMatch = [];
                                 for (var i = 0; i < $scope.upcome.data.length; i++) {
                                     if (currentDate < $scope.upcome.data[i].match.startingDateTime) {
-                                        $scope.upcomingMatch.push({
-                                            competition: $scope.upcome.data[i].season.competition.name,
+                                        if($scope.upcome.data[i].season.competitionId==8){
+                                                $scope.na= "English League";
+                                            }else if($scope.upcome.data[i].season.competitionId==1007){
+                                                 $scope.na="Indian League";
+                                            }else{
+                                                $scope.na=$scope.upcome.data[i].season.competition.name;
+                                            }
+                                        $scope.upcomingMatch.push({                                            
+                                            competition: $scope.na,
                                             home: $scope.upcome.data[i].team1.name,
                                             away: $scope.upcome.data[i].team2.name,
                                             homeLogo: $scope.upcome.data[i].team1.duplicateLogo,
@@ -215,8 +223,15 @@
                             $scope.upcomingMatch = [];
                             for (var i = 0; i < $scope.upcome.data.length; i++) {
                                 if (currentDate < $scope.upcome.data[i].match.startingDateTime) {
+                                    if($scope.upcome.data[i].season.competitionId==8){
+                                                $scope.na= "English League";
+                                            }else if($scope.upcome.data[i].season.competitionId==1007){
+                                                 $scope.na="Indian League";
+                                            }else{
+                                                $scope.na=$scope.upcome.data[i].season.competition.name;
+                                            }
                                     $scope.upcomingMatch.push({
-                                        competition: $scope.upcome.data[i].season.competition.name,
+                                        competition: $scope.na,
                                         home: $scope.upcome.data[i].team1.name,
                                         away: $scope.upcome.data[i].team2.name,
                                         homeLogo: $scope.upcome.data[i].team1.duplicateLogo,
@@ -269,8 +284,15 @@
                         if ($scope.live.status == "success") {
                             $scope.liveMatch = [];
                             for (var i = 0; i < $scope.live.data.length; i++) {
+                                if($scope.live.data[i].season.competitionId==8){
+                                                $scope.na= "English League";
+                                            }else if($scope.live.data[i].season.competitionId==1007){
+                                                 $scope.na="Indian League";
+                                            }else{
+                                                $scope.na=$scope.live.data[i].season.competition.name;
+                                            }
                                 $scope.liveMatch.push({
-                                    competition: $scope.live.data[i].season.competition.name,
+                                    competition: $scope.na,
                                     home: $scope.live.data[i].team1.name,
                                     away: $scope.live.data[i].team2.name,
                                     homeLogo: $scope.live.data[i].team1.duplicateLogo,
@@ -296,8 +318,15 @@
                         if ($scope.live.status == "success") {
                             $scope.liveMatch = [];
                             for (var i = 0; i < $scope.live.data.length; i++) {
+                                if($scope.live.data[i].season.competitionId==8){
+                                                $scope.na= "English League";
+                                            }else if($scope.live.data[i].season.competitionId==1007){
+                                                 $scope.na="Indian League";
+                                            }else{
+                                                $scope.na=$scope.live.data[i].season.competition.name;
+                                            }
                                 $scope.liveMatch.push({
-                                    competition: $scope.live.data[i].season.competition.name,
+                                    competition:$scope.na,
                                     home: $scope.live.data[i].team1.name,
                                     away: $scope.live.data[i].team2.name,
                                     homeLogo: $scope.live.data[i].team1.duplicateLogo,
@@ -340,8 +369,15 @@
                         if ($scope.history.status == "success") {
                             $scope.historyMatch = [];
                             for (var i = 0; i < $scope.history.data.length; i++) {
+                                if($scope.history.data[i].season.competitionId==8){
+                                                $scope.na= "English League";
+                                            }else if($scope.history.data[i].season.competitionId==1007){
+                                                 $scope.na="Indian League";
+                                            }else{
+                                                $scope.na=$scope.history.data[i].season.competition.name;
+                                            }
                                 $scope.historyMatch.push({
-                                    competition: $scope.history.data[i].season.competition.name,
+                                    competition: $scope.na,
                                     home: $scope.history.data[i].team1.name,
                                     away: $scope.history.data[i].team2.name,
                                     homeLogo: $scope.history.data[i].team1.duplicateLogo,
@@ -369,8 +405,15 @@
                         if ($scope.history.status == "success") {
                             $scope.historyMatch = [];
                             for (var i = 0; i <$scope.history.data.length; i++) {
+                                 if($scope.history.data[i].season.competitionId==8){
+                                                $scope.na= "English League";
+                                            }else if($scope.history.data[i].season.competitionId==1007){
+                                                 $scope.na="Indian League";
+                                            }else{
+                                                $scope.na=$scope.history.data[i].season.competition.name;
+                                            }
                                 $scope.historyMatch.push({
-                                    competition: $scope.history.data[i].season.competition.name,
+                                    competition: $scope.na,
                                     home: $scope.history.data[i].team1.name,
                                     away: $scope.history.data[i].team2.name,
                                     homeLogo: $scope.history.data[i].team1.duplicateLogo,
@@ -592,6 +635,7 @@
          * @returns 
          */
         $scope.gotoNavigate = function(pageName) {
+             if ($rootScope.playerListData.length == 0) {
             $scope.sidemenu = false;
             $scope.pagename = pageName;
             window.sessionStorage.pageName = pageName;
@@ -610,7 +654,11 @@
             } else {
                 $commons.navigate('layout.setting', '', false);
             }
-        };
+        }else{
+                $commons.showWarning("#warningModal", "", true);
+                   $scope.pageredirect=pageName;
+        }
+    };
 
         /**
          * @ngdoc method
@@ -622,6 +670,7 @@
          */
         $scope.login = function(formvalid) {
             $scope.loginSubmit = true;
+            $scope.SocailUsername=false;
             if (formvalid) {
                 $rootScope.loader = true;
                 var url = $rootScope.appConfig.baseUrl + $rootScope.appConfig.login;
@@ -639,8 +688,9 @@
                         $scope.userInfo = JSON.parse(window.sessionStorage.userDetail);                        
                         var str = JSON.stringify(window.sessionStorage.match);
                          $scope.userD = JSON.parse(window.sessionStorage.userDetail);
+                         $scope.lead();
                           $scope.loginStatus = true;
-                          $scope.lead();
+                          
                         var model2 ={
                             "_id": $scope.userD._id
                         }
@@ -1260,8 +1310,14 @@
         };
 
         $scope.redirectCustom = function() {
+            
             $rootScope.playerListData = [];
+            if($scope.pageredirect==""){
             $scope.gotoPage($scope.redirecturl.index, $scope.redirecturl.match, $scope.redirecturl.tabStatus, $scope.redirecturl.element);
+            }else{
+                $scope.gotoNavigate($scope.pageredirect);
+            }
+            $scope.pageredirect="";
             $scope.closeWarning();
         };
 

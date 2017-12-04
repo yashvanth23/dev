@@ -21,10 +21,10 @@
     angular
         .module("fantumn")
         .registerCtrl('historyCtrl', historyCtrl);
-    historyCtrl.$inject = ["$scope", "$rootScope", "$commons", "$logger", "fantumnService", "exceptionService", "$window", "$filter"];
+    historyCtrl.$inject = ["$scope", "$rootScope", "$commons", "$logger", "fantumnService", "exceptionService", "$window", "$filter","$timeout"];
 
 
-    function historyCtrl($scope, $rootScope, $commons, $logger, fantumnService, exceptionService, $window, $filter) {
+    function historyCtrl($scope, $rootScope, $commons, $logger, fantumnService, exceptionService, $window, $filter,$timeout) {
 if (window.sessionStorage.userDetail != undefined) {
                     if (window.sessionStorage.userDetail != "") {
         $scope.initFunction = function() {
@@ -35,17 +35,61 @@ if (window.sessionStorage.userDetail != undefined) {
             $scope.userScore = [];
             $scope.noUserScore = false;
             $scope.getHistoryScore();
+            $scope.otheruser = false;
+            $scope.ea=0;
             setInterval(function() {
             Materialize.Toast.removeAll();            
                 },3000);
         };
-
+        $scope.Viewuser = function(data){
+           
+            $scope.otheruser = data;
+            $scope.otheruserdata=data.players;
+            for(var i=0;i<$scope.otheruserdata.length;i++){
+                               if ($scope.otheruserdata[i].positionId == 1) {
+                                    $scope.otheruserdata[i]["positionPlay"] = "GK";
+                                    
+                                } else if ($scope.otheruserdata[i].positionId == 2) {
+                                    $scope.otheruserdata[i]["positionPlay"] = "DEF";
+                                   
+                                } else if ($scope.otheruserdata[i].positionId == 3) {
+                                    $scope.otheruserdata[i]["positionPlay"] = "MID";
+                                    
+                                } else {
+                                    $scope.otheruserdata[i]["positionPlay"] = "FW";
+                                   
+                                }
+            }
+            angular.element('.momo').css({
+                'opacity': '1',
+                "display": 'block'
+            });
+            $timeout(function(){
+                $scope.ea=1;
+            },1300);
+        }
+        $scope.disable =function(){            
+            if($scope.ea==1){                
+             angular.element('.momo').css({
+                'opacity': '0',
+                "display": 'none'
+            });
+              $scope.ea=0;
+          }
+        }
+        $scope.close = function(){
+            angular.element('.momo').css({
+                'opacity': '0',
+                "display": 'none'
+            });
+            $scope.ea=0;
+        }
         $scope.getHistoryScore = function() {
             var url = $rootScope.appConfig.baseUrl + $rootScope.appConfig.getBoard + "/" + $scope.matchDetails.matchId;
             fantumnService.get(url).then(function(res) {
                     $rootScope.loader = false;
                     if (res && res.data.status == "success") {
-                        console.log(res.data.data);
+                        
                         $scope.historyScore = res.data.data;
                         $scope.tempArray = [];
                         $scope.historyScore = $filter("orderBy")($scope.historyScore, "-matchPoints");
