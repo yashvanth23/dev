@@ -1,7 +1,7 @@
 {
     "appName": "fantumn",
     "appVersion": "1.0",
-    "baseUrl": "https://fantumn-server.herokuapp.com/",
+    "baseUrl": "https://inyards.com/",
     "upcoming": "upcomingFixturesAdmin",
     "liveMatch": "liveFixturesAdmin",
     "historyMatch": "historyFixturesAdmin",
