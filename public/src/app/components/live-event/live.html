@@ -1,0 +1,78 @@
+<div class="col s12 m12 l12" ng-click="disable()">
+    <div class="col s9 m9 l9 clear-float responsive-width">
+
+        <div class="live-matchSchedule1">
+            <div class="leaderboard">leaderboard</div>
+            <div class="live-leftSection">
+                <img ng-src="{{matchDetails.homeLogo}}" alt="">
+                <p>{{matchDetails.home}}</p>
+            </div>
+            <span class="live-match">VS</span>
+            <div class="live-rightSection right-align">
+                <p>{{matchDetails.away}}</p>
+                <img src="{{matchDetails.awayLogo}}" alt="">
+            </div>
+        </div>
+        <div class="live-play">
+            <ul ng-repeat="match in liveScore" ng-show="userData.username == match.user.username"  ng-click="Viewuser(match)">
+                <li>
+                    <p>{{match.rank}}</p>
+                </li>
+                <li>
+                    <p>{{match.user.username}}</p>
+                </li>
+                <li>
+                    <p>{{match.matchPoints}}</p>
+                </li>
+            </ul>
+            <p ng-if="noUserScore" class="nodata">Sorry, you did not play this match</p>
+            <p ng-if="noScore" class="nodata">Sorry, you did not play this match</p>
+        </div>
+        <div class="live-result">
+            <div class="live-header">
+                <ul>
+                    <li>Rank</li>
+                    <li>Player Name</li>
+                    <li>Points Scored</li>
+                     <li>Details</li>
+                </ul>
+            </div>
+            <div class="liveMatch-section" ng-class="{cusscroll: liveScore.length>8}">
+                <ul ng-if="liveScore.length>0">
+                    <li ng-repeat="match in liveScore" ng-click="Viewuser(match)">
+                        <div>{{match.rank}}</div>
+                        <div>{{match.user.username}}</div>
+                        <div>{{match.matchPoints}}</div>
+                        <div><img style="width: 14%" src="assets/images/view.png" alt=""></div>
+                    </li>
+                </ul>
+                <div ng-if="liveScore.length==0" class="no-record">
+                    <img src="assets/images/noPlayer.svg" alt="">
+                    <p>0 users played this match</p>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="float-refresh waves-effect waves-teal" ng-click="refreshLive()"><img src="assets/images/refresh-button.svg" alt=""></button>
+    </div>
+    <div class="auth-padrop" ng-show="backdrop" ng-click="disable()"></div>
+<div class="momo" >
+    <div class="head">
+        
+        <b> {{otheruser.user.username}}</b>
+        <b style="float: right;margin-right: 5%;font-size: 20px;cursor: pointer;color: red" ng-click="disable()">&times;</b>
+        <span><b>Total Point:&nbsp;{{otheruser.matchPoints}}</b></span>
+        
+    </div><div class="cus-scroll" style="height: 80%;">
+    <div class="suma">Player Name</div>
+    <div class="suma">Position</div>
+    <div class="suma">Point</div>
+    
+         <ul ng-if="otheruserdata.length>0">
+             <li ng-repeat="play in otheruserdata" >
+                 <div class="suma1">{{play.name}}</div>
+                        <div class="suma1">{{play.positionPlay}}</div>
+                        <div class="suma1">{{play.points}}</div>
+                    </li>
+                </ul>
+            </div>
+        </div>

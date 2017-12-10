@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html ng-app="fantumn">
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <link href="assets/images/favicon.png" rel="icon" type="image/png" />
+    <title>Fantumn</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=9;IE=10;IE=11;IE=Edge,chrome=1" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108809151-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-108809151-1');
+    </script>
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId: '878435782328887',
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v2.10'
+            });
+            FB.AppEvents.logPageView();
+        };
+
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <script type="text/javascript">
+        (function() {
+            var po = document.createElement('script');
+            po.type = 'text/javascript';
+            po.async = true;
+            po.src = 'https://apis.google.com/js/client.js?onload=onLoadCallback';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(po, s);
+        })();
+    </script>
+
+
+            
+         <!--bootstrap online links start here(thennam)-->
+    <!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">-->
+    <!--bootstrap online links end here-->
+
+
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:css({.tmp/serve,src/assets/css}) assets/css/app.css -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="assets/css/materialize.min.css">
+    <link rel="stylesheet" href="assets/css/angular-datepicker.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- endinject -->
+    <!-- endbuild -->
+
+
+</head>
+
+<body>
+
+    <ui-view></ui-view>
+
+
+
+
+
+
+    <!-- build:js({.tmp/serve,dist/scripts,.tmp/partials}) scripts/app.js -->
+    <!-- inject:js -->
+    <script src="bower_components/jquery.js"></script>
+    <script src="bower_components/angular.js"></script>
+    <script src="bower_components/angular-ui-router.js"></script>
+    <script src="scripts/shared/js/materialize.min.js"></script>
+    <script src="scripts/shared/js/angular-materialize.min.js"></script>
+    <script src="scripts/shared/js/moment.js"></script>
+    <script src="scripts/shared/js/angular-socialshare.min.js"></script>
+    <script src="scripts/shared/js/angular-moment.js"></script>
+    <script src="scripts/shared/js/angular-datepicker.js"></script>
+    <script src="scripts/shared/js/angular-md5.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/logger.js"></script>
+    <script src="scripts/helpers.js"></script>
+    <script src="scripts/shared/common/common-min.js"></script>
+    <script src="scripts/shared/common/common.js"></script>
+    <script src="scripts/shared/common/directives-min.js"></script>
+    <script src="scripts/shared/common/directives.js"></script>
+    <script src="scripts/shared/common/errorhandler-min.js"></script>
+    <script src="scripts/shared/common/errorhandler.js"></script>
+    <script src="scripts/shared/common/factory-min.js"></script>
+    <script src="scripts/shared/common/factory.js"></script>
+    <script src="scripts/shared/common/service-min.js"></script>
+    <script src="scripts/shared/common/service.js"></script>
+    <script src="scripts/shared/vendor/angular-cookies.min.js"></script>
+    <script src="scripts/shared/js/html2canvas.js"></script>
+    <!-- endinject -->
+
+
+
+
+    <!-- inject:partials -->
+    <!-- angular templates will be automatically converted in js and inserted here -->
+    <!-- endinject -->
+    <!-- endbuild -->
+
+
+
+</body>
+
+</html>

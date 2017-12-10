@@ -1,0 +1,98 @@
+<div class="col s12 m12 l12">
+    <div class="col s9 m9 l9 clear-float responsive-width">
+        <div class="profile-content valign-wrapper">
+            <img class="profile" ng-src="{{userData.avatar}}" alt="" ng-if="!userData.social_auth">
+            <img class="profile" ng-src="{{userData.facebook.profile}}" alt="" ng-if="userData.social_auth && userData.facebook.facebook_id !=''">
+            <img class="profile" ng-src="{{userData.google.imgUrl}}" alt="" ng-if="userData.social_auth && userData.google.id_token !=''">
+            <div class="col s9 m8 l8 profile-info">                
+                <h4 ng-if="userData.name == null">{{userData.username}}</h4>
+                 <h5 ng-if="profil.name != null">{{profil.name}}&nbsp;{{profil.lastname}}</h5>
+                 
+                <p><img src="assets/images/map.svg" alt="">India</p>
+                <a href="javascript:void(0);" ng-click="redirectSetting()" class="setting-editBtn">Edit</a>
+            </div>
+        </div>
+        <div class="profile-play">
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <div class="col s4 m4 l4 profile-slide" ng-click="matchcard()">
+                        <h5 >Matches Played</h5>
+                        <p>{{profile.performance.matchesPlayed}}</p>
+                        <p><button style="font-size: 11px;border:none;background-color:#00A99D;color: white;border-radius: 7px">View All</button></p>
+                    </div>
+                    <div class="col s4 m4 l4 profile-slide">
+                        <h5>Points Scored</h5>
+                        <p>{{profile.performance.points.userPoints}}</p>
+                    </div>
+                    <div class="col s4 m4 l4 profile-slide" ng-click="rank()">
+                        <h5>Global Rank </h5>
+                        <p>{{profile.performance.globalRank}}</p>
+                         <p><button style="font-size: 11px;border:none;background-color:#00A99D;color: white;border-radius: 7px">Top-20</button></p>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="row">
+                <div class="col s12 m12 l12">
+                    <div class="col s6 m6 l6 profile-rank">
+                        <h5>Global Rank :
+                            <span>{{profile.performance.globalRank}}</span>
+                        </h5>
+                    </div>
+                    <div class="col s6 m6 l6 profile-rank">
+                        <h5>State Rank :
+                            <span>147</span>
+                        </h5>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+    </div>
+</div>
+<div class="auth-padrop" ng-show="backdrop" ng-click="disable()"></div>
+<div class="momo" >
+    <div class="head">
+        
+        <b> {{userData.username}}</b>
+        <b style="float: right;margin-right: 5%;font-size: 20px;cursor: pointer;color: red" ng-click="disable()">&times;</b>
+        <span><b>Total Point:&nbsp;{{profile.performance.points.userPoints}}</b></span>
+        
+    </div>
+    <div class="cus-scroll" style="height: 80%;">
+    <div class="suma">Matches</div>    
+    <div class="suma">Points</div>
+    <div class="suma">Date</div>
+    
+         <ul >
+             <li ng-repeat="play in usermatchcard" >
+                         <div class="suma2">{{play.team1.name}} vs {{play.team2.name}}</div>
+                        <div class="suma3">{{play.matchCard.match.startingDateTime | date}}</div>
+                        <div class="suma3">{{play.matchCard.matchPoints}}</div>
+                    </li>
+                </ul>
+         
+        </div>
+    
+</div>
+<div class="momo1" >
+    <div class="head">
+        
+        <b> {{userData.username}}</b>
+        <b style="float: right;margin-right: 5%;font-size: 20px;cursor: pointer;color: red" ng-click="disable()">&times;</b>
+        <span><b>Rank :&nbsp;{{profile.performance.globalRank}}</b></span>
+        
+    </div>
+<div class="cus-scroll" style="height: 80%;">
+    <div class="suma">UserName</div>
+    <div class="suma">Points</div>
+    <div class="suma">Rank</div>
+    
+         
+    <ul >
+             <li ng-repeat="play in ranking | limitTo:20" >
+                 <div class="suma1">{{play.username}}</div>
+                        <div class="suma1">{{play.userPoints}}</div>
+                        <div class="suma1">{{play.rank}}</div>
+                    </li>
+                </ul>
+    </div>
+</div>
